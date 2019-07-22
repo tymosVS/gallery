@@ -1,0 +1,14 @@
+%h2 Comments
+- @image.comments.each do |comment|
+  %div
+    %p
+      %strong Title:
+      = comment.title
+    %p
+      %strong Comment:
+      = comment.body
+    %p
+    = link_to 'Delete', [comment.image, comment], |
+      method: :delete,                                       |
+      data: { confirm: 'Are you sure?' }                     |
+

@@ -1,0 +1,12 @@
+%h2 Add a post:
+= form_with scope: :image, url: category_posts_path, local: true do |form|
+  %p
+    = form.label :Title
+    %br/
+    = form.text_field :title
+  %p
+    = form.label :Image
+    %br/
+    = form.file_field :image
+  %p
+    = form.submit

@@ -1,0 +1,14 @@
+
+%h2 Add a post:
+= render 'errors'
+= form_with(model: [ @category, @category.posts.build ], local: true) do |form|
+  %p
+    = form.label :Title
+    %br/
+    = form.text_field :Title
+  %p
+    = form.label :body
+    %br/
+    = form.text_area :body
+  %p
+    = form.submit

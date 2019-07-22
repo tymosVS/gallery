@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :images
+  devise_for :users
+  resources :images  do
+    resources :comments
+  end
+  get "comments" => "comments#index"
+  resources :categories do
+    resources :posts
+  end
+  root 'images#index'
 end

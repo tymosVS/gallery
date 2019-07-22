@@ -1,0 +1,7 @@
+%h1 Posts
+.post
+  %p
+    = @image.title
+  = image_tag(@image.image.url, alt: 'Image')
+  = render 'comments/comment', image: @image
+  = render 'comments/form', image: @image

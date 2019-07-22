@@ -1,0 +1,22 @@
+%h1 Categories
+.all-categories
+  - @categories.each do |category|
+    .category
+      %p
+        %strong 
+        = category.title
+      %div
+        %strong 
+        .category-img
+          - if @category_images.include?(category)
+            = link_to image_tag(@category_images[category].image.medium_thumb.url), category_path(category)
+          - else
+            = link_to image_tag('default.jpeg', alt: 'No image'), category_path(category)
+      %p
+        %strong 
+        = category.description
+      %p= link_to 'Destroy', category_path(category), |
+          method: :delete,                            |
+          data: { confirm: 'Are you sure?' } if user_signed_in?
+      
+= link_to 'New Category', new_category_path if user_signed_in?

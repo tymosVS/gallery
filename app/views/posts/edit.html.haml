@@ -1,0 +1,14 @@
+%h1 Edit post
+= form_with scope: :post, url: category_posts_path, local: true do |form|
+  %div
+    = form.label :title
+    %br/
+    = form.text_field :title
+  %div
+    = form.label :Body
+    %br/
+    = form.text_area :body
+  %div
+    = form.label :image
+    = form.file_field :image
+  = form.submit

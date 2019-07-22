@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Gallery
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  - flash.each do |key, value|
+    %div{:class => "alert alert-#{key} alert-dismissable"}
+      = value
+  / this is code we will cut out and put inside menu partial
+  %nav.navbar.navbar-default{:role => "navigation"}
+    .container
+      .navbar-header
+      #navbar-collapse-1.collapse.navbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          
+          %li
+            = link_to 'Categoies',  categories_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              Категории
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{:href => "#"} Коментария1
+              %li
+                %a{:href => "#"} Коментария2
+              %li
+                %a{:href => "#"} Коментария3
+              %li
+                %a{:href => "#"} Коментария4
+              %li
+                %a{:href => "#"} Коментария5
+          %li
+            = link_to 'Images',  images_path
+          %li
+            = link_to 'Comments', comments_path
+          - if current_user
+            %li= link_to 'Logout', destroy_user_session_path, method: :delete
+            /= current_user.id
+          - else
+            %li= link_to 'Login', new_user_session_path
+  / this is code we will cut out
+  .container
+    = yield

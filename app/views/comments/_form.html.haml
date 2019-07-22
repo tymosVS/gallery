@@ -1,0 +1,12 @@
+%h2 Add a comment:
+= form_with(model: [ @image, @image.comments.build ], local: true) do |form|
+  %p
+    = form.label :title
+    %br/
+    = form.text_field :title
+  %p
+    = form.label :body
+    %br/
+    = form.text_area :body
+  %p
+    = form.submit
