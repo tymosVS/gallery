@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :images  do
     resources :comments
+    resources :fans
   end
   get "comments" => "comments#index"
+
   resources :categories do
     resources :posts
   end
+
   root 'categories#index'
 end

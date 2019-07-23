@@ -4,9 +4,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @image = Image.find(params[:image_id])
-    @comment = @image.comments.create(comment_params)
-    redirect_back(fallback_location: root_path)
+    if user_signed_in?
+      # @user_id = current_user.email
+      @image = Image.find(params[:image_id])
+      @comment = @image.comments.create(comment_params)
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy

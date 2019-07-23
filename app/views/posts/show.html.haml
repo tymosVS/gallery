@@ -5,3 +5,7 @@
   = image_tag(@image.image.url, alt: 'Image')
   = render 'comments/comment', image: @image
   = render 'comments/form', image: @image
+  = button_to 'Like', image_fans_path(@image), method: :image
+%p
+  = @image.fans.count
+  = (@image.fans.count) == 1 ? 'Like' : 'Likes'

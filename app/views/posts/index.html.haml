@@ -5,7 +5,7 @@
       = link_to image_tag(@images[post].image.url, alt: 'Image'), category_post_path(@category, post)
 
       %p= link_to 'View', category_post_path(@category, post)
-      %p= link_to 'Destroy Post', [post.category, post], |
+      %p= link_to 'Destroy Image', [post.category, post], |
           method: :delete,                               |
           data: { confirm: 'Are you sure?' }             |
         
