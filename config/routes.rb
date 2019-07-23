@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :images  do
     resources :comments
   end
@@ -9,5 +10,5 @@ Rails.application.routes.draw do
   resources :categories do
     resources :posts
   end
-  root 'images#index'
+  root 'categories#index'
 end
