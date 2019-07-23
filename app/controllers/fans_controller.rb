@@ -11,7 +11,7 @@ class FansController < ApplicationController
     else
       @image.fans.create(user_id: current_user.id)
     end
-    redirect_to image_path(@image)
+    redirect_back(fallback_location: root_path)
   end
 
   private
