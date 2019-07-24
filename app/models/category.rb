@@ -8,6 +8,9 @@ class Category < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :images, through: :posts, dependent: :destroy
+  has_many :subscribers
+  has_one :creator
+
   validates :title, presence: true,
   length: { minimum: 2 }
 end

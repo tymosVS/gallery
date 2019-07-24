@@ -84,3 +84,7 @@ gem 'activeadmin', '~> 2.2'
 gem 'kaminari'
 
 gem 'jquery-rails'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'

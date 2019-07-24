@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     if user_signed_in?
-      # @user_id = current_user.email
+      # @user_id = current_user.id
       @image = Image.find(params[:image_id])
       @comment = @image.comments.create(comment_params)
       redirect_back(fallback_location: root_path)
@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:title, :body)
+      params[:user_id] = current_user.id
+      params.require(:comment).permit(:title, :body, :user_id)
     end
 end

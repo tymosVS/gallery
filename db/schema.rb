@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_115637) do
+ActiveRecord::Schema.define(version: 2019_07_24_084111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,18 @@ ActiveRecord::Schema.define(version: 2019_07_23_115637) do
     t.bigint "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["image_id"], name: "index_comments_on_image_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "creators", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_creators_on_category_id"
+    t.index ["user_id"], name: "index_creators_on_user_id"
   end
 
   create_table "fans", force: :cascade do |t|
@@ -94,6 +105,15 @@ ActiveRecord::Schema.define(version: 2019_07_23_115637) do
     t.index ["image_id"], name: "index_posts_on_image_id"
   end
 
+  create_table "subscribers", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_subscribers_on_category_id"
+    t.index ["user_id"], name: "index_subscribers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -115,8 +135,13 @@ ActiveRecord::Schema.define(version: 2019_07_23_115637) do
   end
 
   add_foreign_key "comments", "images"
+  add_foreign_key "comments", "users"
+  add_foreign_key "creators", "categories"
+  add_foreign_key "creators", "users"
   add_foreign_key "fans", "images"
   add_foreign_key "fans", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "images"
+  add_foreign_key "subscribers", "categories"
+  add_foreign_key "subscribers", "users"
 end
