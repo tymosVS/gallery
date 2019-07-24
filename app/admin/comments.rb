@@ -12,5 +12,5 @@ ActiveAdmin.register Comment, :as => "User Comments" do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :title, :body, :image_id
+  permit_params :title, :body, :image_id, :user_id
 end

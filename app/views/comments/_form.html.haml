@@ -8,6 +8,6 @@
     = form.label :body
     %br/
     = form.text_area :body
-
+    = form.hidden_field :user_id, :value => current_user.id 
   %p
     = form.submit

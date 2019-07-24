@@ -4,5 +4,5 @@
     = @image.title
   = image_tag(@image.image.url, alt: 'Image')
   = render 'comments/comment', image: @image
-  = render 'comments/form', image: @image
-  = render 'fans/likes', image: @image
+  = render 'comments/form', image: @image if user_signed_in?
+  = render 'fans/likes', image: @image 

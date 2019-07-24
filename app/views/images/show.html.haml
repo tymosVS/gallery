@@ -3,5 +3,5 @@
 = image_tag(@image.image.url, alt: 'Image') if @image.image?
 %p= link_to 'Edit', edit_image_path(@image)
 = render 'comments/comment', image: @image
-= render 'comments/form', image: @image
+= render 'comments/form', image: @image if user_signed_in?
 = render 'fans/likes', image: @image

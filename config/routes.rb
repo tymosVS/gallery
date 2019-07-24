@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :categories do
     resources :posts
   end
-
+  resource :creators
   root 'categories#index'
 end

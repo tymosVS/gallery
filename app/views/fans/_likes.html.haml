@@ -1,4 +1,5 @@
-= button_to 'Like', image_fans_path(image), method: :image
+= button_to 'Like', image_fans_path(image), method: :image if user_signed_in?
 %p
   = @image.fans.count
   = (@image.fans.count) == 1 ? 'Like' : 'Likes'
+  
