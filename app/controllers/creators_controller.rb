@@ -8,15 +8,19 @@ class CreatorsController < ApplicationController
   def create
   
     @category = Category.new(category_params)
-    @user.creators.create(:user=>@user, :category=>@category)
     if @category.save
-      @user.creators.create(:user=>@user)
+      @user.creators.create(:user=>@user, :category=>@category)
       redirect_to categories_path
     else
       render :new
     end
-    
+  end
 
+  def destroy
+    @category =Category.friendly.find(params[:category_id])
+    @creator = @category.creator.find(params[:id])
+    @creator.destroy
+    redirect_to category_posts_path
   end
 
   private

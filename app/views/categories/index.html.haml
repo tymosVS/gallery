@@ -17,6 +17,6 @@
         = category.description
       %p= link_to 'Destroy', category_path(category), |
           method: :delete,                            |
-          data: { confirm: 'Are you sure?' } if user_signed_in?
+          data: { confirm: 'Are you sure?' } if @category_owners[category]
       
 = link_to 'New Category', new_category_path if user_signed_in?
