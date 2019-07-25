@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-  paginates_per 50
+  paginates_per 20
   has_one :post, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :fans, dependent: :destroy

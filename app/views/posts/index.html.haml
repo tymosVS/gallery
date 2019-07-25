@@ -2,7 +2,7 @@
 .all-posts
   - @posts.each do |post|
     %div
-      = link_to image_tag(@images[post].image.url, alt: 'Image'), category_post_path(@category, post)
+      = link_to image_tag(@images[post].image.medium_thumb.url, alt: 'Image'), category_post_path(@category, post)
 
       %p= link_to 'View', category_post_path(@category, post)
       %p= link_to 'Destroy Image', [post.category, post], |
