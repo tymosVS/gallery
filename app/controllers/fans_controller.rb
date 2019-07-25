@@ -4,7 +4,6 @@ class FansController < ApplicationController
 
   def create
     if already_faned?
-      
       @fan = @image.fans.where(user_id: current_user.id, image_id:
         params[:image_id])
       @fan.destroy_all()

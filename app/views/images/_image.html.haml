@@ -1,7 +1,4 @@
 .image
   %h2= link_to image.title, image_path(image)
   = link_to image_tag(image.image.medium_thumb.url, alt: 'Image'), image_path(image) if image.image?
-  %p= link_to 'Edit', edit_image_path(image)
-  %p= link_to 'Destroy image', image, |
-          method: :delete,                               |
-          data: { confirm: 'Are you sure?' }             |
+
