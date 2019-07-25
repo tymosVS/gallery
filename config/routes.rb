@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   resources :categories do
     resources :posts
+    resources :subscribers
   end
-  resource :creators
+  resource :creators, only: [:create, :new]
   root 'categories#index'
 end
