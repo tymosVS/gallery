@@ -21,19 +21,12 @@
             = link_to 'Categoies',  categories_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              Категории
+              Category
               %span.caret
             %ul.dropdown-menu
-              %li
-                %a{:href => "#"} Коментария1
-              %li
-                %a{:href => "#"} Коментария2
-              %li
-                %a{:href => "#"} Коментария3
-              %li
-                %a{:href => "#"} Коментария4
-              %li
-                %a{:href => "#"} Коментария5
+              - @top_categories.each do |category|
+                %li
+                  = link_to category.title, category_path(category)
           %li
             = link_to 'Images',  images_path
           %li
@@ -46,3 +39,4 @@
   / this is code we will cut out
   .container
     = yield 
+= @cart

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_25_103653) do
+ActiveRecord::Schema.define(version: 2019_07_26_122413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,14 @@ ActiveRecord::Schema.define(version: 2019_07_25_103653) do
     t.index ["user_id"], name: "index_subscribers_on_user_id"
   end
 
+  create_table "user_actions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "action"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_actions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -149,4 +157,5 @@ ActiveRecord::Schema.define(version: 2019_07_25_103653) do
   add_foreign_key "posts", "images"
   add_foreign_key "subscribers", "categories"
   add_foreign_key "subscribers", "users"
+  add_foreign_key "user_actions", "users"
 end
