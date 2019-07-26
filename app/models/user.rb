@@ -9,7 +9,7 @@ class User < ApplicationRecord
     if user = User.where(:email => access_token.extra.raw_info.email).first
       user
     else 
-      User.create!(:provider => access_token.provider, 
+      User.create!(
                     :name => access_token.extra.raw_info.name,  
                     :email => access_token.extra.raw_info.email, 
                     :password => Devise.friendly_token[0,20]) 
