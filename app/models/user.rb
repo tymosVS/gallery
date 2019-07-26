@@ -11,5 +11,7 @@ class User < ApplicationRecord
         :rememberable,
         :trackable,
         :validatable,
-        :omniauthable
+        :omniauthable,
+        :confirmable
+        protected
 end
