@@ -24,9 +24,9 @@
               Category
               %span.caret
             %ul.dropdown-menu
-              - @top_categories.each do |category|
+              - @top_categories.each do |top_categories|
                 %li
-                  = link_to category.title, category_path(category)
+                  = link_to top_categories.title, category_path(top_categories)
           %li
             = link_to 'Images',  images_path
           %li
