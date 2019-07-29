@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @category =Category.friendly.find(params[:category_id])
+    @category = Category.friendly.find(params[:category_id])
     @post = @category.posts.find(params[:id])
     @image = @post.image
   end
