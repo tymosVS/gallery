@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-
   before_action :set_cat
+  before_action :tracking, only: [:index, :show]
+
   private
 
   def set_cat
@@ -17,6 +18,11 @@ class ApplicationController < ActionController::Base
                       order by total DESC limit 5')
   end
 
+  def tracking
+    UserAction.new( :user_id=>current_user.id, 
+      :action=>'navigation', 
+      :action_path=>request.original_url).save if user_signed_in?
+  end
   def after_sign_in_path_for(users)
     stored_location_for(users) || categories_path
   end

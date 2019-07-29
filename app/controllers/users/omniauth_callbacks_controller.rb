@@ -4,6 +4,9 @@ class Users::OmniauthCallbacksController < ApplicationController
     if @user.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
       sign_in_and_redirect @user, :event => :authentication
+      UserAction.new( :user_id=>current_user.id, 
+        :action=>'user sign in', 
+        :action_path=>request.original_url).save
     else
       flash[:notice] = "authentication error"
       redirect_to root_path
