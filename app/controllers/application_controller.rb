@@ -4,15 +4,17 @@ class ApplicationController < ActionController::Base
   private
 
   def set_cat
-    
-    # @top_categories = Category.all
-    @top_categories = Category.joins(:images).group('categories.id').order('count(images.id) DESC').limit(5)
-    # top = Category.images.joins(:fans, :comments).group('images.id').group('categories.id').order('count(images.id) + count(fans.id) + count(comments.id) DESC')
-    # top.each do |qw|
-    #   @top_categories << qw
-    # end
-    # img = Image.joins(:fans, :comments).group('images.id')
-    # @top_categories = Category.joins(img).group('categories.id').order('count(images.id) + count(fans.id) + count(comments.id) DESC')
+    # @top_categories = Post.joins(:image, :category).left_joins(:fan, :comment)
+    @top_categories = ActiveRecord::Base.connection.execute('SELECT 
+                      categories.id, categories.title, count(images.id) + 
+                      count(fans.id) + count(comments.id) as total 
+                      from categories
+                      left join posts on posts.category_id = categories.id 
+                      left join images on images.id = posts.image_id 
+                      left join fans on fans.image_id = images.id 
+                      left join comments on comments.image_id = images.id 
+                      group by categories.id 
+                      order by total DESC limit 5')
   end
 
   def after_sign_in_path_for(users)
