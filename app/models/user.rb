@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :creators, dependent: :destroy
   has_many :fans, dependent: :destroy
   has_many :user_actions
+  after_create :send_welcome_email
   def self.find_for_facebook_oauth access_token
     if user = User.where(:email => access_token.extra.raw_info.email).first
       user
@@ -24,5 +25,9 @@ class User < ApplicationRecord
         :validatable,
         :omniauthable,
         :confirmable
-        
+  private
+
+  def send_welcome_email()
+    UserMailer.welcome_email(self).deliver
+  end 
 end
