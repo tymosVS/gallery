@@ -1,4 +1,12 @@
 class Post < ApplicationRecord
+  after_create :new_image_in_subscribes_email
+
   belongs_to :image, dependent: :destroy
   belongs_to :category
+
+  private
+
+  def new_image_in_subscribes_email
+    UserMailer.new_image_in_subscribes_email(category).deliver 
+  end 
 end

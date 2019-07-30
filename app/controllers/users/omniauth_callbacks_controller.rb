@@ -6,7 +6,7 @@ class Users::OmniauthCallbacksController < ApplicationController
       sign_in_and_redirect @user, :event => :authentication
       UserAction.new( :user_id=>current_user.id, 
         :action=>'user sign in', 
-        :action_path=>request.original_url).save
+        :action_path=>'nil').save
     else
       flash[:notice] = "authentication error"
       redirect_to root_path

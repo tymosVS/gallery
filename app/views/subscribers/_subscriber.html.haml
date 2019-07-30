@@ -1,4 +1,3 @@
 = button_to 'Subscribe', category_subscribers_path(category), method: :category if user_signed_in?
-%p
-  = category.subscribers.count 
-  = (category.subscribers.count) == 1 ? 'Subscriber' : 'Subscribers' 
+= category.subscribers.count 
+= (category.subscribers.count) == 1 ? 'Subscriber' : 'Subscribers' 

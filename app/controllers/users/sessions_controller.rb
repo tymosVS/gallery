@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
     super
     UserAction.new( :user_id=>current_user.id, 
                     :action=>'user sign in', 
-                    :action_path=>request.original_url).save
+                    :action_path=>'nil').save
   end
 
   # DELETE /resource/sign_out
@@ -22,7 +22,7 @@ class Users::SessionsController < Devise::SessionsController
     super
     UserAction.new( :user_id=>user_id, 
       :action=>'user sign out', 
-      :action_path=>request.original_url).save
+      :action_path=>'nil').save
   end
 
   # protected
