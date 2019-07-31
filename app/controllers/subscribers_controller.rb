@@ -7,7 +7,6 @@ class SubscribersController < ApplicationController
       @subscriber = Subscriber.where(category_id: @category, user_id: current_user.id)
       @subscriber.destroy_all()
     else
-      
       @category.subscribers.create(category_id: @category, user_id: current_user.id)
     end
     redirect_back(fallback_location: root_path)

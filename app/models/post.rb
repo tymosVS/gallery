@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   private
 
   def new_image_in_subscribes_email
-    UserMailer.new_image_in_subscribes_email(category).deliver 
+    # UserMailer.new_image_in_subscribes_email(category).deliver 
+    Resque.enqueue(NewImageSubscribedEmailJob, category)
+
   end 
 end

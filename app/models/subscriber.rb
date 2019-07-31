@@ -7,6 +7,8 @@ class Subscriber < ApplicationRecord
   private
 
   def send_subscribed_email
-    UserMailer.subscribed_email(user, category).deliver 
+    # UserMailer.subscribed_email(user, category).deliver 
+    # Resque.enqueue(SubscribedEmailJob, user, category)
+    Resque.enqueue(SubscribedEmailJob, user, category)
   end 
 end

@@ -44,7 +44,6 @@ ActiveAdmin.register_page "Dashboard" do
       columns do
         column do
           panel "Last images" do
-            
               Image.last(10).map do |image|
                 li image_tag(image.image.medium_thumb.url, alt: 'Image')
                 li image.title
@@ -54,9 +53,28 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
 
-      column do
-        panel "User actions" do
-          para "Actions informations"
+      columns do
+        column do
+          panel "User actions" do
+            div do
+              UserAction.all.each do |post|
+                div do
+                  link_to(post.action, post.action_path) 
+                end
+                div do
+                  if post.action_path != 'nil'
+                  link_to(post.action_path, post.action_path) 
+                  else
+                    '----'
+                  end
+                end
+                div do
+                  span User.find(post.user_id).email.to_s 
+                  span post.created_at.to_s
+                end
+              end
+            end
+          end
         end
       end
     end
