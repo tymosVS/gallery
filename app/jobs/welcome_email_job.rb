@@ -1,9 +1,8 @@
 class WelcomeEmailJob 
-  @queue = :simple
+  @queue = :welcome
 
   def self.perform(user)
     UserMailer.welcome_email(user).deliver
-    puts "Job is "
   end
 end
 

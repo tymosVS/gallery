@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
       :action=>'navigation', 
       :action_path=>request.original_url).save if user_signed_in?
   end
+  
   def after_sign_in_path_for(users)
     stored_location_for(users) || categories_path
   end

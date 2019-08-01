@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
   def subscribed_email(user, category)
     @user = user
     @category = category
-    mail(to: user['email'], subject: 'Succesfull subscribed')
+    mail(to: @user['email'], subject: 'Succesfull subscribed')
   end
 
   def new_image_in_subscribes_email(category)
