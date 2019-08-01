@@ -8,7 +8,7 @@ class Category < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :images, through: :posts, dependent: :destroy
-  has_many :subscribers
+  has_many :subscribers, dependent: :destroy
   has_one :creator, dependent: :destroy
 
   validates :title, presence: true,

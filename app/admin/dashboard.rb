@@ -45,13 +45,10 @@ ActiveAdmin.register_page "Dashboard" do
         column do
           panel "Last images" do
               Image.last(10).map do |image|
-                div do
-                  div do
-                    image_tag(image.image.small_thumb.url, alt: 'Image')
-                  end
-                  span image.title
-                end
+                li image_tag(image.image.small_thumb.url, alt: 'Image')
+                li image.title
               end
+            
           end
         end
       end
