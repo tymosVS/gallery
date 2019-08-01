@@ -27,10 +27,12 @@ class User < ApplicationRecord
         :validatable,
         :omniauthable,
         :confirmable
+        # :lockable
+
   private
 
   def send_welcome_email()
     UserMailer.welcome_email(self).deliver
-    # Resque.enqueue(WelcomeEmailJob, self)
+    Resque.enqueue(WelcomeEmailJob, self)
   end 
 end

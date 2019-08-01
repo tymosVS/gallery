@@ -4,5 +4,9 @@
 .all-categories {
   display: flex;
   flex-flow: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+* {
+  text-decoration: none;
 }

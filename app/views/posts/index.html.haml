@@ -8,5 +8,6 @@
       %p= link_to 'Destroy Image', [post.category, post], |
           method: :delete,                               |
           data: { confirm: 'Are you sure?' }             |
-        
+= paginate @posts, outer_window: 3
+
 %p= link_to 'New post', new_category_post_path()

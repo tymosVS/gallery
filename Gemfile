@@ -80,6 +80,8 @@ gem 'friendly_id', '~> 5.2'
 gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'autoprefixer-rails'
 gem 'activeadmin', '~> 2.2'
+gem 'active_bootstrap_skin'
+
 
 gem 'kaminari'
 
@@ -89,6 +91,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-gem "recaptcha"
+gem "recaptcha", require: "recaptcha/rails"
 
 gem 'resque', '~> 2.0'
+
+gem 'nokogiri', '~> 1.10', '>= 1.10.3'

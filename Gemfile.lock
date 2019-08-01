@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_bootstrap_skin (0.1.5)
+      bootstrap-sass (~> 3.4.1)
     activeadmin (2.2.0)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (~> 3.1)
@@ -360,6 +362,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_bootstrap_skin
   activeadmin (~> 2.2)
   autoprefixer-rails
   bootsnap (>= 1.1.0)
@@ -379,6 +382,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   mini_magick
+  nokogiri (~> 1.10, >= 1.10.3)
   omniauth
   omniauth-facebook
   omniauth-google-oauth2

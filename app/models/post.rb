@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  paginates_per 5
   after_create :new_image_in_subscribes_email
 
   belongs_to :image, dependent: :destroy
