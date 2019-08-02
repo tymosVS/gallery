@@ -4,6 +4,8 @@
   = current_user.email
 %p
   = current_user.name
+%p
+  = link_to 'Edit', edit_user_registration_path
 
 %h2 Create category
 - @created_category.each do |created|

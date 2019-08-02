@@ -31,11 +31,19 @@
             = link_to 'Images',  images_path
           %li
             = link_to 'Comments', comments_path
-          - if current_user
-            %li= link_to 'Logout', destroy_user_session_path, method: :delete
-            /= current_user.id
-          - else
-            %li= link_to 'Login', new_user_session_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              User
+              %span.caret
+              %ul.dropdown-menu
+                - if current_user
+                  %li 
+                    = link_to 'Profile', profile_path
+                  %li 
+                    = link_to 'Logout', destroy_user_session_path, method: :delete
+                  /= current_user.id
+                - else
+                  %li= link_to 'Login', new_user_session_path
   / this is code we will cut out
   .container
     = yield 

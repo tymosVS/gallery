@@ -1,6 +1,7 @@
 require 'resque/server'
 
 Rails.application.routes.draw do
+  
   mount Resque::Server.new, at: "/resque"
   namespace :users do
     get 'omniauth_callbacks/facebook'
@@ -17,9 +18,10 @@ Rails.application.routes.draw do
   get "comments" => "comments#index"
 
   resources :categories do
-    resources :posts
-    resources :subscribers
+    resources :posts, path: ''
+    resources :subscribers,  only: [:create, :new, :destroy]
   end
+
   resource :creators, only: [:create, :new]
   root 'home_pages#index'
   get '/profile', to: 'profile#index'
