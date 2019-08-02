@@ -10,7 +10,8 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
-
+@import "bootstrap";
+@import "bootstrap-sprockets";
 // Active Bootstrap
 // @import "active_bootstrap_skin";
 // Overriding any non-variable SASS must be done after the fact.
@@ -19,6 +20,12 @@
 //   .status_tag { background: #6090DB; }
 
 .panel_contents {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+.admin_images {
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;

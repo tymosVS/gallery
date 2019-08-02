@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", 
                                       sessions: "users/sessions" }
-  resources :users, :only => [:index]
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :images  do
@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     resources :subscribers
   end
   resource :creators, only: [:create, :new]
-  root 'categories#index'
+  root 'home_pages#index'
+  get '/profile', to: 'profile#index'
 end

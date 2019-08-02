@@ -10,7 +10,11 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+    # if ( verify_recaptcha )
     super
+    # else
+    #   render :new
+    # end
     UserAction.new( :user_id=>current_user.id, 
                     :action=>'user sign in', 
                     :action_path=>'nil').save

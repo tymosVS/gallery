@@ -1,0 +1,15 @@
+%h1 PROFILE
+%h2 User information
+%p
+  = current_user.email
+%p
+  = current_user.name
+
+%h2 Create category
+- @created_category.each do |created|
+  %div
+    = link_to created.title, category_posts_path(created)
+%h2 Subscribe category
+- @subscribed_category.each do |subscr|
+  %div
+    = link_to subscr.title, category_posts_path(subscr.id)

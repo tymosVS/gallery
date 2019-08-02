@@ -44,11 +44,14 @@ ActiveAdmin.register_page "Dashboard" do
       columns do
         column do
           panel "Last images" do
+            div class:"admin_images" do
               Image.last(10).map do |image|
-                li image_tag(image.image.small_thumb.url, alt: 'Image')
-                li image.title
+                div do
+                  div image_tag(image.image.small_thumb.url, alt: 'Image')
+                  div image.title
+                end
               end
-            
+            end
           end
         end
       end
@@ -56,21 +59,25 @@ ActiveAdmin.register_page "Dashboard" do
       columns do
         column do
           panel "User actions" do
-            div do
+            div class: "container" do
               UserAction.all.each do |post|
-                div do
-                  link_to(post.action, post.action_path) 
-                end
-                div do
-                  if post.action_path != 'nil'
-                  link_to(post.action_path, post.action_path) 
-                  else
-                    '----'
+                div class: "row" do
+                  div class: "col-sm-3" do
+                    post.action 
                   end
-                end
-                div do
-                  span User.find(post.user_id).email.to_s 
-                  span post.created_at.to_s
+                  div class: "col-sm-3" do
+                    if post.action_path != 'nil'
+                    link_to(post.action_path, post.action_path) 
+                    else
+                      '----'
+                    end
+                  end
+                  div class: "col-sm-3" do
+                    span User.find(post.user_id).email.to_s 
+                  end
+                  div class: "col-sm-3" do
+                    span post.created_at.strftime('%Y-%m-%d    %I:%M').to_s
+                  end
                 end
               end
             end
