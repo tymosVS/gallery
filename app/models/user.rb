@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :fans, dependent: :destroy
   has_many :user_actions, dependent: :destroy
   
+  def self.logins_before_captcha
+    3
+  end
+  
   def self.find_for_facebook_oauth access_token
     if user = User.where(:email => access_token.extra.raw_info.email).first
       user
