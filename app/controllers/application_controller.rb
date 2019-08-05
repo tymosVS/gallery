@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_cat
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :tracking, only: [:index, :show]
 
   private
@@ -22,5 +23,9 @@ class ApplicationController < ActionController::Base
     UserAction.new( :user_id=>current_user.id, 
       :action=>'navigation', 
       :action_path=>request.original_url).save if user_signed_in?
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 end
