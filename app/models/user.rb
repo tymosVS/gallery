@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :send_welcome_email
 
+  mount_uploader :avatar, ImageUploader
+
   has_many :comments, dependent: :destroy
   has_many :subscribers, dependent: :destroy
   has_many :creators, dependent: :destroy
@@ -12,7 +14,7 @@ class User < ApplicationRecord
   def self.logins_before_captcha
     3
   end
-  
+
   def self.find_for_facebook_oauth access_token
     if user = User.where(:email => access_token.extra.raw_info.email).first
       user

@@ -1,5 +1,6 @@
 %h1 PROFILE
 %h2 User information
+= image_tag(current_user.avatar.small_thumb.url, alt: 'Image') if current_user.avatar?
 %p
   = current_user.email
 %p

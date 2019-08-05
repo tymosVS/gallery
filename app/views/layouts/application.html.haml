@@ -33,7 +33,7 @@
             = link_to 'Comments', comments_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              User
+              %span.glyphicon.glyphicon-user
               %span.caret
               %ul.dropdown-menu
                 - if current_user
@@ -43,7 +43,10 @@
                     = link_to 'Logout', destroy_user_session_path, method: :delete
                   /= current_user.id
                 - else
-                  %li= link_to 'Login', new_user_session_path
+                  %li
+                    = link_to 'Login', new_user_session_path
+                  %li 
+                    = link_to 'registration', new_user_registration_path
   / this is code we will cut out
   .container
     = yield 

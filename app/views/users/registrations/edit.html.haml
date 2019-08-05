@@ -3,19 +3,12 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
   %div
+    = f.label :avatar
+    = f.file_field :avatar
+  %div
     = f.label :name
     %br/
     = f.text_field :name, autofocus: true
-  %div
-    = f.check_box :is_female, {}, true
-    = f.label :is_female, "Female"
-  %div
-    = f.check_box :is_female, {}, false
-    = f.label :is_female, "Male"
-  %div
-    = f.label :date_of_birth
-    %br/
-    = f.date_select :date_of_birth
   %div
     = f.label :email
     %br/
