@@ -8,6 +8,9 @@
       %strong Comment:
       = comment.body
     %p
+      %strong Comment:
+      = comment.created_at.strftime('%m-%d  / %I:%M').to_s
+    %p
     = link_to 'Delete', [comment.image, comment], |
       method: :delete,                                       |
       data: { confirm: 'Are you sure?' }                     |

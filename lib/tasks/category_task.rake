@@ -6,6 +6,7 @@ namespace :app do
     Image.destroy_all
     except_dir = ['.', '..']
     categories = []
+
     Dir.chdir("#{Rails.root}/lib/assets")
     Dir.foreach('categories') do |category| 
       categories.push(category) if !except_dir.include?(category)
@@ -26,6 +27,6 @@ namespace :app do
           end
       end
     end
-    puts "Category created"
+    puts "Categories created"
   end
 end

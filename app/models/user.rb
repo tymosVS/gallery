@@ -22,7 +22,7 @@ class User < ApplicationRecord
       User.create!(
                     :name => access_token.extra.raw_info.name,  
                     :email => access_token.extra.raw_info.email, 
-                    :password => Devise.friendly_token[0,20]) 
+                    :password => Devise.friendly_token[0,20]).skip_confirmation! 
     end
   end
   

@@ -6,7 +6,7 @@
 %p
   = current_user.name
 %p
-  = current_user.date_of_birth.strftime('%Y/%m/%d').to_s
+  = current_user.date_of_birth.strftime('%Y/%m/%d').to_s if current_user.date_of_birth
 %p
   = link_to 'Edit', edit_user_registration_path
 

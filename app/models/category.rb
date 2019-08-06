@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  paginates_per 5
+  paginates_per 6
   extend FriendlyId
   friendly_id :title, use: :slugged
 
