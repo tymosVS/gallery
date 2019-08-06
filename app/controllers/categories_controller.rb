@@ -5,7 +5,8 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @categories = Category.order(:title).page params[:page]
+    # @categories = Category.all
     @category_images = {}
     @category_owners = {}
     @categories.each do |category|

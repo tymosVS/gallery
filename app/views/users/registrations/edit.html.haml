@@ -10,6 +10,10 @@
     %br/
     = f.text_field :name, autofocus: true
   %div
+    = f.label :date_of_birth
+    %br/
+    = f.date_select :date_of_birth
+  %div
     = f.label :email
     %br/
     = f.email_field :email

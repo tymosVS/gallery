@@ -6,6 +6,8 @@
 %p
   = current_user.name
 %p
+  = current_user.date_of_birth.strftime('%Y/%m/%d').to_s
+%p
   = link_to 'Edit', edit_user_registration_path
 
 %h2 Create category

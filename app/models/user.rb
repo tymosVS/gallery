@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :user_actions, dependent: :destroy
   
   def self.logins_before_captcha
-    3
+    2
   end
 
   def self.find_for_facebook_oauth access_token
@@ -25,6 +25,7 @@ class User < ApplicationRecord
                     :password => Devise.friendly_token[0,20]) 
     end
   end
+  
   devise :database_authenticatable,
         :registerable,
         :recoverable,
