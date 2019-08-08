@@ -1,8 +1,8 @@
 %h1 Posts
-.post
+.container
   %p
     = @image.title
-  = image_tag(@image.image.url, alt: 'Image')
+  = image_tag(@image.image.url, alt: 'Image', class:"img-fluid img-thumbnail")
   = render 'comments/comment', image: @image
   = render 'comments/form', image: @image if user_signed_in?
   = render 'fans/likes', image: @image 

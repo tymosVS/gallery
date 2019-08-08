@@ -1,4 +1,4 @@
-ActiveAdmin.register Category do
+ActiveAdmin.register Post do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -12,9 +12,5 @@ ActiveAdmin.register Category do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :title, :descriptyon
-  filter :subscribers
-  filter :creator
-  filter :created_at
-  filter :updated_at
+  
 end

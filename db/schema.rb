@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_094856) do
+ActiveRecord::Schema.define(version: 2019_08_08_075323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(version: 2019_08_05_094856) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "image_parsers", force: :cascade do |t|
+    t.string "site_path"
+    t.bigint "images_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["images_id"], name: "index_image_parsers_on_images_id"
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "title"
     t.string "image"
@@ -160,6 +168,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_094856) do
   add_foreign_key "creators", "users"
   add_foreign_key "fans", "images"
   add_foreign_key "fans", "users"
+  add_foreign_key "image_parsers", "images", column: "images_id"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "images"
   add_foreign_key "subscribers", "categories"

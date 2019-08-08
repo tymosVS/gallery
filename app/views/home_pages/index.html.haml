@@ -12,10 +12,10 @@
     / Wrapper for slides
     .carousel-inner
       .item.active
-        = image_tag(@images[1].image.url, style: 'width:100%;')
+        = image_tag(@images[1].image.url, style: 'width:100%;', class: 'img-fluid img-thumbnail')
       - @images.each do |img|
         .item
-          = image_tag(img.image.url, style: 'width:100%;')
+          = image_tag(img.image.url, style: 'width:100%;', class: 'img-fluid img-thumbnail')
 
     / Left and right controls
     %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
