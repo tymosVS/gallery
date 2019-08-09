@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def after_sign_in_path_for(users)
+    stored_location_for(@user) || categories_path
+  end
+
   def set_cat
     # @top_categories = Post.joins(:image, :category).left_joins(:fan, :comment)
     @top_categories = ActiveRecord::Base.connection.execute('SELECT 

@@ -13,5 +13,5 @@ ActiveAdmin.register ImageParser do
   #   permitted
   # end
   permit_params :site_path, :image
-
+  
 end

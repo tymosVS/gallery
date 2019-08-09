@@ -13,4 +13,6 @@ ActiveAdmin.register Image do
   #   permitted
   # end
   filter :fans
+  filter :created_at
+  filter :updated_at
 end

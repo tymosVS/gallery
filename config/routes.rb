@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :subscribers,  only: [:create, :new, :destroy]
   end
 
+  resources :image_parsers
   resource :creators, only: [:create, :new]
   root 'home_pages#index'
   get '/profile', to: 'profile#index'
