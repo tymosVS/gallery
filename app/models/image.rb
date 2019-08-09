@@ -3,7 +3,6 @@ class Image < ApplicationRecord
   has_one :post, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :fans, dependent: :destroy
-  belongs_to :image_parser
 
 
   mount_uploader :image, ImageUploader
