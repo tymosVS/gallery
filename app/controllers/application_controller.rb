@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_cat
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :tracking, only: [:index, :show]
+  before_action :tracking, only: [:index, :show] 
 
   private
 

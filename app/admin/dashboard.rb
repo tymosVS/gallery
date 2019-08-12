@@ -28,15 +28,12 @@ ActiveAdmin.register_page "Dashboard" do
           panel "Last comments" do
             div do
               Comment.last(5).map do |post|
-              div do
-                p link_to(post.title, comments_path(post))
-                p post.body
+                div do
+                  p link_to(post.title, comments_path(post))
+                  p post.body
+                end
               end
             end
-              
-                
-              end
-            
           end
         end
       end
