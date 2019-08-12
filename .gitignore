@@ -32,3 +32,4 @@ public/uploads
 /lib/assets/categories
 
 /config/database.yml
+/.ruby-gemset

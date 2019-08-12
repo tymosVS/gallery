@@ -12,6 +12,6 @@ ActiveAdmin.register ImageParser do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :site_path, :image
-  
+  permit_params :site_path
+
 end
