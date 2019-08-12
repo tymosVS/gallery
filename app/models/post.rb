@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   after_create :new_image_in_subscribes_email
 
   belongs_to :image, dependent: :destroy
-  belongs_to :category
+  belongs_to :category, counter_cache: true
 
   def to_s
     self.image.title
