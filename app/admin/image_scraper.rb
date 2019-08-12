@@ -2,7 +2,10 @@ ActiveAdmin.register_page "ImageScraper" do
   content do
     form_for ImageParser.new  do |f|
       f.text_area :site_path
-      f.submit :value => "Parse" 
+      div do
+        f.submit :value => "Parse" 
+
+      end
     # end
     # form_with scope: :image_parser, url: image_parsers_path do |f|
       
