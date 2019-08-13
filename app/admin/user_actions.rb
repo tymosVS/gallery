@@ -1,4 +1,4 @@
-ActiveAdmin.register ImageParser do
+ActiveAdmin.register UserAction,:as => "UserActions" do
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -12,10 +12,15 @@ ActiveAdmin.register ImageParser do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-
-
-
- 
-  permit_params :site_path
-
+  # index do
+  #   column :id
+  #   column :user_id
+  #   # column User_email
+  #   column :email
+  #   column :action
+  #   column :action_path
+  # end
+  filter :action
+  filter :user
+  
 end

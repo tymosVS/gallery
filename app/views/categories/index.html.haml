@@ -11,7 +11,7 @@
           - else
             = link_to image_tag('default.jpeg', alt: 'No image'), category_path(category)
       %p
-        = render 'subscribers/subscriber', category: category
+        = render 'subscribers/subscriber', category: category, pre_sub: @pre_sub[category]
       %p
         = category.description
       %p= link_to 'Destroy', category_path(category), |

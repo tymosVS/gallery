@@ -7,9 +7,12 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.order(:title).page params[:page]
     # @categories = Category.all
+  
     @category_images = {}
     @category_owners = {}
+    @pre_sub = {}
     @categories.each do |category|
+      @pre_sub[category] = category.subscribers.find { |fan| fan.user_id == current_user.id} if user_signed_in?
       @category_images[category] = category.images.first if category.images.size > 0
       if Creator.exists?(:category_id=>category.id) && user_signed_in?
         creator = Creator.where(:category_id=>category.id).first

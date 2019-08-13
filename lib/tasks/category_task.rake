@@ -27,6 +27,7 @@ namespace :app do
           end
       end
     end
+    Category.new(title: "Non_categorizated", description: 'Images no category').save
     puts "Categories created"
     Image.find_each { |project| Image.reset_counters(project.id, :fans); Image.reset_counters(project.id, :comments) }
 

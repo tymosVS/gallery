@@ -3,6 +3,7 @@ class ImageParsersController < ApplicationController
 
   end
   def create
+    @a = 5
     url = params["image_parser"]["site_path"]
     base = URI.parse(url.to_s)
     html = open(url)
@@ -23,6 +24,7 @@ class ImageParsersController < ApplicationController
       end
 end
 # FileUtils.rm_r(base.host)
+  redirect_to 
   end
   
   
