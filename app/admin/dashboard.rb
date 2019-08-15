@@ -14,10 +14,6 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
 
-      content do
-        render partial: 'calendar'
-      end
-
       columns do
         column do
           panel "Last comments" do
@@ -53,12 +49,12 @@ ActiveAdmin.register_page "Dashboard" do
       columns do
         column do
           panel "User actions" do
-            div do
-              render "search_user"
-            end
-            div do
-              render "search_action"
-            end
+            # div do
+            #   render "search_user"
+            # end
+            # div do
+            #   render "search_action"
+            # end
             div class: "container" do
               UserAction.all.each do |post|
                 div class: "row" do

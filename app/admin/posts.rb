@@ -12,7 +12,8 @@ ActiveAdmin.register Post do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :category_id, :image_id
+  
+  permit_params :category_id, :image_id, :id
   filter :category
   filter :created_at
   filter :updated_at

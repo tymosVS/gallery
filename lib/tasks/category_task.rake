@@ -31,8 +31,5 @@ namespace :app do
     puts "Categories created"
     Image.find_each { |project| Image.reset_counters(project.id, :fans); Image.reset_counters(project.id, :comments) }
 
-
-
-
   end
 end

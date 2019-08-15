@@ -1,6 +1,6 @@
 .panel_contents
   %form#q_search.filter_form{"accept-charset" => "UTF-8", :action => "/admin/user_actions", :method => "get"}
     .filter_form_field.filter_string
-      %label.label{:for => "q_email"} Search Email:
-      %input#q_email{:name => "q[email_contains]", :type => "text"}/
-      %input#q_submit{:name => "commit", :type => "submit", :value => "Search_email"}/
+      %label.label{:for => "q_name"} Search Name:
+      %input#q_name{:name => "q[name_contains]", :type => "text"}/
+      %input#q_submit{:name => "commit", :type => "submit", :value => "Search_name"}/

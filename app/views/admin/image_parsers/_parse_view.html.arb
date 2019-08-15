@@ -1,0 +1,3 @@
+content do
+  para session[:a]
+end
