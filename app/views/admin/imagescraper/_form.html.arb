@@ -1,7 +1,0 @@
-form_for ImageParser.new  do |f|
-  f.text_area :site_path
-  div do
-    f.submit :value => "Parse", action: self
-
-  end
-end
