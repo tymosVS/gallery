@@ -12,7 +12,7 @@ ActiveAdmin.register Category do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :title, :descriptyon
+  permit_params :title, :descriptyon, :id
   filter :subscribers
   filter :creator
   filter :created_at

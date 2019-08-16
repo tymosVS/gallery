@@ -8,8 +8,11 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "active_admin/base";
+// @import "active_admin/mixins";
+// @import "active_admin/base";
+
+// Active Bootstrap
+@import "active_bootstrap_skin";
 @import "bootstrap";
 // @import "bootstrap-sprockets";
 // Active Bootstrap
@@ -19,15 +22,25 @@
 //
 //   .status_tag { background: #6090DB; }
 
-.panel_contents {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-around;
-  text-align: center;
+// .panel_contents {
+//   display: flex;
+//   flex-flow: wrap;
+//   justify-content: space-around;
+//   text-align: center;
+// }
+// .admin_images {
+//   display: flex;
+//   flex-flow: wrap;
+//   justify-content: space-around;
+//   // text-align: center;
+// }
+.row, #active_admin_content {
+  margin: 0;
 }
-.admin_images {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-around;
-  // text-align: center;
+
+.nav > li > a, #header .header-item.tabs > li > a {
+  display: inline-block;
+}
+.member_link, .ui-sortable-handle {
+  width: auto;
 }

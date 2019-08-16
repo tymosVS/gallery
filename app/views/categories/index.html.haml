@@ -1,4 +1,4 @@
-%h1 Categories
+%h1= t('categories.title')
 .all-categories
   - @categories.each do |category|
     .category
@@ -19,5 +19,5 @@
           data: { confirm: 'Are you sure?' } if @category_owners[category]
 = paginate @categories, outer_window: 3
 %p
-  = link_to 'New user Category', new_creators_path if user_signed_in?
+  = link_to t('categories.new_ctegory'), new_creators_path if user_signed_in?
 

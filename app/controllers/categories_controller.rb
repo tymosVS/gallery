@@ -7,8 +7,8 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.where.not(title: "Non_categorizated", 
                                     description: 'Images no category').order(:title).page params[:page]
-    # @categories = Category.all
-  
+    # @categories = Category.order(:title).page params[:page]
+    # raise dd
     @category_images = {}
     @category_owners = {}
     @pre_sub = {}

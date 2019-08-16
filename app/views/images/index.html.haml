@@ -1,6 +1,5 @@
-%h1 Images
+%h1= t('images.title')
 .all-images
   = render @images
   %div
-= link_to 'Add image', new_image_path
 = paginate @images, outer_window: 3

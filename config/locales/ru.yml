@@ -1,2 +1,22 @@
 ru:
-  hello: "Привет мир"
+  titles: "Галерея"
+  categories:
+    title: "Категории"
+    one: "Категория"
+    new_ctegory: "Создать категорию"
+  subscribers:
+    subscribe: "Подписаться"
+    desubscribe: "Отписаться"
+  images: 
+    title: "Картинки"
+    edit: "Изменение картинки"
+  comments:
+    title: "Коментарии"
+    comment: "Коментировать"
+    add_comment: "Добавить коментарий:"
+  menu:
+    profile: "Профиль"
+    login: "Вход"
+    logout: "Выход"
+    registration: "Регистрация"
+    

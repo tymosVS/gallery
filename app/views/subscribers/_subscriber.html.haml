@@ -1,7 +1,7 @@
 - if user_signed_in?
   - if !pre_sub
-    = button_to 'Subscribe', category_subscribers_path(category), method: :post
+    = button_to t('subscribers.subscribe'), category_subscribers_path(category), method: :post
   - else
-    = button_to 'Desubscribe', category_subscriber_path(category, pre_sub), method: :delete
+    = button_to t('subscribers.desubscribe'), category_subscriber_path(category, pre_sub), method: :delete
 = category.subscribers.count 
 %span.glyphicon.glyphicon-star-empty

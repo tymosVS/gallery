@@ -15,6 +15,7 @@ ActiveAdmin.register Image do
   permit_params :id, :image, :title
 
   index do
+    selectable_column 
     column :id
     column :title
     column :image do |image|
@@ -22,10 +23,11 @@ ActiveAdmin.register Image do
       admin_image_path(image)) unless image[:image].nil?
     end
     column :created_at
-    column :updated_at
+    actions
   end
 
   index as: :grid, default: true do |image|
+    
     div do
       link_to image_tag(image.image.small_thumb.url), admin_image_path(image)
     end
@@ -36,6 +38,5 @@ ActiveAdmin.register Image do
 
   filter :fans
   filter :created_at
-  filter :updated_at
   filter :category 
 end

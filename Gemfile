@@ -92,6 +92,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 
+
 gem "recaptcha", require: "recaptcha/rails"
 
 gem 'resque', '~> 2.0'
@@ -99,3 +100,6 @@ gem 'resque', '~> 2.0'
 gem 'nokogiri', '~> 1.10', '>= 1.10.3'
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
+gem 'rails-i18n', '~> 5.1'
+gem 'devise-i18n'

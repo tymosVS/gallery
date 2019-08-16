@@ -1,15 +1,17 @@
 class ApplicationController < ActionController::Base
-  before_action :set_cat
+  before_action :top_category
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :tracking, only: [:index, :show] 
+  before_action :set_locale
+
 
   private
+  
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
-  # def after_sign_in_path_for(users)
-  #   stored_location_for(@user) || categories_path
-  # end
-
-  def set_cat
+  def top_category
     @top_categories = Category.left_outer_joins(:images).select('categories.id, '\
                       'categories.title,'\
                       'categories.posts_count + sum(images.comments_count) '\

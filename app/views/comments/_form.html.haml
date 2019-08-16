@@ -1,4 +1,4 @@
-%h2 Add a comment:
+%h2= t('comments.add_comment')
 = form_with(model: [ @image, @image.comments.build ], local: true) do |form|
   %p
     = form.label :title
@@ -10,4 +10,4 @@
     = form.text_area :body
     = form.hidden_field :user_id, :value => current_user.id 
   %p
-    = form.submit
+    = form.submit :value => t('comments.comment')

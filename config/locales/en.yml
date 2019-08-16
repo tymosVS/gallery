@@ -30,4 +30,26 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: "Gallery"
+  categories:
+    title: "Categories"
+    one: "Category"
+    new_ctegory: "Create category"
+  subscribers:
+    subscribe: "Subcribe"
+    desubscribe: "Desubscribe"
+  images: 
+    title: "Images"
+    edit: "Edit image"
+  comments:
+    title: "Comments"
+    comment: "comment"
+    add_comment: "Add a comment:"
+  menu:
+    profile: "Profile"
+    login: "Log in"
+    logout: "Log out"
+    registration: "Registration"
+
+
+

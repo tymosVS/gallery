@@ -18,19 +18,20 @@
         %ul.nav.navbar-nav.navbar-right
           
           %li
-            = link_to 'Categoies',  categories_path
+            = link_to t('categories.title'),  categories_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              Category
+              = t('categories.one')
               %span.caret
             %ul.dropdown-menu
-              - @top_categories.each do |top_categories|
-                %li
-                  = link_to top_categories['title'], category_path(top_categories['id'])
+              - if @top_categories
+                - @top_categories.each do |top_categories|
+                  %li
+                    = link_to top_categories['title'], category_path(top_categories['id'])
           %li
-            = link_to 'Images',  images_path
+            = link_to t('images.title'),  images_path
           %li
-            = link_to 'Comments', comments_path
+            = link_to t('comments.title'), comments_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %span.glyphicon.glyphicon-user
@@ -38,15 +39,15 @@
               %ul.dropdown-menu
                 - if current_user
                   %li 
-                    = link_to 'Profile', profile_path
+                    = link_to t('menu.profile'), profile_path
                   %li 
-                    = link_to 'Logout', destroy_user_session_path, method: :delete
+                    = link_to t('menu.logout'), destroy_user_session_path, method: :delete
                   /= current_user.id
                 - else
                   %li
-                    = link_to 'Login', new_user_session_path
+                    = link_to t('menu.login'), new_user_session_path
                   %li 
-                    = link_to 'registration', new_user_registration_path
+                    = link_to t('menu.registration'), new_user_registration_path
   / this is code we will cut out
   .container
     = yield 

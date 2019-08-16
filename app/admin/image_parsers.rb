@@ -42,17 +42,8 @@ ActiveAdmin.register ImageParser do
         if normalized =~ /(\.((jpg)|(png)|(jpeg)))$/
           ImageParser.new(site_path: url, image_url: normalized).save
         end
-        # filename = Pathname.new(normalized).basename.to_s
-        # open(normalized) do |img_file|
-        #   File::open(base.host + '/' + filename, 'wb') do |f|
-        #     f.write(img_file.read)
-        #   end
-        # end
       end
-      # redirect_back(fallback_location: root_path)
       redirect_to admin_image_parsers_path
-      # redirect_to request.referrer
-    # end
     end
   end
 
@@ -61,10 +52,8 @@ ActiveAdmin.register ImageParser do
       column :id
       column :image_url do |image|
         img(src:image.image_url)
-          # img ('asd')
       end
       column :site_path
-      # column("import") { |image| link_to 'Import', create_import_admin_image_parser_path(image.id), method: PUT}
       actions
     end
 end
