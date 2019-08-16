@@ -3,13 +3,17 @@ ActiveAdmin.register ImageParser do
 
   batch_action :import do |selection|
     # Dir.chdir("#{Rails.root}/public/loads")
-    FileUtils.mkdir_p('site')
-    
+    # FileUtils.mkdir_p('site')
+    current_category = Category.where(title: "Non_categorizated").first
     ImageParser.find(selection).each do |image_parser|
-
+      normalized = URI.parse(image_parser.image_url)
+      filename = Pathname.new(normalized.to_s).basename
+      img = Image.new(title: filename, image:image_parser.image_url)
+      img.save
+      current_category.posts.create(:category=>current_category, :image=>img)
       image_parser.destroy
     end
-    FileUtils.rm_r('site')
+    # FileUtils.rm_r('site')
     redirect_to admin_image_parsers_path 
   end
 
@@ -33,7 +37,6 @@ ActiveAdmin.register ImageParser do
       doc.search('img').each do |img|
         src = img[:src]
         normalized = base.merge(URI.parse(src)).to_s
-        # raise dddd
         u = Image.new
         u.image = normalized
         if normalized =~ /(\.((jpg)|(png)|(jpeg)))$/
@@ -59,7 +62,6 @@ ActiveAdmin.register ImageParser do
       column :image_url do |image|
         img(src:image.image_url)
           # img ('asd')
-
       end
       column :site_path
       # column("import") { |image| link_to 'Import', create_import_admin_image_parser_path(image.id), method: PUT}

@@ -12,6 +12,8 @@ ActiveAdmin.register Image do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  permit_params :id, :image, :title
+
   index do
     column :id
     column :title
