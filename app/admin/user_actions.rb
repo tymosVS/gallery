@@ -22,5 +22,13 @@ ActiveAdmin.register UserAction,:as => "UserActions" do
   # end
   filter :action
   filter :user
-  
+
+  index do
+    selectable_column
+    column :id
+    column :user
+    column :created_at
+    column :action_path
+    actions
+  end
 end

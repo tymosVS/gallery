@@ -33,14 +33,15 @@ ActiveAdmin.register ImageParser do
       html = open(url)
       doc = Nokogiri::HTML(html)
       Dir.chdir("#{Rails.root}/public/loads")
-      FileUtils.mkdir_p(base.host)
       doc.search('img').each do |img|
-        src = img[:src]
-        normalized = base.merge(URI.parse(src)).to_s
-        u = Image.new
-        u.image = normalized
-        if normalized =~ /(\.((jpg)|(png)|(jpeg)))$/
-          ImageParser.new(site_path: url, image_url: normalized).save
+        if img[:src]
+          src = img[:src]
+          normalized = base.merge(URI.parse(src)).to_s
+          u = Image.new
+          u.image = normalized
+          if normalized =~ /(\.((jpg)|(png)|(jpeg)))$/
+            ImageParser.new(site_path: url, image_url: normalized).save
+          end
         end
       end
       redirect_to admin_image_parsers_path

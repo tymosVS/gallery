@@ -16,5 +16,4 @@ ActiveAdmin.register Category do
   filter :subscribers
   filter :creator
   filter :created_at
-  filter :updated_at
 end
