@@ -19,7 +19,7 @@ ActiveAdmin.register Image do
     column :id
     column :title
     column :image do |image|
-      link_to(image_tag(image.image.small_thumb.url, alt: "Some image", title: :title), 
+      link_to(image_tag(image.image.small_thumb.url, alt: "Some image", title: image.title), 
       admin_image_path(image)) unless image[:image].nil?
     end
     column :created_at
@@ -38,5 +38,9 @@ ActiveAdmin.register Image do
 
   filter :fans
   filter :created_at
-  filter :category 
+  filter :containing_category_in, 
+    as: :select, 
+    label: 'Category',
+    collection: Category.all
+
 end

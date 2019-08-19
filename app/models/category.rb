@@ -7,6 +7,10 @@ class Category < ApplicationRecord
     title_changed?
   end
   
+  def to_s
+    self.title
+  end
+
   has_many :posts, dependent: :destroy
   has_many :images, through: :posts, dependent: :destroy
   has_many :subscribers, dependent: :destroy
