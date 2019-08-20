@@ -1,5 +1,5 @@
-%h1 PROFILE
-%h2 User information
+%h1= t('users.profile')
+%h2= t('users.info')
 = image_tag(current_user.avatar.small_thumb.url, alt: 'Image') if current_user.avatar?
 %p
   = current_user.email
@@ -8,13 +8,13 @@
 %p
   = current_user.date_of_birth.strftime('%Y/%m/%d').to_s if current_user.date_of_birth
 %p
-  = link_to 'Edit', edit_user_registration_path
+  = link_to t('users.edit'), edit_user_registration_path
 
-%h2 Create category
+%h2= t('users.created_category')
 - @created_category.each do |created|
   %div
     = link_to created.title, category_posts_path(created)
-%h2 Subscribe category
+%h2= t('users.subscribed_category')
 - @subscribed_category.each do |subscr|
   %div
     = link_to subscr.title, category_posts_path(subscr.id)

@@ -1,4 +1,4 @@
-%h2 Sign up
+%h2 t('users.sig_up')
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   %div
@@ -21,5 +21,5 @@
   %div
     = f.label :avatar
     = f.file_field :avatar
-  %div= f.submit "Sign up"
+  %div= f.submit t('users.sig_up')
 = render "users/shared/links"

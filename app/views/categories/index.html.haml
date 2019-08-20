@@ -1,22 +1,25 @@
 %h1= t('categories.title')
 .all-categories
+  - content_position = true
   - @categories.each do |category|
-    .category
-      %p
-        = category.title
-      %div
+    .category{ class: ( (content_position ^= true) ? "odd": "even" ) }
+      .category-img
         .category-img
           - if @category_images.include?(category)
             = link_to image_tag(@category_images[category].image.medium_thumb.url), category_path(category)
           - else
             = link_to image_tag('default.jpeg', alt: 'No image'), category_path(category)
-      %p
-        = render 'subscribers/subscriber', category: category, pre_sub: @pre_sub[category]
-      %p
-        = category.description
-      %p= link_to 'Destroy', category_path(category), |
-          method: :delete,                            |
-          data: { confirm: 'Are you sure?' } if @category_owners[category]
+          %div
+            = render 'subscribers/subscriber', category: category, pre_sub: @pre_sub[category]
+      .category-info
+        %h2
+          = link_to category.title.capitalize, category_path(category)
+        %p
+          = category.description
+        
+        %p= link_to 'Destroy', category_path(category), |
+            method: :delete,                            |
+            data: { confirm: 'Are you sure?' } if @category_owners[category]
 = paginate @categories, outer_window: 3
 %p
   = link_to t('categories.new_ctegory'), new_creators_path if user_signed_in?

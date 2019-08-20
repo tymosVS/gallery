@@ -1,6 +1,7 @@
 %h2= t('comments.title')
+.all-commments
 - @image.comments.each do |comment|
-  %div
+  .comment
     %p
       %strong Title:
       = comment.title

@@ -1,9 +1,15 @@
 - if user_signed_in?
   - if !pre_like
-    = button_to 'Like', image_fans_path(image), method: :post
-  - else
-    = button_to 'Unlike', image_fan_path(image, pre_like), method: :delete
+    = link_to image_fans_path(image), method: :post, class:"like" do
+      %span.glyphicon.glyphicon-heart-empty
+      = @image.fans.count
 
-%p
-  = @image.fans.count
-  %span.glyphicon.glyphicon-heart-empty      |
+  - else
+    = link_to image_fan_path(image, pre_like), method: :delete, class:"dislike" do
+      %span.glyphicon.glyphicon-heart
+      = @image.fans.count
+
+- else
+  %p
+    = @image.fans.count
+    %span.glyphicon.glyphicon-heart-empty      |

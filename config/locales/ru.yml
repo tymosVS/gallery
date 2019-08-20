@@ -1,5 +1,7 @@
 ru:
   titles: "Галерея"
+  confirmations:
+    are_sure: "Вы уверены?"
   categories:
     title: "Категории"
     one: "Категория"
@@ -10,6 +12,11 @@ ru:
   images: 
     title: "Картинки"
     edit: "Изменение картинки"
+    name: "Название"
+    image: "Картинка"
+  posts:
+    new_post: "Новый пост"
+    add_post: "Добавление изображения"
   comments:
     title: "Коментарии"
     comment: "Коментировать"
@@ -19,4 +26,17 @@ ru:
     login: "Вход"
     logout: "Выход"
     registration: "Регистрация"
-    
+  users:
+    login: "Вход"
+    sig_up: "Регистрация"
+    profile: "Профиль"
+    user_info: "Информация о пользователе"
+    edit: "Редактировать"
+    created_category: "Мои категории"
+    subscribed_category: "Мои подписки"
+    back: "назад"
+    update: "обновить"
+    delete_ac: "Удалить аккаунт"
+    name: "Имя"
+    info: "Пользовательская информацыя"
+

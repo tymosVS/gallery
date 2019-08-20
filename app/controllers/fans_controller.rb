@@ -1,7 +1,8 @@
 class FansController < ApplicationController
   before_action :find_image
   skip_before_action :verify_authenticity_token
-  
+  respond_to :html, :js
+
   def create
     trackind('likes')
     @image.fans.create(user_id: current_user.id)

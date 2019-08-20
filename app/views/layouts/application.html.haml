@@ -42,7 +42,6 @@
                     = link_to t('menu.profile'), profile_path
                   %li 
                     = link_to t('menu.logout'), destroy_user_session_path, method: :delete
-                  /= current_user.id
                 - else
                   %li
                     = link_to t('menu.login'), new_user_session_path

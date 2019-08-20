@@ -1,3 +1,41 @@
 // Place all the styles related to the fans controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.like:link:hover, a.dislike:link:hover {
+  text-decoration: none;
+}
+
+a.like:link:focus, a.dislike:link:focus {
+  text-decoration: none;
+}
+
+a.like:link, a.dislike:link {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a.like {
+  color: #d4aeb1;
+}
+
+a.dislike {
+  color: #bb3e7b;
+}
+
+a.like:hover {
+  color: #bb3e7b;  
+}
+
+a.dislike:hover {
+  color: #d4aeb1;
+}
+a.dislike:focus {
+  color: #bb3e7b;
+  outline: none;
+}
+
+a.like:focus{
+  color: #d4aeb1;
+  outline: none;
+}

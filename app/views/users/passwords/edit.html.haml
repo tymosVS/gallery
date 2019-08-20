@@ -3,7 +3,7 @@
   = render "devise/shared/error_messages", resource: resource
   = f.hidden_field :reset_password_token
   .field
-    = f.label :password, "New password"
+    = f.label :password, t('devise.passwords.new_passwords')
     %br/
     - if @minimum_password_length
       %em
@@ -11,9 +11,9 @@
       %br/
     = f.password_field :password, autofocus: true, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation, "Confirm new password"
+    = f.label :password_confirmation, t('devise.confirmations.new_password')
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
   .actions
-    = f.submit "Change my password"
+    = f.submit t('devise.passwords.change')
 = render "users/shared/links"

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
     @category = Category.find(params[:category_id])
     @posts = @category.posts.order("created_at DESC").page(params[:page])
     @images = Image.order(:title).page params[:page]
-    @images = {}
+    @images = {}  
     @posts.each do |post|
       if post
         @images[post] = post.image

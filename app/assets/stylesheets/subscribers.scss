@@ -1,3 +1,41 @@
 // Place all the styles related to the subscribers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.desubscribe:link:hover, a.subscribe:link:hover {
+  text-decoration: none;
+}
+
+a.desubscribe:link:focus, a.subscribe:link:focus {
+  text-decoration: none;
+}
+
+a.desubscribe:link, a.subscribe:link {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a.subscribe {
+  color: #989c61;
+}
+
+a.desubscribe {
+  color: #D4AF37;
+}
+
+a.subscribe:hover {
+  color: #D4AF37;  
+}
+
+a.desubscribe:hover {
+  color: #989c61;
+}
+a.desubscribe:focus {
+  color: #D4AF37;
+  outline: none;
+}
+
+a.subscribe:focus{
+  color: #989c61;
+  outline: none;
+}

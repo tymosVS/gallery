@@ -9,6 +9,7 @@ class CategoriesController < ApplicationController
                                     description: 'Images no category').order(:title).page params[:page]
     # @categories = Category.order(:title).page params[:page]
     # raise dd
+    # @content_position = true
     @category_images = {}
     @category_owners = {}
     @pre_sub = {}

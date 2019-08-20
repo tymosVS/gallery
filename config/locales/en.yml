@@ -30,7 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  title: "Gallery"
+  titles: "Gallery"
+  confirmations:
+    are_sure: "Are you sure?"
   categories:
     title: "Categories"
     one: "Category"
@@ -41,6 +43,11 @@ en:
   images: 
     title: "Images"
     edit: "Edit image"
+    name: "Title"
+    image: "Image"
+  posts:
+    new_post: "New post"
+    add_post: "Add a post"
   comments:
     title: "Comments"
     comment: "comment"
@@ -50,6 +57,19 @@ en:
     login: "Log in"
     logout: "Log out"
     registration: "Registration"
+  users:
+    login: "Log in"
+    sig_up: "Sign up"
+    profile: "Profile"
+    user_info: "User info"
+    edit: "Edit"
+    created_category: "My categories"
+    subscribed_category: "My subscriptions"
+    back: "back"
+    update: "update"
+    delete_ac: "Cancel my account"
+    name: "Name"
+    info: "User information"
 
 
 
