@@ -6,6 +6,7 @@ namespace :app do
     Image.destroy_all
     except_dir = ['.', '..']
     categories = []
+    Category.new(title: "Non_categorizated", description: 'Images no category').save
 
     Dir.chdir("#{Rails.root}/lib/assets")
     Dir.foreach('categories') do |category| 
@@ -27,7 +28,6 @@ namespace :app do
           end
       end
     end
-    Category.new(title: "Non_categorizated", description: 'Images no category').save
     puts "Categories created"
     Image.find_each { |project| Image.reset_counters(project.id, :fans); Image.reset_counters(project.id, :comments) }
 

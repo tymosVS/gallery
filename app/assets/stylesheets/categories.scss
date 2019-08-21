@@ -37,12 +37,26 @@
   color: #000;
 }
 
-.category-img {
-  display: block;
-  background: #ded7d7;
-  padding: 3px;
-  border-radius: 0px;
+.category h2 a:hover {
+  text-decoration: none;
+  color: #676767;
 }
+
+.category-img {
+  // display: block;
+  // background: radial-gradient(black, transparent);
+  padding: 3px;
+  // border-radius: 25px;
+  box-shadow: inset 0px 0px 20px rgba(0,0,0,0.9);
+
+}
+
+.category-img img {
+  // border-radius: 30px;
+  z-index: -2;
+  position: relative;
+}
+
 a.desubscribe, a.subscribe {
   float: right;
   padding: 10px;

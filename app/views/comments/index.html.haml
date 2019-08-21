@@ -2,17 +2,11 @@
 .all-comments
   - @comments.each do |comment|
     .comment
-      .title
-        -# %strong Title:
-        = comment.title
-      .date
-        -# %strong Date:
-        = comment.created_at
+      .comment-head
+        %span
+          = comment.title
+        %span{class: 'time'}
+          = comment.created_at.strftime('%m-%d  / %I:%M').to_s
       .comment-body
-        -# %strong Comment:
-        = comment.body
-
-      -# %p
-      -# = link_to 'Delete', [comment.image, comment], |
-      -#   method: :delete,                                       |
-      -#   data: { confirm: 'Are you sure?' }                     |
+        %span
+          = comment.body

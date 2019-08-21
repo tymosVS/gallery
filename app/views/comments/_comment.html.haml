@@ -1,18 +1,14 @@
 %h2= t('comments.title')
 .all-commments
-- @image.comments.each do |comment|
-  .comment
-    %p
-      %strong Title:
-      = comment.title
-    %p
-      %strong Comment:
-      = comment.body
-    %p
-      %strong Comment:
-      = comment.created_at.strftime('%m-%d  / %I:%M').to_s
-    -# %p
-    -# = link_to 'Delete', [comment.image, comment], |
-    -#   method: :delete,                                       |
-    -#   data: { confirm: 'Are you sure?' }                     |
+  - @image.comments.each do |comment|
+    .comment
+      .comment-head
+        %span
+          = comment.title
+        %span{class: 'time'}
+          = comment.created_at.strftime('%m-%d  / %I:%M').to_s
+      .comment-body
+        %span
+          = comment.body
+
 

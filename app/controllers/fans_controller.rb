@@ -6,6 +6,10 @@ class FansController < ApplicationController
   def create
     trackind('likes')
     @image.fans.create(user_id: current_user.id)
+    respond_to do |format|
+      format.html
+      format.json {@post.like}
+    end
     redirect_back(fallback_location: root_path)
   end
 
@@ -14,6 +18,10 @@ class FansController < ApplicationController
     @fan = @image.fans.where( user_id: current_user.id, 
                               image_id: params[:image_id])
     @fan.destroy_all()
+    respond_to do |format|
+      format.html
+      format.json {@post.like}
+    end
     redirect_back(fallback_location: root_path)
   end
 

@@ -8,6 +8,3 @@
     pre_sub), method: :delete, remote: true, class:"desubscribe" do
       %span.glyphicon.glyphicon-star
       = category.subscribers.length if category.subscribers.length > 0
-- else
-  = category.subscribers.length 
-  %span.glyphicon.glyphicon-star-empty

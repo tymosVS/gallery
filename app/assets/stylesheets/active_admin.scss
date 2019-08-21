@@ -44,3 +44,13 @@
 .member_link, .ui-sortable-handle {
   width: auto;
 }
+
+.last-categories {
+  display: flex;
+  justify-content: space-around;
+}
+
+.last-categories a {
+  text-decoration: none;
+  color: black;
+}

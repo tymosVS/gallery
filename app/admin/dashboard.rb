@@ -6,9 +6,9 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "Last categories" do
-          ul do
+          div class:"last-categories" do
             Category.last(5).map do |post|
-              li link_to(post.title, categories_path(post))
+              span link_to(post.title.capitalize, category_path(post))
             end
           end
         end
@@ -31,10 +31,10 @@ ActiveAdmin.register_page "Dashboard" do
 
       columns do
         column do
-          section panel "Last images" do
+          panel "Last images" do
             div class:"admin_images" do
               Image.last(10).map do |image|
-                div do
+                div class:"admin_image" do
                   div image_tag(image.image.small_thumb.url, alt: 'Image')
                   div image.title
                 end

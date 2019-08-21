@@ -1,11 +1,13 @@
 %h1= @category.title.capitalize
 .all-posts
   - @posts.each do |post|
-    %div
-      %div
-        = @images[post].title
-      %div
-        = link_to image_tag(@images[post].image.medium_thumb.url, alt: 'Image'), category_post_path(@category, post)
+    .post
+      .title
+        %h2= @images[post].title.capitalize
+        = link_to category_post_path(@category, post) do
+          .image
+            = image_tag(@images[post].image.medium_thumb.url, 
+            alt: 'Image', class: 'img-fluid img-thumbnail ')
 
 = paginate @posts, outer_window: 3
 
