@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :user_actions, dependent: :destroy
   
   def self.logins_before_captcha
-    2
+    3
   end
 
   def self.find_for_facebook_oauth access_token

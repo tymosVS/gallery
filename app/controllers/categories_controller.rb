@@ -1,5 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+  respond_to :html, :js
+
   def new
     @category = Category.new
   end
@@ -7,9 +10,6 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.where.not(title: "Non_categorizated", 
                                     description: 'Images no category').order(:title).page params[:page]
-    # @categories = Category.order(:title).page params[:page]
-    # raise dd
-    # @content_position = true
     @category_images = {}
     @category_owners = {}
     @pre_sub = {}
@@ -33,7 +33,6 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    # @category = Category.new(category_params)
     skip_before_filter :verify_authenticity_token, if: :json_request?
     respond_to do |format|
       format.html

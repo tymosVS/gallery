@@ -9,11 +9,6 @@
 }
 
 img.img-fluid.img-thumbnail {
-  // padding: 4px;
-  // background-color: #a9a6a6;
-  // border: 1px solid #fff;
-  // box-shadow: 6px 6px 0px 0px silver, 12px 12px #565555, 18px 18px #060606;
-  // border-radius: 0;
   position: relative;
   z-index: -2;
 }
@@ -21,5 +16,5 @@ img.img-fluid.img-thumbnail {
   padding: 5px;
   box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.9);
   width: fit-content;
-  margin: 0;
+  margin: 20px 0;
 }

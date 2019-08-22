@@ -43,43 +43,6 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-        
-    
-      
-      columns do
-        column do
-          panel "User actions" do
-            # div do
-            #   render "search_user"
-            # end
-            # div do
-            #   render "search_action"
-            # end
-            div class: "container" do
-              UserAction.all.each do |post|
-                div class: "row" do
-                  div class: "col-sm-3" do
-                    post.action 
-                  end
-                  div class: "col-sm-3" do
-                    if post.action_path != 'nil'
-                    link_to(post.action_path, post.action_path) 
-                    else
-                      '----'
-                    end
-                  end
-                  div class: "col-sm-3" do
-                    span User.find(post.user_id).email.to_s 
-                  end
-                  div class: "col-sm-3" do
-                    span post.created_at.strftime('%Y-%m-%d    %I:%M').to_s
-                  end
-                end
-              end
-            end
-          end
-        end
-      end
     end
   end # content
 end

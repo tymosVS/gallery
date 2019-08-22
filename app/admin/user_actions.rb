@@ -32,6 +32,7 @@ ActiveAdmin.register UserAction,:as => "UserActions" do
     column :user
     column :created_at
     column :action_path
+    column :action
     actions
   end
 end

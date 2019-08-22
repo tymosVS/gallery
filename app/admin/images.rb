@@ -41,6 +41,7 @@ ActiveAdmin.register Image do
   filter :containing_category_in, 
     as: :select, 
     label: 'Category',
-    collection: Category.all
+    collection: Category.where.not(title: "Non_categorizated", 
+      description: 'Images no category')
 
 end
