@@ -33,7 +33,15 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
+    # @category = Category.new(category_params)
+    skip_before_filter :verify_authenticity_token, if: :json_request?
+    respond_to do |format|
+      format.html
+      format.json{
+          render :json => Category.new(:title => params[:title], :description => params[:description]).save
+      }
+
+    end
   
     if @category.save
       redirect_to category_path(@category)

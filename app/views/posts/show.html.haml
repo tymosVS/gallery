@@ -2,7 +2,8 @@
 .container
   %p
     = @image.title
-  = image_tag(@image.image.url, alt: 'Image', class:"img-fluid img-thumbnail")
+  .image
+    = image_tag(@image.image.url, alt: 'Image', class:"img-fluid img-thumbnail")
   = render 'fans/likes', image: @image 
   = render 'comments/comment', image: @image
   = render 'comments/form', image: @image if user_signed_in?

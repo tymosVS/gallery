@@ -1,14 +1,11 @@
 class FansController < ApplicationController
   before_action :find_image
   skip_before_action :verify_authenticity_token
-  respond_to :html, :js
 
   def create
-    trackind('likes')
-    @image.fans.create(user_id: current_user.id)
-    respond_to do |format|
-      format.html
-      format.json {@post.like}
+    if !already_faned?
+      trackind('likes')
+      @image.fans.create(user_id: current_user.id)
     end
     redirect_back(fallback_location: root_path)
   end
@@ -18,10 +15,6 @@ class FansController < ApplicationController
     @fan = @image.fans.where( user_id: current_user.id, 
                               image_id: params[:image_id])
     @fan.destroy_all()
-    respond_to do |format|
-      format.html
-      format.json {@post.like}
-    end
     redirect_back(fallback_location: root_path)
   end
 

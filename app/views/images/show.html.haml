@@ -1,7 +1,8 @@
 %h1= @image.title
 .image
   = image_tag(@image.image.url, alt: 'Image', class: 'img-fluid img-thumbnail ') if @image.image?
-= render 'fans/likes', image: @image
+.likes
+  = render 'fans/likes', image: @image
 = render 'comments/comment', image: @image
 = render 'comments/form', image: @image if user_signed_in?
 
