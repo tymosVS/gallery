@@ -22,13 +22,12 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      # user = User.find(current_user.id)
-      params.require(:comment).permit(:title, :body, :user_id)
+      params.require(:comment).permit( :body, :user_id)
     end
 
     def trak_action
-      UserAction.new( :user_id=>current_user.id, 
-        :action=>'comments', 
-        :action_path=>request.original_url).save
+      UserAction.new(user_id: current_user.id, 
+        action: 'comments', 
+        action_path: request.original_url).save
     end
 end

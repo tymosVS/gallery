@@ -1,11 +1,7 @@
 %h2= t('comments.add_comment')
 = form_with(model: [ @image, @image.comments.build ], local: true) do |form|
   %p
-    = form.label :title
-    %br/
-    = form.text_field :title
-  %p
-    = form.label :body
+    = form.label  t('comments.comment')
     %br/
     = form.text_area :body
     = form.hidden_field :user_id, :value => current_user.id 

@@ -8,7 +8,7 @@ class Category < ApplicationRecord
   end
   
   def to_s
-    self.title
+    title
   end
 
   has_many :posts, dependent: :destroy

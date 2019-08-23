@@ -4,7 +4,7 @@
     .comment
       .comment-head
         %span
-          = comment.title
+          = author(comment.user_id)
         %span{class: 'time'}
           = comment.created_at.strftime('%m-%d  / %I:%M').to_s
       .comment-body

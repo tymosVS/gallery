@@ -103,3 +103,5 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
+
+gem 'rubocop', '~> 0.74.0'

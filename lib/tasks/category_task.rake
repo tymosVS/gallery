@@ -1,35 +1,41 @@
-namespace :app do
-  desc "This take create new categories!"
+# frozen_string_literal: true
 
-  task :migrate_images => :environment do |t, args|
+namespace :app do
+  desc 'This take create new categories!'
+
+  task migrate_images: :environment do
     Category.destroy_all
     Image.destroy_all
     except_dir = ['.', '..']
     categories = []
-    Category.new(title: "Non_categorizated", description: 'Images no category').save
-
+    Category.new(title: 'Non_categorizated',
+                description: 'Images no category').save
     Dir.chdir("#{Rails.root}/lib/assets")
-    Dir.foreach('categories') do |category| 
-      categories.push(category) if !except_dir.include?(category)
+    Dir.foreach('categories') do |category|
+      categories.push(category)  unless except_dir.include?(category)
     end
 
     categories.each do |category|
       desc = 'Some ' + category + ' images'
-      current_category = Category.new(title: category, description: desc)
+      current_category = Category.new(title: category,
+                                      description: desc)
       current_category.save
       puts 'Create ' + category
       Dir.foreach('categories/' + category) do |image|
-          if !except_dir.include?(image)
-            file_img = File.open("categories/#{category}/#{image}") 
-            img = Image.new(title: image[0...-4], image:file_img)
-            img.save
-            current_category.posts.create(:category=>current_category, :image=>img)
-            file_img.close
-          end
+        unless except_dir.include?(image)
+          file_img = File.open("categories/#{category}/#{image}")
+          img = Image.new(title: image[0...-4], image: file_img)
+          img.save
+          current_category.posts.create(category: current_category,
+                                        image: img)
+          file_img.close
+        end
       end
     end
-    puts "Categories created"
-    Image.find_each { |project| Image.reset_counters(project.id, :fans); Image.reset_counters(project.id, :comments) }
-
+    puts 'Categories created'
+    Image.find_each do |project|
+      Image.reset_counters(project.id, :fans)
+      Image.reset_counters(project.id, :comments)
+    end
   end
 end

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :fans
   end
-  get "comments" => "comments#index"
+  get 'comments' => 'comments#index'
 
   resources :categories do
     resources :posts, path: ''

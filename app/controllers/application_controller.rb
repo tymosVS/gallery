@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
                       'categories.title,'\
                       'categories.posts_count + sum(images.comments_count) '\
                       '+sum(images.fans_count) as total').
-                      group('categories.id').where("categories.posts_count > 0").where.not(title: "Non_categorizated", 
+                      group('categories.id').where("categories.posts_count > 0").
+                      where.not(title: "Non_categorizated", 
                       description: 'Images no category').
                       order('total DESC').limit(5)
   end
