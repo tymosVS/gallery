@@ -1,30 +1,14 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
-  # prepend_before_action :captcha_valid, only: [:create]
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
-  # POST /resource/sign_in
   def create
     flash.clear
-
     user = User.find_by_email(sign_in_params['email'])
-    super and return unless user
-
+    super && return unless user
     adjust_failed_attempts user
-
-    super and return if (user.failed_attempts < User.logins_before_captcha)
-    super and return if user.locked_at or verify_recaptcha
-
-    # Don't increase failed attempts if Recaptcha was not passed
-    decrement_failed_attempts(user) if recaptcha_present?(params) and
-      !verify_recaptcha
-
-    # Recaptcha was wrong
+    super && return if (user.failed_attempts < User.logins_before_captcha)
+    super && return if user.locked_at or verify_recaptcha
+    decrement_failed_attempts(user) if recaptcha_present?(params) && !verify_recaptcha
     self.resource = resource_class.new(sign_in_params)
     sign_out
     flash[:error] = 'Captcha was wrong, please try again.'
@@ -36,9 +20,9 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     user_id = current_user.id
     super
-    UserAction.new( :user_id=>user_id, 
-      :action=>'user sign out', 
-      :action_path=>'nil').save
+    UserAction.new(user_id: user_id,
+      action: 'user sign out',
+      action_path: 'nil').save
   end
 
   private
@@ -66,25 +50,9 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     resource.update cached_failed_attempts: 0, failed_attempts: 0
-    UserAction.new( :user_id=>current_user.id, 
-      :action=>'user sign in', 
-      :action_path=>'nil').save
+    UserAction.new(user_id: current_user.id,
+      action: 'user sign in',
+      action_path: 'nil').save
     stored_location_for(@user) || categories_path
   end
-
-  #   def captcha_valid
-  #     if verify_recaptcha
-  #       true
-  #     else
-  #       self.resource = resource_class.new(sign_in_params)
-  #       respond_with_navigational(resource) { render :new }
-  #     end 
-  #   end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end
