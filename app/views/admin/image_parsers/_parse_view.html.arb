@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 content do
   para session[:a]
 end

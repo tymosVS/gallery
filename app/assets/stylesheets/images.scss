@@ -14,7 +14,13 @@ img.img-fluid.img-thumbnail {
 }
 .image {
   padding: 5px;
-  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.9);
   width: fit-content;
   margin: 20px 0;
+}
+
+.image:hover {
+  transition: box-shadow 0.5s;
+
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
 }

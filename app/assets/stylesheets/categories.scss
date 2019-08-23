@@ -52,13 +52,39 @@
   z-index: -2;
   position: relative;
   filter: brightness(80%);
+  transform: scale(0.9);
 }
 
 .category-img:hover img{
   z-index: 2;
-  filter: brightness(100%);
   box-shadow: 0px 0px 35px 5px white;
+  transition: transform 0.9s, filter 2.0s;
+  transform: scale(1.0);
+  filter: brightness(100%);
+
 }
+.category-img:hover {
+  transition: box-shadow 0.9s;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+} 
+
+.category-img:hover a.desubscribe {
+  transition: color 0.9s;
+  color: #e6b520;
+}
+.category-img:hover a.desubscribe:hover {
+  color: #797800;
+}
+
+.category-img:hover a.subscribe {
+  transition: color 0.9s;
+  color: #797800;
+}
+
+.category-img:hover a.subscribe:hover {
+  color: #e6b520;;
+}
+
 a.desubscribe, a.subscribe {
   float: right;
   padding: 10px;

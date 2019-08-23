@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# model for connections categories with images
 class Post < ApplicationRecord
   paginates_per 5
   after_create :new_image_in_subscribes_email
@@ -6,13 +9,12 @@ class Post < ApplicationRecord
   belongs_to :category, counter_cache: true
 
   def to_s
-    self.image.title
+    image.title
   end
 
   private
 
   def new_image_in_subscribes_email
-    # UserMailer.new_image_in_subscribes_email(category).deliver
     Resque.enqueue(NewImageSubscribedEmailJob, category)
   end
 end

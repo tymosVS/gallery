@@ -9,7 +9,7 @@ class CreatorsController < ApplicationController
   
     @category = Category.new(category_params)
     if @category.save
-      @user.creators.create(:user=>@user, :category=>@category)
+      @user.creators.create(user: @user, category: @category)
       redirect_to categories_path
     else
       render :new

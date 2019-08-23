@@ -6,4 +6,4 @@
     = form.text_area :body
     = form.hidden_field :user_id, :value => current_user.id 
   %p
-    = form.submit :value => t('comments.comment')
+    = form.submit :value => t('comments.comment'), id:"btn-comment"

@@ -22,9 +22,9 @@ class FansController < ApplicationController
   private
   def trackind(type_action) 
     action_path = request.original_url[0...request.original_url.index('/fans')]
-    UserAction.new( :user_id=>current_user.id, 
-      :action=>type_action, 
-      :action_path=>action_path).save
+    UserAction.new( user_id: current_user.id, 
+      action: type_action, 
+      action_path: action_path).save
   end
 
   def already_faned?

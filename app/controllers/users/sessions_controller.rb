@@ -7,13 +7,12 @@ class Users::SessionsController < Devise::SessionsController
     super && return unless user
     adjust_failed_attempts user
     super && return if (user.failed_attempts < User.logins_before_captcha)
-    super && return if user.locked_at or verify_recaptcha
+    super && return if user.locked_at || verify_recaptcha
     decrement_failed_attempts(user) if recaptcha_present?(params) && !verify_recaptcha
     self.resource = resource_class.new(sign_in_params)
     sign_out
     flash[:error] = 'Captcha was wrong, please try again.'
     respond_with_navigational(resource) { render :new }
-
   end
 
   # DELETE /resource/sign_out
@@ -26,6 +25,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   private
+
   def adjust_failed_attempts(user)
     if user.failed_attempts > user.cached_failed_attempts
       user.update cached_failed_attempts: user.failed_attempts

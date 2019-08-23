@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Here common actions for all controllers
 class ApplicationController < ActionController::Base
   before_action :top_category
   before_action :configure_permitted_parameters, if: :devise_controller?

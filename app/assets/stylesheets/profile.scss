@@ -1,3 +1,19 @@
 // Place all the styles related to the Profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+input#edit-btn {
+  border-radius: 0;
+  background: #6f6f6f;
+  margin: 20px 0;
+}
+
+input#btn-comment,
+input#sign_in, input#reg-btn {
+  border-radius: 0;
+  background: #6f6f6f;
+  margin: 20px 0;
+  border: #0a0a0a;
+  padding: 10px 30px;
+  box-shadow: inset 0px 0px 20px #2d2d2d;
+}

@@ -21,5 +21,5 @@
   %div
     = f.label :avatar
     = f.file_field :avatar
-  %div= f.submit t('users.sig_up')
+  %div= f.submit t('users.sig_up'), class: "reg-btn", id: "reg-btn"
 = render "users/shared/links"

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# model for top lvl categories
 class Category < ApplicationRecord
   paginates_per 6
   extend FriendlyId
@@ -6,7 +9,7 @@ class Category < ApplicationRecord
   def should_generate_new_friendly_id?
     title_changed?
   end
-  
+
   def to_s
     title
   end
@@ -16,6 +19,5 @@ class Category < ApplicationRecord
   has_many :subscribers, dependent: :destroy
   has_one :creator, dependent: :destroy
 
-  validates :title, presence: true,
-  length: { minimum: 2 }
+  validates :title, presence: true, length: { minimum: 2 }
 end

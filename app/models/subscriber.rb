@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# modell for saving subscrscribes
 class Subscriber < ApplicationRecord
-  after_create :send_subscribed_email#, if: !already_subscribed?
+  after_create :send_subscribed_email
 
   belongs_to :category
   belongs_to :user
@@ -7,8 +10,6 @@ class Subscriber < ApplicationRecord
   private
 
   def send_subscribed_email
-    # UserMailer.subscribed_email(user, category).deliver 
-    # Resque.enqueue(SubscribedEmailJob, user, category)
     Resque.enqueue(SubscribedEmailJob, user, category)
-  end 
+  end
 end

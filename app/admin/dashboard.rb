@@ -18,10 +18,10 @@ ActiveAdmin.register_page "Dashboard" do
         column do
           panel "Last comments" do
             div do
-              Comment.last(5).map do |post|
+              Comment.last(5).map do |comment|
                 div do
-                  p link_to(post.title, comments_path(post))
-                  p post.body
+                  p User.find(comment.user_id).name
+                  p comment.body
                 end
               end
             end
