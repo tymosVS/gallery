@@ -7,6 +7,10 @@ class Subscriber < ApplicationRecord
   belongs_to :category
   belongs_to :user
 
+  def to_s
+    user.name
+  end
+
   private
 
   def send_subscribed_email
