@@ -13,17 +13,14 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-
       columns do
         column do
           panel "Last comments" do
-            div do
-              Comment.last(5).map do |comment|
-                div do
-                  p User.find(comment.user_id).name
-                  p comment.body
-                end
-              end
+            table_for Comment.last(5) do
+              column("id") { |comment| comment.id }
+              column("author") {|comment| User.find(comment.user_id).name }
+              column("comment") { |comment| comment.body }
+              column("Date") { |comment| comment.created_at }
             end
           end
         end

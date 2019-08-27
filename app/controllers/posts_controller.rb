@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @category = Category.find(params[:category_id])
     @image = Image.new(image_params)
     if @image.save
-      @category.posts.create(:category=>@category, :image=>@image)
+      @category.posts.create(category: @category, image: @image)
       redirect_to category_posts_path(@category)
     else
       render :new

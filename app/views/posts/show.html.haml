@@ -1,7 +1,6 @@
-%h1 Posts
 .container
-  %p
-    = @image.title
+  %h2
+    = @image.title.capitalize
   .image
     = image_tag(@image.image.url, alt: 'Image', class:"img-fluid img-thumbnail")
   = render 'fans/likes', image: @image 

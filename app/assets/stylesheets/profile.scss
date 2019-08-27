@@ -17,3 +17,14 @@ input#sign_in, input#reg-btn {
   padding: 10px 30px;
   box-shadow: inset 0px 0px 20px #2d2d2d;
 }
+
+.user-information {
+  display: flex;
+}
+
+.user-date {
+  padding: 0 100px;
+}
+.avatar img {
+  border: 1px solid silver;
+}

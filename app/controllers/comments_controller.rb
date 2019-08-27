@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   after_action :trak_action, only: :create
 
   def index
-    @comments = Comment.all.order(:created_at).reverse_order
+    @comments = Comment.all.order(:created_at).reverse_order.page params[:page]
   end
 
   def create

@@ -17,10 +17,17 @@ img.img-fluid.img-thumbnail {
   box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.9);
   width: fit-content;
   margin: 20px 0;
+  height: fit-content;
 }
 
 .image:hover {
   transition: box-shadow 0.5s;
-
   box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
 }
+
+.image-info {
+  a, a:link, a:visited, a:hover {
+    text-decoration: none;
+    color: black;
+  }
+} 
