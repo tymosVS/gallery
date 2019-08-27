@@ -17,6 +17,7 @@ namespace :app do
 
     categories.each do |category|
       desc = 'Some ' + category + ' images'
+      desc += ". " + Faker::Lorem.sentence(word_count: 30)
       current_category = Category.new(title: category,
                                       description: desc)
       current_category.save

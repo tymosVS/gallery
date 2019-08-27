@@ -7,16 +7,16 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  - flash.each do |key, value|
-    %div{:class => "alert alert-#{key} alert-dismissable"}
-      = value
   / this is code we will cut out and put inside menu partial
   %nav.navbar.navbar-default{:role => "navigation"}
     .container
       .navbar-header
       #navbar-collapse-1.collapse.navbar-collapse
         %ul.nav.navbar-nav.navbar-right
-          
+          %li{:class => "nav-item#{" active" if I18n.locale == :en}"}
+            = link_to 'En', {locale: :en}, class: 'nav-link'
+          %li{:class => "nav-item#{" active" if I18n.locale == :ru}"}
+            = link_to 'Рус', {locale: :ru}, class: 'nav-link'
           %li
             = link_to t('categories.title'),  categories_path
           %li.dropdown
@@ -36,7 +36,6 @@
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %span.glyphicon.glyphicon-user
-              %span.caret
               %ul.dropdown-menu
                 - if current_user
                   %li 
@@ -48,6 +47,9 @@
                     = link_to t('menu.login'), new_user_session_path
                   %li 
                     = link_to t('menu.registration'), new_user_registration_path
+  - flash.each do |key, value|
+    %div{:class => "alert alert-#{key} alert-dismissable"}
+      = value
   / this is code we will cut out
   .container
     = yield 
