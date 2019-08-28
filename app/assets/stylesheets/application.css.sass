@@ -12,6 +12,24 @@
  *
  *= require_tree .
  *= require_self
+ *= stub 'active_admin'
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+nav.pagination span 
+  margin: 10px
+  background: silver
+  padding: 5px 10px
+  box-shadow: inset 0px 0px 16px rgba(0,0,0,0.8)
+    
+
+nav.pagination .current
+  box-shadow: inset 0px 0px 0px rgba(0,0,0,0.8)
+
+input[type="submit"]
+  border-radius: 0
+  background: #6f6f6f
+  margin: 20px 0
+  padding: 10px 30px
+  color: white
