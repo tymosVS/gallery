@@ -7,11 +7,17 @@ class ProfileController < ApplicationController
       @subscribed_category = []
       @created_category = []
       folow_category.each do |category|
-        @subscribed_category << Category.find(category.category_id)
+        category = Category.find(category.category_id)
+        image =  category.images.first.image if category.images.size > 0
+        @subscribed_category << {category: category, image: image}
       end
       category_creat.each do |category|
-        @created_category << Category.find(category.category_id)
+        category = Category.find(category.category_id)
+        image =  category.images.first.image if category.images.size > 0
+        image_count = category.posts_count
+        @created_category << { category: category, image: image, img_count: image_count }
       end
     end
   end
+
 end

@@ -15,7 +15,6 @@ ActiveAdmin.register Category do
   #   permitted
   # end
   permit_params :title, :descriptyon, :id
-  filter :subscribers
   filter :creator
   filter :created_at
 end

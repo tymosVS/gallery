@@ -54,7 +54,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
   
-    redirect_to categories_path
+    redirect_back(fallback_location: root_path)
   end
 
   private

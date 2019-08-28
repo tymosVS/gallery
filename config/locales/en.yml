@@ -72,6 +72,7 @@ en:
     delete_ac: "Cancel my account"
     name: "Name"
     info: "User information"
-
+  delete: "Destroy"
+  sure: "You are sure?"
 
 

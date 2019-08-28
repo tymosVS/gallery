@@ -1,23 +1,44 @@
-%h1= t('users.profile')
-.user-information
-  .avatar
-    = image_tag(current_user.avatar.small_thumb.url, alt: 'Image') if current_user.avatar?
-  .user-date
-    %h4= t('users.info')
-    %p
-      = current_user.email
-    %p
-      = current_user.name
-    %p
-      = current_user.date_of_birth.strftime('%Y/%m/%d').to_s if current_user.date_of_birth
-    %p
-      = link_to t('users.edit'), edit_user_registration_path
+.profile
+  %h1= t('users.profile')
+  .user-information
+    .avatar
+      = image_tag(current_user.avatar.small_thumb.url, alt: 'Image') if current_user.avatar?
+    .user-date
+      %h4= t('users.info')
+      %p
+        = current_user.email
+      %p
+        = current_user.name
+      %p
+        = link_to t('users.edit'), edit_user_registration_path
 
-%h2= t('users.created_category')
-- @created_category.each do |created|
-  %div
-    = link_to created.title, category_posts_path(created)
-%h2= t('users.subscribed_category')
-- @subscribed_category.each do |subscr|
-  %div
-    = link_to subscr.title, category_posts_path(subscr.id)
+  %h2= t('users.created_category')
+  .profile-creations
+    - @created_category.each do |created|
+      .profile-creation
+        .imgage
+          = link_to image_tag("default.jpeg", alt: 'Image'),
+            category_posts_path(created[:category].id) if !created[:image]
+          = link_to image_tag(created[:image].small_thumb.url, alt: 'Image'),
+            category_posts_path(created[:category].id) if created[:image]
+          = link_to category_posts_path(created[:category].id) do
+            .substrate
+              .reviev
+                %span.glyphicon.glyphicon-eye-open
+
+        .button
+          = link_to t('delete').capitalize, category_path(created[:category]),
+            method: :delete,
+            data: { confirm: t('sure') }
+        
+
+  %h2= t('users.subscribed_category')
+  .profile-subscribes
+    - @subscribed_category.each do |subscr|
+      .profile-subscribe
+        %span
+          = subscr[:category].title.capitalize
+        = link_to image_tag("default.jpeg", alt: 'Image'), category_posts_path(subscr[:category].id) if !subscr[:image]
+        = link_to image_tag(subscr[:image].small_thumb.url, alt: 'Image'), 
+        category_posts_path(subscr[:category].id) if subscr[:image]
+
