@@ -8,7 +8,7 @@ ActiveAdmin.register ImageParser do
     ImageParser.find(selection).each do |image_parser|
       normalized = URI.parse(image_parser.image_url)
       filename = Pathname.new(normalized.to_s).basename
-      img = Image.new(title: filename, image:image_parser.image_url)
+      img = Image.new(title: filename, remote_image_url: image_parser.image_url)
       img.save
       current_category.posts.create(:category=>current_category, :image=>img)
       image_parser.destroy
