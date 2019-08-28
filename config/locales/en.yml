@@ -37,6 +37,8 @@ en:
     title: "Categories"
     one: "Category"
     new_ctegory: "Create category"
+    top: "Popular"
+    signature: "pictures for the category "
   subscribers:
     subscribe: "Subcribe"
     desubscribe: "Desubscribe"

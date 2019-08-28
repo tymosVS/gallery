@@ -6,6 +6,8 @@ ru:
     title: "Категории"
     one: "Категория"
     new_ctegory: "Создать категорию"
+    top: "Популярные"
+    signature: "Картинки категории "
   subscribers:
     subscribe: "Подписаться"
     desubscribe: "Отписаться"

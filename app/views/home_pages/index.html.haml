@@ -2,20 +2,18 @@
 
 .container
   #myCarousel.carousel.slide{"data-ride" => "carousel"}
-    / Indicators
     %ol.carousel-indicators
       %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
       %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
       %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
-    / Wrapper for slides
     .carousel-inner
       .item.active
-        = image_tag(@images[1].image.url, style: 'width:100%;', class: 'img-fluid img-thumbnail')
-      - @images.each do |img|
-        .item
-          = image_tag(img.image.url, style: 'width:100%;', class: 'img-fluid img-thumbnail')
+        = image_tag('slider1.jpg', class: 'img-fluid img-thumbnail')
+      .item
+        = image_tag('slider2.jpg', class: 'img-fluid img-thumbnail')
+      .item
+        = image_tag('slider3.jpg', class: 'img-fluid img-thumbnail')
 
-    / Left and right controls
     %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
       %span.glyphicon.glyphicon-chevron-left
       %span.sr-only Previous
