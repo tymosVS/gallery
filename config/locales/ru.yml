@@ -17,7 +17,7 @@ ru:
     name: "Название"
     image: "Картинка"
   posts:
-    new_post: "Новый пост"
+    new_post: "Добавить картинку"
     add_post: "Добавление изображения"
   comments:
     title: "Коментарии"

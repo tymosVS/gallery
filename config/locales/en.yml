@@ -48,8 +48,8 @@ en:
     name: "Title"
     image: "Image"
   posts:
-    new_post: "New post"
-    add_post: "Add a post"
+    new_post: "Add image"
+    add_post: "Add a picture"
   comments:
     title: "Comments"
     comment: "comment"
