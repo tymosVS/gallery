@@ -11,3 +11,13 @@
 .post {
   margin: 20px 0;
 }
+.addImage-button {
+  background: #e2e0e0;
+  display: block;
+  padding: 10px 30px;
+  box-shadow: inset 0px 0px 15px 0px;
+  position: relative;
+  width: fit-content;
+  left: 100%;
+  transform: translateX(-100%);
+}

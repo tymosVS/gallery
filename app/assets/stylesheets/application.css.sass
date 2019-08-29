@@ -18,14 +18,23 @@
 @import "bootstrap";
 
 nav.pagination span 
-  margin: 10px
+  a
+    background: silver
+    margin: 0 10px
+    padding: 5px 10px
+    box-shadow: inset 0px 0px 0px rgba(0,0,0,0.8)
+    text-decoration: none
+    line-height: 40px
+  a:hover, a:link, a
+    text-decoration: none
+    color: black
+nav.pagination span
+  margin: 20px 0
+
+nav.pagination .current 
+  box-shadow: inset 0px 0px 16px rgba(0,0,0,0.8)  
   background: silver
   padding: 5px 10px
-  box-shadow: inset 0px 0px 16px rgba(0,0,0,0.8)
-    
-
-nav.pagination .current
-  box-shadow: inset 0px 0px 0px rgba(0,0,0,0.8)
 
 input[type="submit"]
   border-radius: 0
@@ -36,3 +45,5 @@ input[type="submit"]
 
 .vizibility
   display: block
+h1, h2, h3, h4, h5, p
+  word-break: break-all;

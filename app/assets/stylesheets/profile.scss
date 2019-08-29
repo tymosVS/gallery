@@ -151,5 +151,28 @@ a, a:link, a:visited {
 }
 
 .profile h2 {
-  background: linear-gradient(45deg, #d8d8d8, transparent);
+  margin: 0;
+}
+
+@media screen and (max-width:768px){
+  .user-information {
+    flex-wrap: wrap;
+  }
+  .user-date {
+    padding: 0 30px;
+  }
+}
+
+.profile-owned-category {
+  margin: 40px 0;
+  padding: 0 30px 30px;
+  border-radius: 30px;
+}
+
+.profile-subscribed-category {
+  padding: 30px;
+}
+
+.profile-owned-category {
+  background: #e6e5e5;
 }

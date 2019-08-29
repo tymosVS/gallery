@@ -71,7 +71,7 @@
 }
 
 nav.pagination {
-  position: absolute;
+  position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -107,14 +107,6 @@ nav.pagination {
     padding: 10px 20px;
     box-shadow: inset 0px 0px 20px #dedcdc;
   }
-}
-
-.addImage-button {
-  background: #e2e0e0;
-  display: inline-block;
-  padding: 10px 30px;
-  float: right;
-  box-shadow: inset 0px 0px 15px 0px;
 }
 
 .addImage-button:active {
@@ -158,5 +150,13 @@ nav.pagination {
     display: block;
     height: 4px;
     background: #8b8888;
+  }
+  .category {
+    width: 100%;
+  }
+}
+@media screen and (max-width:480px){
+  .category img {
+    width: 100%;
   }
 }
