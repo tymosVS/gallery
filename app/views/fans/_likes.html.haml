@@ -1,10 +1,10 @@
 - if user_signed_in?
   - if !pre_like
-    = link_to image_fans_path(image), method: :post, remote: true, class:"like" do
+    = link_to image_fans_path(image), method: :post,  class:"like" do
       %span.glyphicon.glyphicon-heart-empty
       = @image.fans.count
 
   - else
-    = link_to image_fan_path(image, pre_like),remote: true, method: :delete, class:"dislike" do
+    = link_to image_fan_path(image, pre_like), method: :delete, class:"dislike" do
       %span.glyphicon.glyphicon-heart
       = @image.fans.count

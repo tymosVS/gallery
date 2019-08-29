@@ -12,6 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+// = require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $('.header_hidden').click(function() {
+    $('#navbar-collapse-1').toggleClass('vizibility');
+  })
+})
