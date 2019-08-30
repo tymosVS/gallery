@@ -8,21 +8,11 @@
   text-align: center;
 }
 
-img.img-fluid.img-thumbnail {
-  position: relative;
-  z-index: -2;
-}
 .image {
-  padding: 5px;
-  box-shadow: inset 0px 0px 50px rgba(0, 0, 0, 0.9);
   width: fit-content;
   margin: 20px 0;
   height: fit-content;
-}
-
-.image:hover {
-  transition: box-shadow 0.5s;
-  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.9);
+  position: relative;
 }
 
 .image-info {
@@ -31,3 +21,13 @@ img.img-fluid.img-thumbnail {
     color: black;
   }
 } 
+.img-thumbnail{
+  box-shadow: inset 0px 0px 15px 5px rgba(0,0,0,0.6);
+}
+
+.image-info {
+  background: #d5d5d5;
+  margin: 10px 0;
+  border-radius: 15px;
+  padding: 0 20px;
+}

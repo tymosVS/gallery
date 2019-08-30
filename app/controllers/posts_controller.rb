@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     @posts = @category.posts.order("created_at DESC").page(params[:page])
     @images = Image.order(:title).page params[:page]
     @images = {}  
+    @states = {}
     @posts.each do |post|
       if post
         @images[post] = post.image

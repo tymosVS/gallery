@@ -4,11 +4,24 @@
   - @posts.each do |post|
     .post
       .title
-        %h2= @images[post].title.capitalize
+        = link_to category_post_path(@category, post) do
+          %h2= @images[post].title.capitalize
         = link_to category_post_path(@category, post) do
           .image
             = image_tag(@images[post].image.medium_thumb.url, 
             alt: 'Image', class: 'img-fluid img-thumbnail ')
+            .post-substrate
+              .reviev
+                %span.glyphicon.glyphicon-eye-open
+              .state
+                %p
+                  %span
+                    = @images[post].comments_count
+                  %span.glyphicon.glyphicon-comment
+                %p
+                  %span
+                    = @images[post].fans_count
+                  %span.glyphicon.glyphicon-heart
 .addImage-button
   = link_to t('posts.new_post'), new_category_post_path() if user_signed_in?
 

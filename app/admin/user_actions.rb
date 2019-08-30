@@ -30,9 +30,9 @@ ActiveAdmin.register UserAction,:as => "UserActions" do
     selectable_column
     column :id
     column :user
-    column :created_at
-    column :action_path
     column :action
+    column :action_path
+    column :created_at
     actions
   end
 end

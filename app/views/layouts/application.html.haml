@@ -37,8 +37,11 @@
             = link_to t('comments.title'), comments_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              
-              %span.glyphicon.glyphicon-user
+              - if current_user && current_user.avatar?
+                .user-menu
+                  = image_tag(current_user.avatar.small_thumb.url, alt: 'Image')
+              - else
+                %span.glyphicon.glyphicon-user 
               %ul.dropdown-menu
                 - if current_user
                   %li 
@@ -56,4 +59,3 @@
   / this is code we will cut out
   .container
     = yield 
-= @cart
