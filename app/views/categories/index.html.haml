@@ -10,7 +10,7 @@
             - if @category_images.include?(category)
               = image_tag(@category_images[category].image.medium_thumb.url)
             - else
-              = image_tag('default.jpeg', alt: 'No image')
+              = image_tag 'default.jpeg', alt: 'No image'
           .category_subscribers
             %span
               = render 'subscribers/subscriber', category: category, pre_sub: @pre_sub[category]
