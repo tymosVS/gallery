@@ -9,11 +9,11 @@
       %em
         (#{@minimum_password_length} characters minimum)
       %br/
-    = f.password_field :password, autofocus: true, autocomplete: "new-password"
+    = f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"
   .field
     = f.label :password_confirmation, t('devise.confirmations.new_password')
     %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
+    = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
   .actions
     = f.submit t('devise.passwords.change')
 = render "users/shared/links"
