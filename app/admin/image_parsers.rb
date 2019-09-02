@@ -32,7 +32,7 @@ ActiveAdmin.register ImageParser do
       base = URI.parse(url.to_s)
       html = open(url)
       doc = Nokogiri::HTML(html)
-      Dir.chdir("#{Rails.root}/public/loads")
+      # Dir.chdir("#{Rails.root}/public/loads")
       doc.search('img').each do |img|
         if img[:src]
           src = img[:src]
