@@ -31,5 +31,4 @@ public/uploads
 /config/initializers/app_env_vars.rb
 /lib/assets/categories
 
-/config/database.yml
 /.ruby-gemset
