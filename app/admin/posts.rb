@@ -13,7 +13,7 @@ ActiveAdmin.register Post do
   #   permitted
   # end
   
-  permit_params :category_id, :image_id, :id
+  permit_params :category_id, :image_id, :id, :created_at, :updated_at
   filter :category
   filter :created_at
   filter :updated_at
