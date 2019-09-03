@@ -13,6 +13,6 @@ module Gallery
   class Application < Rails::Application
     config.load_defaults 5.2
     config.assets.initialize_on_precompile = false
-    config.active_job.queue_adapter = :resque
+    # config.active_job.queue_adapter = :resque
   end
 end
