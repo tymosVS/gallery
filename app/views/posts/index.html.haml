@@ -22,7 +22,6 @@
                   %span
                     = @images[post].fans_count
                   %span.glyphicon.glyphicon-heart
-.addImage-button
-  = link_to t('posts.new_post'), new_category_post_path() if user_signed_in?
+= link_to t('posts.new_post'), new_category_post_path(), class:"addImage-button" if user_signed_in?
 
 = paginate @posts, outer_window: 3
