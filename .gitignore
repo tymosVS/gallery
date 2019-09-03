@@ -26,7 +26,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-public/uploads
+/public/uploads
 
 /config/initializers/app_env_vars.rb
 
