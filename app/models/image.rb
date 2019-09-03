@@ -13,6 +13,10 @@ class Image < ApplicationRecord
   end
   mount_uploader :image, ImageUploader
 
+  has_attached_file :image, 
+  :styles => { :small_thumb => "200x200>", :medium_thumb => "400x400>", :big_thumb => "940x0>" }, 
+  :default_url => "/images/:style/"
+
   validates :title, presence: true, length: { minimum: 2 }
   validates :image, presence: true,
             file_size: { less_than_or_equal_to: 50.megabytes }
