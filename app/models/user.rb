@@ -38,6 +38,10 @@ class User < ApplicationRecord
 
   def send_welcome_email
     user = self
-    # Resque.enqueue(WelcomeEmailJob, user)
+    begin
+      Resque.enqueue(WelcomeEmailJob, user)
+    rescue Redis::CannotConnectError
+      UserMailer.welcome_email(self).deliver
+    end
   end
 end
