@@ -14,6 +14,11 @@ class Subscriber < ApplicationRecord
   private
 
   def send_subscribed_email
-    Resque.enqueue(SubscribedEmailJob, user, category)
+    begin
+      Resque.enqueue(SubscribedEmailJob, user, category)
+    rescue Redis::CannotConnectError
+      UserMailer.subscribed_email(user, category).deliver 
+    end
+    
   end
 end
