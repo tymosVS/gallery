@@ -21,6 +21,7 @@ class User < ApplicationRecord
       User.create!(name: access_token.extra.raw_info.name,
                     email: access_token.extra.raw_info.email,
                     confirmed_at: Time.now,
+                    avatar: access_token.extra.raw_info.avatar,
                     password: Devise.friendly_token[0, 20])
     end
   end
