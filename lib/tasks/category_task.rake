@@ -25,7 +25,7 @@ namespace :app do
       Dir.foreach('categories/' + category) do |image|
         unless except_dir.include?(image)
           file_img = File.open("categories/#{category}/#{image}")
-          img = Image.new(title: image[0...-4], image: file_img)
+          img = Image.new(title: image[0...-4], remote_image_url: file_img)
           img.save
           current_category.posts.create(category: current_category,
                                         image: img)
