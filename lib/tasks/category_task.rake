@@ -25,12 +25,12 @@ namespace :app do
       puts 'Create ' + category
       Dir.foreach('categories/' + category) do |image|
         unless except_dir.include?(image)
-          file_img = File.open("categories/#{category}/#{image}")
-          img = Image.new(title: image[0...-4], image: file_img)
+          # file_img = File.open("categories/#{category}/#{image}")
+          img = Image.new(title: image[0...-4], remote_image_url: "https://github.com//tymosVS/gallery/blob/master/lib/assets/categories/barokko/barokko3.jpg?raw=true")
           img.save
           current_category.posts.create(category: current_category,
                                         image: img)
-          file_img.close
+          # file_img.close
         end
       end
     end
