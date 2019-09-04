@@ -2,9 +2,13 @@ ActiveAdmin.register ImageParser do
   permit_params :site_path, :id, :image_url
 
   batch_action :import do |selection|
-    # Dir.chdir("#{Rails.root}/public/loads")
-    # FileUtils.mkdir_p('site')
     current_category = Category.where(title: "Non_categorizated").first
+    unless current_category
+      current_category = Category.new(title: 'Non_categorizated', 
+                                      description: 'Images no category') 
+      current_category.save
+    end
+
     ImageParser.find(selection).each do |image_parser|
       normalized = URI.parse(image_parser.image_url)
       filename = Pathname.new(normalized.to_s).basename
