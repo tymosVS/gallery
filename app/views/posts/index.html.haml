@@ -8,7 +8,7 @@
           %h2= @images[post].title.capitalize
         = link_to category_post_path(@category, post) do
           .image
-            = image_tag(@images[post].image.medium_thumb.url, 
+            = image_tag(@images[post].image, 
             alt: 'Image', class: 'img-fluid img-thumbnail ')
             .post-substrate
               .reviev
