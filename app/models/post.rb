@@ -15,11 +15,7 @@ class Post < ApplicationRecord
   private
 
   def new_image_in_subscribes_email
-    begin
-      Resque.enqueue(NewImageSubscribedEmailJob, category)
-    rescue Redis::CannotConnectError
-      UserMailer.new_image_in_subscribes_email(category).deliver
-    end
-    
+    # Resque.enqueue(NewImageSubscribedEmailJob, category)
+    UserMailer.new_image_in_subscribes_email(category).deliver
   end
 end
