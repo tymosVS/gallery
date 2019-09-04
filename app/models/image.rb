@@ -11,7 +11,11 @@ class Image < ApplicationRecord
                               } do |image|
     image.table[:id]
   end
+
   mount_uploader :image, ImageUploader
+  def cache_dir
+    "#{Rails.root}/public/uploads"
+  end
 
   validates :title, presence: true, length: { minimum: 2 }
   validates :image, presence: true,
