@@ -11,7 +11,7 @@ namespace :app do
     Category.new(title: 'Non_categorizated',
                 description: 'Images no category').save
 
-    Dir.chdir("#{Rails.root}/app/assets/images")
+    Dir.chdir("#{Rails.root}/lib/assets")
     Dir.foreach('categories') do |category|
       categories.push(category)  unless except_dir.include?(category)
     end
