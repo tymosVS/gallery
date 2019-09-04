@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-unless AdminUser.exists?(email: 'admin@example.com')
-  AdminUser.create!(email: 'admin@example.com',
-    password: 'password',
-    password_confirmation: 'password')
+unless AdminUser.exists?(email: ENV['ADMIN_EMAIL'])
+  AdminUser.create!(email: ENV['ADMIN_EMAIL'],
+    password: ENV['ADMIN_PASS'],
+    password_confirmation: ENV['ADMIN_PASS'])
 end
 
 images = Image.all
