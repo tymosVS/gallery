@@ -29,7 +29,7 @@ namespace :app do
           img = Image.new(title: image[0...-4], image: file_img)
           img.save
           current_category.posts.create(category: current_category,
-                                        image: img)
+            remote_image_url: img)
           file_img.close
         end
       end

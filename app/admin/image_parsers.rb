@@ -17,7 +17,6 @@ ActiveAdmin.register ImageParser do
       current_category.posts.create(:category=>current_category, :image=>img)
       image_parser.destroy
     end
-    # FileUtils.rm_r('site')
     redirect_to admin_image_parsers_path 
   end
 
