@@ -13,6 +13,7 @@ class Image < ApplicationRecord
   end
 
   mount_uploader :image, ImageUploader
+
   def cache_dir
     "#{Rails.root}/public/uploads"
   end

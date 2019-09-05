@@ -61,7 +61,10 @@ en:
     registration: "Registration"
   users:
     login: "Log in"
+    confirm: "Didn't receive confirmation instructions?"
+    login_with: "Sign in with"
     sig_up: "Sign up"
+    avatar: "Avatar"
     profile: "Profile"
     user_info: "User info"
     edit: "Edit profile"

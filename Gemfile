@@ -61,7 +61,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
+gem 'carrierwave', '>= 2.0.0', '< 3.0'
 # dependency for carrierwave
 gem "mini_magick"
 gem 'file_validators'
@@ -103,5 +103,7 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 gem 'rails-i18n', '~> 5.1'
 gem 'devise-i18n'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'rubocop', '~> 0.74.0'
+gem 'cloudinary'

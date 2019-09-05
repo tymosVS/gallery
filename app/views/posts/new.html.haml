@@ -8,5 +8,6 @@
     = form.label t('images.image')
     %br/
     = form.file_field :image
+    = form.hidden_field :image_cache
   %p
     = form.submit
