@@ -3,6 +3,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'fog/aws'
 require 'recaptcha/rails'
 require 'sprockets/railtie'
 # Require the gems listed in Gemfile, including any gems

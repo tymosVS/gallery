@@ -106,4 +106,7 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'rubocop', '~> 0.74.0'
-gem 'cloudinary'
+
+gem 'aws-sdk', '~> 2'
+
+gem "fog-aws"
