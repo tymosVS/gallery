@@ -2,7 +2,10 @@
   %h1= t('users.profile')
   .user-information
     .avatar
-      = image_tag(current_user.avatar.small_thumb.url, alt: 'Image') if current_user.avatar?
+      - if current_user.avatar?
+        = image_tag(current_user.avatar.small_thumb.url, alt: 'Avatar') 
+      - else
+        = image_tag("def_ava.png", alt: 'Avatar')
     .user-date
       %h4= t('users.info')
       %p

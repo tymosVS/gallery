@@ -33,6 +33,16 @@ input#sign_in, input#reg-btn {
 }
 .avatar img {
   border: 1px solid silver;
+  min-width: 100%;
+  transform: translateX(-25%);
+  position: relative;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
 }
 
 .profile-subscribes {
