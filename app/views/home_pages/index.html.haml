@@ -1,22 +1,32 @@
-%h1= t('titles')
-
-.container
-  #myCarousel.carousel.slide{"data-ride" => "carousel"}
-    %ol.carousel-indicators
-      %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
-      %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
-      %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
-    .carousel-inner
-      .item.active
-        = image_tag('slider1.jpg', class: 'img-fluid img-thumbnail')
-      .item
-        = image_tag('slider2.jpg', class: 'img-fluid img-thumbnail')
-      .item
-        = image_tag('slider3.jpg', class: 'img-fluid img-thumbnail')
-
-    %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
-      %span.glyphicon.glyphicon-chevron-left
-      %span.sr-only Previous
-    %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
-      %span.glyphicon.glyphicon-chevron-right
-      %span.sr-only Next
+.home-page
+  .container
+    #myCarousel.carousel.slide{"data-ride" => "carousel"}
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+        %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+        %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+      .carousel-inner
+        %h1= t('titles')
+        %a{:href=> "#popular-category", :class=> "ancor"}
+          = image_tag('arrow.png', alt: "V")
+        .item.active
+          = image_tag('slider1.jpg', class: 'img-fluid img-thumbnail')
+        .item
+          = image_tag('slider2.jpg', class: 'img-fluid img-thumbnail')
+        .item
+          = image_tag('slider3.jpg', class: 'img-fluid img-thumbnail')
+      %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
+        %span.glyphicon.glyphicon-chevron-left
+        %span.sr-only Previous
+      %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
+        %span.glyphicon.glyphicon-chevron-right
+        %span.sr-only Next
+#popular-category.top-category
+  %h2= t('categories.top')
+  .top-category-items
+    - @top_categories.each do |category|
+      .popular-category
+        %h3= category.title.capitalize
+        .home_images
+          = link_to category_path(category) do
+            =image_tag(@images[category].image.medium_thumb.url)

@@ -1,47 +1,47 @@
-.profile
-  %h1= t('users.profile')
-  .user-information
-    .avatar
-      - if current_user.avatar?
-        = image_tag(current_user.avatar.small_thumb.url, alt: 'Avatar') 
-      - else
-        = image_tag("def_ava.png", alt: 'Avatar')
-    .user-date
-      %h4= t('users.info')
-      %p
-        = current_user.email
-      %p
-        = current_user.name.capitalize
-      %p
-        = link_to t('users.edit'), edit_user_registration_path
-  - if @created_category.size > 0
-    .profile-owned-category
-      %h2= t('users.created_category')
-      .profile-creations
-        - @created_category.each do |created|
-          .profile-creation
-            .imgage
-              = link_to image_tag("default.jpeg", alt: 'Image'),
-                category_posts_path(created[:category].id) if !created[:image]
-              = link_to image_tag(created[:image].small_thumb.url, alt: 'Image'),
-                category_posts_path(created[:category].id) if created[:image]
-              = link_to category_posts_path(created[:category].id) do
-                .substrate
-                  .reviev
-                    %span.glyphicon.glyphicon-eye-open
-            .button
-              = link_to t('delete').capitalize, category_path(created[:category]),
-                method: :delete,
-                data: { confirm: t('sure') }
-  - if @subscribed_category.size > 0
-    .profile-subscribed-category
-      %h2= t('users.subscribed_category')
-      .profile-subscribes
-        - @subscribed_category.each do |subscr|
-          .profile-subscribe
-            %span
-              = subscr[:category].title.capitalize
-            = link_to image_tag("default.jpeg", alt: 'Image'), category_posts_path(subscr[:category].id) if !subscr[:image]
-            = link_to image_tag(subscr[:image].small_thumb.url, alt: 'Image'), 
-            category_posts_path(subscr[:category].id) if subscr[:image]
-
+.container
+  .profile
+    %h1= t('users.profile')
+    .user-information
+      .avatar
+        - if current_user.avatar?
+          = image_tag(current_user.avatar.small_thumb.url, alt: 'Avatar') 
+        - else
+          = image_tag("def_ava.png", alt: 'Avatar')
+      .user-date
+        %h4= t('users.info')
+        %p
+          = current_user.email
+        %p
+          = current_user.name.capitalize
+        %p
+          = link_to t('users.edit'), edit_user_registration_path
+    - if @created_category.size > 0
+      .profile-owned-category
+        %h2= t('users.created_category')
+        .profile-creations
+          - @created_category.each do |created|
+            .profile-creation
+              .imgage
+                = link_to image_tag("default.jpeg", alt: 'Image'),
+                  category_posts_path(created[:category].id) if !created[:image]
+                = link_to image_tag(created[:image].small_thumb.url, alt: 'Image'),
+                  category_posts_path(created[:category].id) if created[:image]
+                = link_to category_posts_path(created[:category].id) do
+                  .substrate
+                    .reviev
+                      %span.glyphicon.glyphicon-eye-open
+              .button
+                = link_to t('delete').capitalize, category_path(created[:category]),
+                  method: :delete,
+                  data: { confirm: t('sure') }
+    - if @subscribed_category.size > 0
+      .profile-subscribed-category
+        %h2= t('users.subscribed_category')
+        .profile-subscribes
+          - @subscribed_category.each do |subscr|
+            .profile-subscribe
+              %span
+                = subscr[:category].title.capitalize
+              = link_to image_tag("default.jpeg", alt: 'Image'), category_posts_path(subscr[:category].id) if !subscr[:image]
+              = link_to image_tag(subscr[:image].small_thumb.url, alt: 'Image'), 
+              category_posts_path(subscr[:category].id) if subscr[:image]

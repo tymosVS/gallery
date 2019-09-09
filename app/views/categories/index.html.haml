@@ -1,25 +1,27 @@
-%h1= t('categories.title')
-.all-categories
-  - @categories.each do |category|
-    .category
-      .category-head
-        %h2
-          = link_to category.title.upcase, category_path(category)
-        = link_to category_path(category) do
-          .category-img
-            - if @category_images.include?(category)
-              = image_tag(@category_images[category].image.medium_thumb.url)
-            - else
-              = image_tag 'default.jpeg', alt: 'No image'
-          .category_subscribers
-            %span
-              = render 'subscribers/subscriber', category: category, pre_sub: @pre_sub[category]
-      .category-info
-        %h4= t('categories.signature').capitalize + category.title.capitalize
-        %p= category.description
-        %p= link_to t('delete').capitalize, category_path(category), |
-            method: :delete,                            |
-            data: { confirm: 'Are you sure?' } if @category_owners[category]
-.create-user-category
-  = link_to t('categories.new_ctegory'), new_creators_path if user_signed_in?
-= paginate @categories, outer_window: 3
+.container
+  %h1= t('categories.title')
+
+  .all-categories
+    - @categories.each do |category|
+      .category
+        .category-head
+          %h2
+            = link_to category.title.upcase, category_path(category)
+          = link_to category_path(category) do
+            .category-img
+              - if @category_images.include?(category)
+                = image_tag(@category_images[category].image.medium_thumb.url)
+              - else
+                = image_tag 'default.jpeg', alt: 'No image'
+            .category_subscribers
+              %span
+                = render 'subscribers/subscriber', category: category, pre_sub: @pre_sub[category]
+        .category-info
+          %h4= t('categories.signature').capitalize + category.title.capitalize
+          %p= category.description
+          %p= link_to t('delete').capitalize, category_path(category), |
+              method: :delete,                            |
+              data: { confirm: 'Are you sure?' } if @category_owners[category]
+  .create-user-category
+    = link_to t('categories.new_ctegory'), new_creators_path if user_signed_in?
+  = paginate @categories, outer_window: 3

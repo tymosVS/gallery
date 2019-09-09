@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     get 'omniauth_callbacks/facebook'
   end
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks", 
-                                      sessions: "users/sessions" }
+                                      sessions: "users/sessions",
+                                      registrations: "users/registrations" }
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

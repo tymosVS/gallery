@@ -1,5 +1,6 @@
-%h1= t('images.title')
-.all-images
-  = render @images
-  %div
-= paginate @images, outer_window: 3
+.image-index
+  %h1= t('images.title')
+  .all-images
+    = render @images
+    %div
+  = paginate @images, outer_window: 3

@@ -1,22 +1,23 @@
-%h2= t('users.login')
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  - if User.find_by_email(resource.email)
-    - if User.find_by_email(resource.email).failed_attempts > User.logins_before_captcha
-      = recaptcha_tags
+.container
+  %h2= t('users.login')
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    - if User.find_by_email(resource.email)
+      - if User.find_by_email(resource.email).failed_attempts > User.logins_before_captcha
+        = recaptcha_tags
 
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control"
-    
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password", class: "form-control"
-  - if devise_mapping.rememberable?
     .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit t('users.login'), id: "sign_in"
-= render "users/shared/links"
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control"
+      
+    .field
+      = f.label :password
+      %br/
+      = f.password_field :password, autocomplete: "current-password", class: "form-control"
+    - if devise_mapping.rememberable?
+      .field
+        = f.check_box :remember_me
+        = f.label :remember_me
+    .actions
+      = f.submit t('users.login'), id: "sign_in"
+  = render "users/shared/links"

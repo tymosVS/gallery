@@ -1,5 +1,93 @@
 // Place all the styles related to the HomePages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "bootstrap";
-@import "bootstrap-sprockets";
+
+.carousel-indicators.carousel-indicators li {
+  border-radius: 0;
+  border: none;
+  background: #888888;
+  width: 30px;
+  position: relative;
+  margin: 0 15px;
+  height: 5px;
+}
+
+.carousel-indicators.carousel-indicators li.active {
+  border-radius: 0;
+  border: none;
+  background: #bebebe;
+}
+
+.carousel-inner h1 {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  top: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 20px 50px;
+  border-radius: 0 0 25px 25px;
+  background: rgba($color: #ffffff, $alpha: 0.6)
+}
+
+.home-page .container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.reversed_true {
+  display: flex;
+  flex-flow: column;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+}
+
+.top-category-items {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.top-category {
+  padding: 30px;
+}
+
+.popular-category {
+  text-align: center;
+  padding: 20px;
+  background: radial-gradient(#6c6c6c, transparent);
+  box-shadow: inset 0px 0px 40px 0px black;
+  margin: 5px;
+}
+
+a.ancor {
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  z-index: 1;
+  right: 50%;
+  border-radius: 100%;
+  top: 50%;
+  transform: translate(50%);
+}
+
+.top-category {
+  background: #e1dddd;
+}
+
+@media screen and (max-width:1400px) {
+  .top-category-items {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .top-category-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .popular-category img {
+    width: 100%;
+}
+}

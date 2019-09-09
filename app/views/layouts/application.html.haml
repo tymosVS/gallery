@@ -27,7 +27,7 @@
               %span.caret
             %ul.dropdown-menu
               - if @top_categories
-                - @top_categories.each do |top_categories|
+                - @top_categories.limit(5).each do |top_categories|
                   %li
                     = link_to top_categories['title'], category_path(top_categories['id'])
                     -# = top_categories['total']
@@ -57,5 +57,5 @@
     %div{:class => "alert alert-#{key} alert-dismissable"}
       = value
   / this is code we will cut out
-  .container
-    = yield 
+  -# .container
+  = yield 

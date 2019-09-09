@@ -1,5 +1,8 @@
 class HomePagesController < ApplicationController
   def index
-    @images = Image.all.limit(3)
+    @images = {}
+    @top_categories.each do |top_cat|
+      @images[top_cat] = top_cat.images.first
+    end
   end
 end
