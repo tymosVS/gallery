@@ -1,6 +1,8 @@
 .container
   %h1= t('categories.title')
 
+  .create-user-category
+    = link_to t('categories.new_ctegory'), new_creators_path if user_signed_in?
   .all-categories
     - @categories.each do |category|
       .category
@@ -22,6 +24,5 @@
           %p= link_to t('delete').capitalize, category_path(category), |
               method: :delete,                            |
               data: { confirm: 'Are you sure?' } if @category_owners[category]
-  .create-user-category
-    = link_to t('categories.new_ctegory'), new_creators_path if user_signed_in?
+
   = paginate @categories, outer_window: 3

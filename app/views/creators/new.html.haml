@@ -1,10 +1,11 @@
-= form_with scope: :category, url: creators_path, local: true do |form|
-  %p
-    = form.label :title
-    %br/
-    = form.text_field :title, class: "form-control"
-  %p
-    = form.label :description
-    %br/
-    = form.text_area :description, class: "form-control"
-  %p= form.submit 
+.container
+  = form_with scope: :category, url: creators_path, local: true do |form|
+    %p
+      = form.label :title
+      %br/
+      = form.text_field :title, class: "form-control"
+    %p
+      = form.label :description
+      %br/
+      = form.text_area :description, class: "form-control"
+    %p= form.submit 
