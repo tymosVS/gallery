@@ -22,11 +22,12 @@
         %span.glyphicon.glyphicon-chevron-right
         %span.sr-only Next
 .top-category
-  %h2{:id => 'popular-category'}= t('categories.top')
-  .top-category-items
-    - @top_categories.each do |category|
-      .popular-category
-        %h3= category.title.upcase
-        .home_images
-          = link_to category_path(category) do
-            =image_tag(@images[category].image.medium_thumb.url)
+  #popular-category
+    %h2= t('categories.top')
+    .top-category-items
+      - @top_categories.each do |category|
+        .popular-category
+          %h3= category.title.upcase
+          .home_images
+            = link_to category_path(category) do
+              =image_tag(@images[category].image.medium_thumb.url)
