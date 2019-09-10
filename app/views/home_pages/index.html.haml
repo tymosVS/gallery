@@ -21,8 +21,8 @@
       %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel"}
         %span.glyphicon.glyphicon-chevron-right
         %span.sr-only Next
-#popular-category.top-category
-  %h2= t('categories.top')
+.top-category
+  %h2{:id => 'popular-category'}= t('categories.top')
   .top-category-items
     - @top_categories.each do |category|
       .popular-category
