@@ -15,16 +15,21 @@
 }
 
 /* line 21, app/assets/stylesheets/categories.scss */
+.category h2:hover a {
+  color: #6e6e6e;
+}
+
+/* line 24, app/assets/stylesheets/categories.scss */
 .category-head h2 {
   font-family: VastShadow;
 }
 
-/* line 24, app/assets/stylesheets/categories.scss */
+/* line 27, app/assets/stylesheets/categories.scss */
 .category h2 {
   text-align: center;
 }
 
-/* line 28, app/assets/stylesheets/categories.scss */
+/* line 31, app/assets/stylesheets/categories.scss */
 .category {
   display: -webkit-box;
   display: flex;
@@ -39,7 +44,7 @@
   box-shadow: 3px 3px #b1b1b1, 6px 6px #5a5a5a, 9px 9px black, inset 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
 
-/* line 43, app/assets/stylesheets/categories.scss */
+/* line 46, app/assets/stylesheets/categories.scss */
 .category-info {
   display: -webkit-box;
   display: flex;
@@ -50,7 +55,7 @@
   padding: 30px;
 }
 
-/* line 51, app/assets/stylesheets/categories.scss */
+/* line 54, app/assets/stylesheets/categories.scss */
 .category_subscribers {
   position: relative;
   margin-top: -40px;
@@ -61,7 +66,7 @@
   border-radius: 0 0 15px 15px;
 }
 
-/* line 60, app/assets/stylesheets/categories.scss */
+/* line 63, app/assets/stylesheets/categories.scss */
 .category span.glyphicon {
   float: right;
   padding: 10px 20px;
@@ -70,18 +75,24 @@
           filter: brightness(100%);
 }
 
-/* line 66, app/assets/stylesheets/categories.scss */
+/* line 69, app/assets/stylesheets/categories.scss */
 .category span.glyphicon:hover {
   color: silver;
 }
 
-/* line 70, app/assets/stylesheets/categories.scss */
+/* line 73, app/assets/stylesheets/categories.scss */
 .category img {
   border-radius: 15px;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* line 76, app/assets/stylesheets/categories.scss */
+/* line 78, app/assets/stylesheets/categories.scss */
+.category img:hover {
+  -webkit-filter: brightness(1.2);
+          filter: brightness(1.2);
+}
+
+/* line 82, app/assets/stylesheets/categories.scss */
 #create-category-btn {
   border-radius: 0;
   background: #6f6f6f;
@@ -91,18 +102,18 @@
   box-shadow: inset 0px 0px 20px #2d2d2d;
 }
 
-/* line 85, app/assets/stylesheets/categories.scss */
+/* line 91, app/assets/stylesheets/categories.scss */
 .category p {
   font-family: Lobster;
 }
 
-/* line 88, app/assets/stylesheets/categories.scss */
+/* line 94, app/assets/stylesheets/categories.scss */
 p > a {
   font-size: 30px;
   font-family: Geostar;
 }
 
-/* line 93, app/assets/stylesheets/categories.scss */
+/* line 99, app/assets/stylesheets/categories.scss */
 nav.pagination {
   position: relative;
   left: 50%;
@@ -111,14 +122,14 @@ nav.pagination {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 100, app/assets/stylesheets/categories.scss */
+  /* line 106, app/assets/stylesheets/categories.scss */
   .all-categories {
     display: -webkit-box;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
   }
-  /* line 105, app/assets/stylesheets/categories.scss */
+  /* line 111, app/assets/stylesheets/categories.scss */
   .category {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -127,60 +138,59 @@ nav.pagination {
     width: -moz-min-content;
     width: min-content;
   }
-  /* line 109, app/assets/stylesheets/categories.scss */
+  /* line 115, app/assets/stylesheets/categories.scss */
   .category-head {
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
   }
-  /* line 112, app/assets/stylesheets/categories.scss */
+  /* line 118, app/assets/stylesheets/categories.scss */
   nav.navbar.navbar-default {
     display: none;
   }
-  /* line 115, app/assets/stylesheets/categories.scss */
+  /* line 121, app/assets/stylesheets/categories.scss */
   .category img {
     width: -webkit-fill-available;
   }
 }
 
-/* line 120, app/assets/stylesheets/categories.scss */
+/* line 126, app/assets/stylesheets/categories.scss */
 .create-user-category a:link, .create-user-category a:visited {
   text-decoration: none;
   color: black;
   background: #dedcdc;
   display: block;
-  line-height: 2;
   text-align: center;
   border-radius: 15px 15px 0 0;
   box-shadow: inset 0 0 15px black;
   padding: 10px 20px;
 }
 
-/* line 132, app/assets/stylesheets/categories.scss */
+/* line 138, app/assets/stylesheets/categories.scss */
 .addImage-button:active {
   box-shadow: inset 0px 0px 0px 0px;
 }
 
-/* line 137, app/assets/stylesheets/categories.scss */
+/* line 143, app/assets/stylesheets/categories.scss */
 .addImage-button a, .addImage-button a:link, .addImage-button a:visited, .addImage-button a:hover {
   text-decoration: none;
 }
 
-/* line 141, app/assets/stylesheets/categories.scss */
+/* line 147, app/assets/stylesheets/categories.scss */
 .header_hidden {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
-  /* line 146, app/assets/stylesheets/categories.scss */
+  /* line 152, app/assets/stylesheets/categories.scss */
   ul.nav.navbar-nav.navbar-right {
     display: block;
   }
-  /* line 150, app/assets/stylesheets/categories.scss */
+  /* line 156, app/assets/stylesheets/categories.scss */
   .navbar.navbar.navbar {
     display: block;
   }
-  /* line 154, app/assets/stylesheets/categories.scss */
+  /* line 160, app/assets/stylesheets/categories.scss */
   .header_hidden {
     display: block;
     float: right;
@@ -188,7 +198,7 @@ nav.pagination {
     cursor: pointer;
     padding: 15px 0;
   }
-  /* line 161, app/assets/stylesheets/categories.scss */
+  /* line 167, app/assets/stylesheets/categories.scss */
   .header_hidden span {
     display: block;
     width: 100%;
@@ -196,21 +206,21 @@ nav.pagination {
     background: #8b8888;
     margin: 7px auto;
   }
-  /* line 168, app/assets/stylesheets/categories.scss */
+  /* line 174, app/assets/stylesheets/categories.scss */
   .header_hidden::after, .header_hidden::before {
     content: "";
     display: block;
     height: 4px;
     background: #8b8888;
   }
-  /* line 174, app/assets/stylesheets/categories.scss */
+  /* line 180, app/assets/stylesheets/categories.scss */
   .category {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  /* line 179, app/assets/stylesheets/categories.scss */
+  /* line 185, app/assets/stylesheets/categories.scss */
   .category img {
     width: 100%;
   }

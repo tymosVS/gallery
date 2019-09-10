@@ -18,6 +18,9 @@
   text-decoration: none;
   color: #000;
 }
+.category h2:hover a {
+  color: #6e6e6e;
+}
 .category-head h2 {
   font-family: VastShadow;
 }
@@ -70,7 +73,10 @@
 .category img {
   border-radius: 15px;
   box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.7);
+}
 
+.category img:hover {
+  filter:brightness(1.2);
 }
 
 #create-category-btn {
