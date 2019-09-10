@@ -13,9 +13,13 @@ Bundler.require(*Rails.groups)
 module Gallery
   class Application < Rails::Application
     config.load_defaults 5.2
+    config.assets.enabled = true
     config.assets.initialize_on_precompile = true
     config.serve_static_assets = true
-
+    # config.assets.enabled = true
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     # config.active_job.queue_adapter = :resque
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
   end
 end

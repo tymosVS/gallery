@@ -2,6 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// @font-face {
+//   font-family: 'DiplomataSC-Regular';
+//   src:font-url('DiplomataSC-Regular.ttf');
+//   src:font-url('DiplomataSC-Regular.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: regular;
+// }
+
+// @font-face {
+//   font-family: Geostar;
+//   src: font-url('Geostar-Regular.ttf');
+//   src: font-url('Geostar-Regular.ttf') format('truetype');
+// }
+// @font-face {
+//   font-family: 'Lobster-Regular';
+//   src: url(font-path('Lobster-Regular.ttf'));
+//   src: url(font-path('Lobster-Regular.ttf')) format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// // @font-face {
+// //   font-family: 'Lobster-Regular';
+// //   src:font-url('Lobster-Regular.ttf');
+// //   src:font-url('Lobster-Regular.ttf') format('truetype');
+// //   // src: url('/assets/Lobster-Regular.ttf') format('truetype');
+// // }
+
+// @font-face {
+//   font-family: 'VastShadow-Regular';
+//   src: url('/assets/Vast_Shadow/VastShadow-Regular.ttf') format('truetype');
+// }
+
 .carousel-indicators.carousel-indicators li {
   border-radius: 0;
   border: none;
@@ -24,11 +57,15 @@
   transform: translateX(50%);
   top: 0;
   z-index: 1;
+  font-size: 6vw;
+  word-break: unset;
   margin: 0;
+  font-family: Ewert;
   padding: 20px 50px;
   border-radius: 0 0 25px 25px;
   background: rgba($color: #ffffff, $alpha: 0.6)
 }
+
 
 .home-page .container {
   width: 100%;
@@ -51,13 +88,19 @@
 .top-category {
   padding: 30px;
 }
-
+.top-category h2 {
+  font-family: DiplomataSC;
+}
 .popular-category {
   text-align: center;
   padding: 20px;
   background: radial-gradient(#6c6c6c, transparent);
   box-shadow: inset 0px 0px 40px 0px black;
   margin: 5px;
+}
+
+.popular-category h3 {
+  font-family: VastShadow;
 }
 
 a.ancor {

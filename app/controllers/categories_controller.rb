@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
       end
     end
   end
-
+  
   def edit
   end
 
