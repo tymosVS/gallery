@@ -6,7 +6,6 @@
         %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
         %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
       .carousel-inner
-        %h1= t('titles')
         %a{:href=> "#popular-category", :class=> "ancor"}
           = image_tag('arrow.png', alt: "V")
         .item.active
@@ -15,6 +14,7 @@
           = image_tag('slider2.jpg', class: 'img-fluid img-thumbnail')
         .item
           = image_tag('slider3.jpg', class: 'img-fluid img-thumbnail')
+        %h1= t('titles')
       %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel"}
         %span.glyphicon.glyphicon-chevron-left
         %span.sr-only Previous
