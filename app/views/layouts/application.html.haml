@@ -8,51 +8,86 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   / this is code we will cut out and put inside menu partial
-  %nav.navbar.navbar-default{:role => "navigation"}
-    .container
-      .header_hidden
-        %span
-      .navbar-header
-      #navbar-collapse-1.collapse.navbar-collapse
-        %ul.nav.navbar-nav.navbar-right
-          %li{:class => "nav-item#{" active" if I18n.locale == :en}"}
-            = link_to 'En', {locale: :en}, class: 'nav-link'
-          %li{:class => "nav-item#{" active" if I18n.locale == :ru}"}
-            = link_to 'Рус', {locale: :ru}, class: 'nav-link'
+  %nav
+  %ul.topmenu
+    %li{:class => "nav-item#{" active" if I18n.locale == :en}"}
+      = link_to 'En', {locale: :en}, class: 'nav-link'
+    %li{:class => "nav-item#{" active" if I18n.locale == :ru}"}
+      = link_to 'Рус', {locale: :ru}, class: 'nav-link'
+    %li
+      = link_to t('home'),  root_path
+    %li
+      = link_to t('categories.title'),  categories_path, class:"down"
+      %ul.submenu
+        - if @top_categories
+          - @top_categories.limit(5).each do |top_categories|
+            %li
+              = link_to top_categories['title'], category_path(top_categories['id'])
+    %li
+      = link_to t('images.title'),  images_path
+    %li
+      = link_to t('comments.title'), comments_path
+    %li
+      %a{href: "", class:"down"} 
+        %span.glyphicon.glyphicon-user
+      %ul.submenu
+        - if current_user
+          %li 
+            = link_to t('menu.profile'), profile_path
+          %li 
+            = link_to t('menu.logout'), destroy_user_session_path, method: :delete
+        - else
           %li
-            = link_to t('categories.title'),  categories_path
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              = t('categories.top').capitalize
-              %span.caret
-            %ul.dropdown-menu
-              - if @top_categories
-                - @top_categories.limit(5).each do |top_categories|
-                  %li
-                    = link_to top_categories['title'], category_path(top_categories['id'])
-                    -# = top_categories['total']
-          %li
-            = link_to t('images.title'),  images_path
-          %li
-            = link_to t('comments.title'), comments_path
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              - if current_user && current_user.avatar?
-                .user-menu
-                  = image_tag(current_user.avatar.small_thumb.url, alt: 'Image')
-              - else
-                %span.glyphicon.glyphicon-user 
-              %ul.dropdown-menu
-                - if current_user
-                  %li 
-                    = link_to t('menu.profile'), profile_path
-                  %li 
-                    = link_to t('menu.logout'), destroy_user_session_path, method: :delete
-                - else
-                  %li
-                    = link_to t('menu.login'), new_user_session_path
-                  %li 
-                    = link_to t('menu.registration'), new_user_registration_path
+            = link_to t('menu.login'), new_user_session_path
+          %li 
+            = link_to t('menu.registration'), new_user_registration_path
+
+
+  -# %nav.navbar.navbar-default{:role => "navigation"}
+  -#   .container
+  -#     .header_hidden
+  -#       %span
+  -#     .navbar-header
+  -#     #navbar-collapse-1.collapse.navbar-collapse
+  -#       %ul.nav.navbar-nav.navbar-right
+  -#         %li{:class => "nav-item#{" active" if I18n.locale == :en}"}
+  -#           = link_to 'En', {locale: :en}, class: 'nav-link'
+  -#         %li{:class => "nav-item#{" active" if I18n.locale == :ru}"}
+  -#           = link_to 'Рус', {locale: :ru}, class: 'nav-link'
+  -#         %li
+  -#           = link_to t('categories.title'),  categories_path
+  -#         %li.dropdown
+  -#           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+  -#             = t('categories.top').capitalize
+  -#             %span.caret
+  -#           %ul.dropdown-menu
+  -#             - if @top_categories
+  -#               - @top_categories.limit(5).each do |top_categories|
+  -#                 %li
+  -#                   = link_to top_categories['title'], category_path(top_categories['id'])
+  -#                   -# = top_categories['total']
+  -#         %li
+  -#           = link_to t('images.title'),  images_path
+  -#         %li
+  -#           = link_to t('comments.title'), comments_path
+  -#         %li.dropdown
+  -#           %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+  -#             - if current_user && current_user.avatar?
+  -#               .user-menu
+  -#                 = image_tag(current_user.avatar.small_thumb.url, alt: 'Image')
+  -#             - else
+  -#               %span.glyphicon.glyphicon-user 
+  -#             %ul.dropdown-menu
+  -#               - if current_user
+  -#                 %li 
+  -#                   = link_to t('menu.profile'), profile_path
+  -#                 %li 
+  -#                   = link_to t('menu.logout'), destroy_user_session_path, method: :delete
+  -#               - else
+  -#                 %li
+  -#                   = link_to t('menu.login'), new_user_session_path
+  -#                 %li 
+  -#                   = link_to t('menu.registration'), new_user_registration_path
   - flash.each do |key, value|
     %div{:class => "alert alert-#{key} alert-dismissable"}
       = value

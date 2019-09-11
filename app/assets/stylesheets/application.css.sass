@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 nav.pagination span 
   a
     background: silver
@@ -73,3 +74,116 @@ h1, h2, h3, h4, h5
 
 nav.navbar.navbar-default
   margin: 0
+/*/////////////////////////////////////////*/
+
+body 
+  margin: 0
+  background: #d5b45b
+
+header 
+  background: white
+  text-align: center
+
+header a 
+  text-decoration: none
+  outline: none
+  display: block
+  transition: .3s ease-in-out
+
+ul.topmenu li
+    list-style: none
+
+ul.topmenu li a
+  color: #adadad
+
+ul.topmenu li a:hover
+  text-decoration: none
+
+ul.topmenu 
+  display: flex
+  background: black
+  padding: 20px 10px
+  margin: 0
+
+
+nav 
+  display: table
+  margin: 0 auto
+
+nav ul 
+  list-style: none
+  margin: 0
+  padding: 0
+
+.topmenu:after 
+  content: ""
+  display: table
+  clear: both
+
+.topmenu > li 
+  width: 25%
+  float: left
+  position: relative
+  font-family: 'Open Sans', sans-serif
+
+.topmenu > li > a 
+  text-transform: uppercase
+  font-size: 2vw
+  font-weight: bold
+  color: #404040
+  padding: 15px 30px
+
+.topmenu li a:hover 
+  color: #D5B45B
+.submenu-link:after 
+  content: "\f107"
+  font-family: "FontAwesome"
+  color: inherit
+  margin-left: 10px
+
+.submenu 
+  background: #273037
+  position: absolute
+  right: -10px
+  top: 60px
+  z-index: 5
+  padding: 10px
+  opacity: 0
+  transform: scaleY(0)
+  transform-origin: 0 0
+  transition: .5s ease-in-out
+
+.submenu a 
+  color: white
+  text-align: left
+  padding: 12px 15px
+  font-size: 20px
+  border-bottom: 1px solid rgba(255,255,255,.1)
+
+.submenu li:last-child a  
+  border-bottom: none
+.topmenu > li:hover .submenu 
+  opacity: 1
+  transform: scaleY(1)
+.down:after 
+  content: "\f107"
+  margin-left: 8px
+  font-family: FontAwesome
+
+@media screen and (max-width:1124px)
+  .submenu 
+    right: -10px
+    top: 50px
+@media screen and (max-width:980px)
+  ul.topmenu
+    display: none
+
+.footer
+    background: black
+    margin: 0
+    padding: 22px
+    color: white
+
+.form-control:focus
+  border-color: #000
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #808080

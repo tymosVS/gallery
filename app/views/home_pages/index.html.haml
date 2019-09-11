@@ -22,12 +22,80 @@
         %span.glyphicon.glyphicon-chevron-right
         %span.sr-only Next
 .top-category
-  #popular-category
-    %h2= t('categories.top')
-    .top-category-items
-      - @top_categories.each do |category|
-        .popular-category
-          %h3= category.title.upcase
-          .home_images
-            = link_to category_path(category) do
-              =image_tag(@images[category].image.medium_thumb.url)
+  #About.about
+    .about_image
+      =image_tag('aboutimg.png')
+    .about_text
+      %h2 About Gallery
+      %h3
+        %span Some
+        words
+        %span about gallery
+      %p.about_text_describe Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque enim pariatur, et nesciunt exercitationem deserunt, autem labore totam alias explicabo facere provident mollitia quidem. Error eligendi quaerat cumque sint rerum.
+      %ul
+        %li
+          Mission -
+          %span Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, laborum optio. Unde, molestiae sunt? Est eos, eius in esse reiciendis, pariatur fugit recusandae harum repellat, molestias voluptates sequi deserunt similique.
+        %li
+          Skills -
+          %span Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem expedita suscipit ea quam cumque odit repellat est enim tempore nobis nostrum quibusdam vero explicabo quae pariatur praesentium, dolorem ut corporis!
+        %li
+          Clients -
+          %span Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  -# .top-category-items
+  -#   - @top_categories.each do |category|
+  -#     .popular-category
+  -#       %h3= category.title.upcase
+  -#       .home_images
+  -#         = link_to category_path(category) do
+  -#           =image_tag(@images[category][0].image.medium_thumb.url)
+  .container
+    #popular-category
+      %h2= t('categories.top')
+    #myCarousel1.carousel.slide{"data-ride" => "carousel"}
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel1"}
+        %li{"data-slide-to" => "1", "data-target" => "#myCarousel1"}
+        %li{"data-slide-to" => "2", "data-target" => "#myCarousel1"}
+        %li{"data-slide-to" => "3", "data-target" => "#myCarousel1"}
+        %li{"data-slide-to" => "4", "data-target" => "#myCarousel1"}
+        %li{"data-slide-to" => "5", "data-target" => "#myCarousel1"}
+      .carousel-inner.top-category-items
+        - @top_categories.limit(5).each do |category|
+          .item
+            .popular-category
+              %h3= category.title.upcase
+              .home_images
+                - @images[category].each do |img|
+                  .home_image
+                    =image_tag(img.image.medium_thumb.url)
+        .item.active
+          .popular-category
+            %h3= @top_categories.last.title.upcase
+            .home_images
+              - @images[@top_categories.last].each do |img|
+                .home_image
+                  =image_tag(img.image.medium_thumb.url)
+
+.benefits
+  .benefits__inner
+    %h1.benefits__header
+      = t('statistic').capitalize
+    .benefits__element
+      %p.benefits__number 
+        = @statistic[0]
+      %p.benefits__title
+        %span.glyphicon.glyphicon-picture
+    .benefits__element
+      %p.benefits__number 
+        = @statistic[1]
+      %p.benefits__title
+        %span.glyphicon.glyphicon-heart
+    .benefits__element
+      %p.benefits__number 
+        = @statistic[2]
+      %p.benefits__title
+        %span.glyphicon.glyphicon-comment
+.footer
+  %h2 Contact info
+  %span admin@example.com

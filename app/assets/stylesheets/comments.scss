@@ -5,10 +5,15 @@ input[type="submit"] {
   outline: none;
 }
 
+.all-comments {
+  color: azure;
+}
 .comment {
-  background: #adadad;
+  background: #000000;
   border-radius: 15px;
   margin: 15px 0;
+  color: white;
+  box-shadow: inset 0 0 15px #d5b45b;
 }
 
 .comment-head {
@@ -17,7 +22,7 @@ input[type="submit"] {
 
 .comment-body {
   padding: 10px 20px;
-  background: #e4e4e4;
+  background: #403b3b;
   border-radius: 0 0 15px 15px;
 }
 

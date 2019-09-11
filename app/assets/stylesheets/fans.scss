@@ -14,9 +14,11 @@ a.like:link, a.dislike:link {
   text-decoration: none;
   font-size: 20px;
 }
-
+.like {
+  float: right;
+}
 .like.like {
-  color: #d4aeb1;
+  color: #ff0014;
 }
 
 .dislike.dislike {
@@ -24,11 +26,11 @@ a.like:link, a.dislike:link {
 }
 
 a.like:hover {
-  color: #bb3e7b;  
+  color: #ff0014;  
 }
 
 a.dislike:hover {
-  color: #d4aeb1;
+  color: #ff0014;
 }
 a.dislike:focus {
   color: #bb3e7b;
@@ -36,6 +38,6 @@ a.dislike:focus {
 }
 
 a.like:focus{
-  color: #d4aeb1;
+  color: #ff0014;
   outline: none;
 }
