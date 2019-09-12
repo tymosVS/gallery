@@ -7,7 +7,7 @@
           = link_to category_post_path(@category, post) do
             %h2= @images[post].title.capitalize
           = link_to category_post_path(@category, post) do
-            .image
+            .post-image
               = image_tag(@images[post].image.medium_thumb.url, 
               alt: 'Image', class: 'img-fluid img-thumbnail ')
               .post-substrate

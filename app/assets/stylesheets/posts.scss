@@ -11,25 +11,40 @@
 .post {
   background: #e0dfdf;
   border-radius: 15px;
-  padding: 0 20px;
+  padding: 0 20px 20px;
   margin: 5px;
   height: fit-content;
   border: 1px solid black;
-
+}
+.all-posts {
+  .post {
+    .post-image {
+      border: solid 1px black;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 400px;
+      height: 200px;
+    }
+  }
 }
 
+
 .addImage-button {
-  background: #e2e0e0;
+  background: #000;
   display: block;
   margin-bottom: 15px;
   padding: 10px 30px;
-  box-shadow: inset 0px 0px 15px 0px;
   position: relative;
   width: fit-content;
   left: 100%;
   transform: translateX(-100%);
 }
 
+.addImage-button {
+  a, a:link, a:visited {
+    color: #fff;
+  }
+}
 .post-substrate {
   position: absolute;
   bottom: 0;
@@ -48,6 +63,11 @@
   * {
     text-decoration: none;
     color: #ffffff
+  }
+}
+.all-posts {
+  a, a:link, a:visited {
+    color: #fff;
   }
 }
 .post .glyphicon-eye-open:before {
