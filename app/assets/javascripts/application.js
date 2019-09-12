@@ -18,6 +18,8 @@
 
 $(document).on('turbolinks:load', function() {
   $('.header_hidden').click(function() {
-    $('#navbar-collapse-1').toggleClass('vizibility');
+    $('.topmenu').toggleClass('visible');
+    $('.header_hidden').toggleClass('hiden_active');
   })
+  
 })

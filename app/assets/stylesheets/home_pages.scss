@@ -29,7 +29,7 @@
   font-size: 6vw;
   word-break: unset;
   margin: 0;
-  font-family: Ewert, sans-serif;
+  font-family: RubikMonoOne-Regular, sans-serif;
   padding: 20px 50px;
   border-radius: 0 0 25px 25px;
   background: rgba($color: #ffffff, $alpha: 0.6)
@@ -124,11 +124,7 @@ a.ancor {
 .about {
   padding: 50px;
   display: inline-block;
-  background: linear-gradient(to bottom, 
-            rgba(0,0,0,1) 0%,
-            rgb(230, 191, 84) 28%,
-            rgba(219,192,59,1) 94%,
-            rgba(0,0,0,1) 100%);
+  background: #e6bf54;
 }
 
 .about_image {
