@@ -9,6 +9,7 @@
 }
 .image-index h1 {
   font-family: Lobster;
+  color: #fff;
 }
 .image {
   width: fit-content;
@@ -23,21 +24,38 @@
 .image-info {
   a, a:link, a:visited, a:hover {
     text-decoration: none;
-    color: black;
+    color: #fff;
   }
-} 
-.img-thumbnail{
-  box-shadow: inset 0px 0px 40px 40px black;
+}
+
+.image-index {
+  nav.pagination span a:hover, nav.pagination span a:link, nav.pagination span a {
+    color: #fff;
+  }
+  nav.pagination .current {
+    background: #ffffff;
+    border: 1px solid;
+  }
+  nav.pagination span a {
+    background: #080808;
+      border: 1px solid #fff;
+  }
 }
 
 .image-info {
-  background: #d5d5d5;
+  background: #000;
   margin: 10px 0;
   border-radius: 15px;
   padding: 0 20px;
-  box-shadow: inset 0px 0px 17px 10px rgba(0,0,0,0.9);
+  border: 1px solid #fff;
 }
-
+.image-info .image {
+  height: 200px;
+  width: 400px;
+  overflow: hidden;
+  border: 1px solid #fff;
+  min-width: 100%;
+}
 @media screen and (max-width:968px){
   .all-images {
     justify-content: center;

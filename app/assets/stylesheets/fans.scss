@@ -14,6 +14,9 @@ a.like:link, a.dislike:link {
   text-decoration: none;
   font-size: 20px;
 }
+a.dislike {
+  float: right;
+}
 .like {
   float: right;
 }

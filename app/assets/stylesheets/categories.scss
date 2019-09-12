@@ -10,6 +10,13 @@
 * {
   text-decoration: none;
 }
+.categories-conteiner{
+  background: #000;
+}
+
+.categories-conteiner h1{
+  color: #fff1f1;
+}
 
 .container h1 {
   font-family: Lobster;
@@ -32,11 +39,11 @@
   display: flex;
   justify-content: space-around;
   flex-flow: row;
-  background: #dedcdc;
+  background: #fff;
   margin: 20px 0;
   padding: 30px;
   border-radius: 15px;
-  border: solid black;
+  border: solid #e6bf54;
 }
 
 .category-info {
@@ -123,11 +130,11 @@ nav.pagination {
   a:link, a:visited {
     text-decoration: none;
     color: black;
-    background: #dedcdc;
+    background: #fff;
     display: block;
     text-align: center;
     border-radius: 15px 15px 0 0;
-    border: solid black;
+    border: solid #e6bf54;
     padding: 10px 20px;
   }
 }

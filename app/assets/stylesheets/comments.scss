@@ -29,3 +29,20 @@ input[type="submit"] {
 span.time {
   float: right;
 }
+
+.comments-index {
+  h1 {
+    color: #fff;
+  }
+  nav.pagination span a:hover, nav.pagination span a:link, nav.pagination span a {
+    color: #fff;
+  }
+  nav.pagination .current {
+    background: #ffffff;
+    border: 1px solid;
+  }
+  nav.pagination span a {
+    background: #080808;
+      border: 1px solid #fff;
+  }
+}

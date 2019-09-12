@@ -1,14 +1,15 @@
-.container
-  %h1= t('comments.title')
-  .all-comments
-    - @comments.each do |comment|
-      .comment
-        .comment-head
-          %span
-            = author(comment.user_id)
-          %span{class: 'time'}
-            = comment.created_at.strftime('%m-%d  / %I:%M').to_s
-        .comment-body
-          %span
-            = comment.body
-  = paginate @comments, outer_window: 3
+.comments-index
+  .container
+    %h1= t('comments.title')
+    .all-comments
+      - @comments.each do |comment|
+        .comment
+          .comment-head
+            %span
+              = author(comment.user_id)
+            %span{class: 'time'}
+              = comment.created_at.strftime('%m-%d  / %I:%M').to_s
+          .comment-body
+            %span
+              = comment.body
+    = paginate @comments, outer_window: 3
