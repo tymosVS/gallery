@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def send_welcome_email
     user = self
-    Resque.enqueue(WelcomeEmailJob, user)
-    # UserMailer.welcome_email(self).deliver
+    # Resque.enqueue(WelcomeEmailJob, user)
+    UserMailer.welcome_email(self).deliver
   end
 end
