@@ -13,8 +13,10 @@ install_plugin Capistrano::SCM::Git
 # For documentation on these, see for example:
 require 'capistrano/bundler'
 require 'capistrano/rvm'
-require 'capistrano/rails/assets' # for asset handling add
-require 'capistrano/rails/migrations' # for running migrations
+require 'capistrano/rails/assets'
+
+require 'capistrano/rails/migrations'
+
 require 'capistrano/puma'
 
 
