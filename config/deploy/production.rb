@@ -1,8 +1,8 @@
-server '3.15.8.46', user: 'deploy', roles: %w{web app db}
+server '18.189.16.158', user: 'deploy', roles: %w{web app db}
 
-role :app, %w{deploy@3.15.8.46}
-role :web, %w{deploy@3.15.8.46}
-role :db,  %w{deploy@3.15.8.46}
+role :app, %w{deploy@18.189.16.158}
+role :web, %w{deploy@18.189.16.158}
+role :db,  %w{deploy@18.189.16.158}
 
 set :ssh_options, {
   forward_agent: true,

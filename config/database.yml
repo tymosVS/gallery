@@ -35,8 +35,8 @@ test:
 
 production:
   <<: *default
-  database: gallerydb
-  username: galleryuser
+  database: <%= ENV['GALLERY_DATABASE_NAME'] %>
+  username: <%= ENV['GALLERY_DATABASE_USER'] %>
   password: <%= ENV['GALLERY_DATABASE_PASSWORD'] %>
-  host: localhost
-  port: 5432
+  host: <%= ENV['GALLERY_DATABASE_HOST'] %>
+  port: <%= ENV['GALLERY_DATABASE_PORT'] %>

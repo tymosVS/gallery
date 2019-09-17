@@ -30,3 +30,5 @@
 /config/initializers/app_env_vars.rb
 
 /.ruby-gemset
+# Ignore application configuration
+/config/application.yml
