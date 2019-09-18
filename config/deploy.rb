@@ -33,5 +33,3 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :rvm_ruby_version, '2.6.3'
 set :passenger_restart_with_touch, true
 
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
-
