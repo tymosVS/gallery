@@ -65,6 +65,7 @@ en:
     login_with: "Sign in with"
     sig_up: "Sign up"
     avatar: "Avatar"
+    resent_confirm: "Resend confirmation instructions"
     profile: "Profile"
     user_info: "User info"
     edit: "Edit profile"
