@@ -1,4 +1,4 @@
-server '18.189.16.88', user: 'deploy', roles: %w{web app db}
+server '18.189.16.88', user: 'deploy', password: 'deploy', roles: %w{web app db}
 
 role :app, %w{deploy@18.189.16.88}
 role :web, %w{deploy@18.189.16.88}
