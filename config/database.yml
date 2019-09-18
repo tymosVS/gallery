@@ -39,4 +39,3 @@ production:
   username: <%= ENV['GALLERY_DATABASE_USER'] %>
   password: <%= ENV['GALLERY_DATABASE_PASSWORD'] %>
   host: <%= ENV['GALLERY_DATABASE_HOST'] %>
-  port: 5432
