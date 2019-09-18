@@ -35,7 +35,7 @@ test:
 
 production:
   <<: *default
-  database: gallery
-  username: gallery
+  database: <%= ENV['GALLERY_DATABASE_NAME'] %>
+  username: <%= ENV['GALLERY_DATABASE_USER'] %>
   password: <%= ENV['GALLERY_DATABASE_PASSWORD'] %>
   host: <%= ENV['GALLERY_DATABASE_HOST'] %>
