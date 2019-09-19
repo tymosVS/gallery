@@ -20,11 +20,11 @@ ActiveAdmin.register UserAction,:as => "UserActions" do
   #   column :action
   #   column :action_path
   # end
-  # filter :action
-  # filter :user,
-  #   as: :select, 
-  #   label: 'User email',
-  #   collection: User.all.pluck(:email)
+  filter :action
+  filter :user,
+    as: :select, 
+    label: 'User email',
+    collection: User.all.pluck(:email)
 
   index do
     selectable_column
