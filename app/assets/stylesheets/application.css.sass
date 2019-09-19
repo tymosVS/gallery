@@ -77,6 +77,7 @@ nav.navbar.navbar-default
 body 
   margin: 0
   background: #d5b45b
+  color: #000
 
 header 
   background: white
@@ -141,7 +142,7 @@ nav ul
 .submenu 
   background: #273037
   position: absolute
-  right: -10px
+  right: 0px
   top: 50px
   z-index: 5
   padding: 10px
@@ -169,7 +170,7 @@ nav ul
 
 @media screen and (max-width:1124px)
   .submenu 
-    right: -10px
+    right: 0px
     top: 50px
 @media screen and (max-width:980px)
   .header_hidden
@@ -208,14 +209,14 @@ nav ul
     display: block
     width: 100%
     height: 4px
-    background: #8b8888
+    background: #000
     margin: 7px auto
 
   .header_hidden::after, .header_hidden::before
     content: ""
     display: block
     height: 4px
-    background: #8b8888
+    background: #000
 
   .down.down:after:after
     display:none
