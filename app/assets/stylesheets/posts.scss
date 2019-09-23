@@ -24,7 +24,13 @@
       overflow: hidden;
       width: 400px;
       height: 200px;
+      position: relative;
     }
+    .post-image:hover .post-substrate {
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+    } 
   }
 }
 
