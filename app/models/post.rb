@@ -12,6 +12,9 @@ class Post < ApplicationRecord
     image.title
   end
 
+  validates :image_id, presence: true
+  validates :category_id, presence: true
+
   private
 
   def new_image_in_subscribes_email

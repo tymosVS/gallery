@@ -52,7 +52,6 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -118,3 +117,8 @@ gem 'capistrano-passenger', '>= 0.1.1'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-figaro-yml', '~> 1.0.2'
+
+gem 'rspec-rails', '~> 3.8'
+gem "factory_bot"
+gem 'capybara', '>= 2.15'
+gem 'database_cleaner', '~> 1.7'
