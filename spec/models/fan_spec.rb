@@ -12,12 +12,12 @@ describe Fan, :type => :model do
 
   context "not valid" do
     it 'not valid without a image' do 
-      fan.image_id = nil
+      subject.image_id = nil
       expect(subject).to_not be_valid
     end
 
     it 'not valid without a user' do 
-      fan.user_id = nil
+      subject.user_id = nil
       expect(subject).to_not be_valid
     end
   end
