@@ -21,4 +21,12 @@ describe Subscriber, :type => :model do
       expect(subject).to_not be_valid
     end
   end
+
+  context "delete" do
+    it "clear actions removed users" do
+      id = subject.user_id
+      User.find(id).destroy
+      expect(UserAction.where(user_id: id).count).to eq(0)
+    end
+  end
 end

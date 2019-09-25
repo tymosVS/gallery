@@ -34,4 +34,36 @@ describe Post, :type => :model do
                                   category_id: subject.category_id)).to be_valid
     end
   end
+
+  context "delete" do
+    it "delete posts" do
+      id = subject.id
+      subject.destroy
+      expect(Post.where(id: id).count).to eq(0)
+    end
+
+    it "delete image when delete post" do
+      id = subject.image_id
+      subject.destroy
+      expect(Image.where(id: id).count).to eq(0)
+    end
+
+    it "delete likes when delete post" do
+      id = subject.image_id
+      10.times do
+        create(:fan, image_id: id)
+      end
+      subject.destroy
+      expect(Fan.where(image_id: id).count).to eq(0)
+    end
+
+    it "delete likes when delete post" do
+      id = subject.image_id
+      10.times do
+        create(:comment, image_id: id)
+      end
+      subject.destroy
+      expect(Comment.where(image_id: id).count).to eq(0)
+    end
+  end
 end

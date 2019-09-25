@@ -29,6 +29,5 @@ describe Comment, :type => :model do
                   create(category_id: subject.category_id, 
                         user_id: subject.user_id)).to be_valid
     end
-
   end
 end

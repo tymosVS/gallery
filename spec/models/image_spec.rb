@@ -27,4 +27,42 @@ describe Image, :type => :model do
       expect(subject).to_not be_valid
     end
   end
+
+  context "delete" do
+    it "delete categories" do
+      id = subject.id
+      subject.destroy
+      expect(Post.where(id: id).count).to eq(0)
+    end
+
+    it "delete comments in delete category" do
+      10.times do
+        create(:comment, image_id: subject.id)
+      end
+      id = subject.id
+      subject.destroy
+      expect(Comment.where(image_id: id).count).to eq(0)
+    end
+
+    it "delete likes in delete category" do
+      10.times do
+        create(:fan, image_id: subject.id)
+      end
+      id = subject.id
+      subject.destroy
+      expect(Fan.where(image_id: id).count).to eq(0)
+    end
+
+    it "delete likes in delete category when such other dependens" do
+      10.times do
+        create(:fan, image_id: subject.id)
+        create(:comment, image_id: subject.id)
+      end
+      id = subject.id
+      subject.destroy
+      like_count = Fan.where(image_id: id).count
+      comment_count = Comment.where(image_id: id).count
+      expect(like_count + comment_count).to eq(0)
+    end
+  end
 end
