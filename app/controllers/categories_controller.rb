@@ -32,27 +32,6 @@ class CategoriesController < ApplicationController
   def edit
   end
 
-  def show
-    redirect_to category_posts_path(@category)
-  end
-
-  def create
-    skip_before_filter :verify_authenticity_token, if: :json_request?
-    respond_to do |format|
-      format.html
-      format.json{
-          render :json => Category.new(:title => params[:title], :description => params[:description]).save
-      }
-
-    end
-  
-    if @category.save
-      redirect_to category_path(@category)
-    else
-      render :new
-    end
-  end
-
   def destroy
     @category.destroy
   

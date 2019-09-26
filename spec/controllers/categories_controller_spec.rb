@@ -1,12 +1,13 @@
 require 'rails_helper'
 
-describe "GET #index" do
-  it "populates an array of categories" do
-    category = create(:category)
+describe CategoriesController, type: :routing do
+  describe 'routing' do
+    it 'routes to #index' do
+      expect(get: '/categories').to route_to('categories#index')
+    end
 
-
-    expect(page).to have_title(category.title)
-  
-
+    it 'routes to #delete' do
+      expect(delete: '/categories/1').to route_to('categories#destroy', id: '1')
+    end
   end
 end

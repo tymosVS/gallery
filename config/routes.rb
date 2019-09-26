@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   end
   get 'comments' => 'comments#index'
 
-  resources :categories do
-    resources :posts, path: ''
+  resources :categories, only: [:index, :destroy] do
+    resources :posts, path: '', except: [:edit]
     resources :subscribers,  only: [:create, :new, :destroy]
   end
 
