@@ -6,7 +6,6 @@ class CreatorsController < ApplicationController
   end
 
   def create
-  
     @category = Category.new(category_params)
     if @category.save
       @user.creators.create(user: @user, category: @category)
@@ -14,13 +13,6 @@ class CreatorsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def destroy
-    @category =Category.friendly.find(params[:category_id])
-    @creator = @category.creator.find(params[:id])
-    @creator.destroy
-    redirect_to category_posts_path
   end
 
   private

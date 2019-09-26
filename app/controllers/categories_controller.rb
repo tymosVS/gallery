@@ -5,14 +5,11 @@ class CategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
   respond_to :html, :js
 
-  def new
-    @category = Category.new
-  end
-
   def index
     @categories = Category.where.not(title: "Non_categorizated", 
                                     description: 'Images no category').order(:title).page params[:page]
     @category_images = {}
+
     @category_owners = {}
     @pre_sub = {}
     if @categories.size > 0
@@ -28,13 +25,9 @@ class CategoriesController < ApplicationController
       end
     end
   end
-  
-  def edit
-  end
 
   def destroy
     @category.destroy
-  
     redirect_back(fallback_location: root_path)
   end
 

@@ -122,3 +122,4 @@ gem 'rspec-rails', '~> 3.8'
 gem "factory_bot"
 gem 'capybara', '>= 2.15'
 gem 'database_cleaner', '~> 1.7'
+gem 'rails-controller-testing'

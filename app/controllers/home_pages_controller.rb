@@ -5,6 +5,5 @@ class HomePagesController < ApplicationController
       @images[top_cat] = top_cat.images.first(3)
     end
     @statistic = [Image.count, Fan.count, Comment.count]
-
   end
 end

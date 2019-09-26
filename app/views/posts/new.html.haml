@@ -1,13 +1,14 @@
-%h2= t('posts.add_post')
-= form_with scope: :image, url: category_posts_path, local: true do |form|
-  %p
-    = form.label t('images.name')
-    %br/
-    = form.text_field :title, class: "form-control"
-  %p
-    = form.label t('images.image')
-    %br/
-    = form.file_field :image
-    = form.hidden_field :image_cache
-  %p
-    = form.submit
+.container
+  %h2= t('posts.add_post')
+  = form_with scope: :image, url: category_posts_path, local: true do |form|
+    %p
+      = form.label t('images.name')
+      %br/
+      = form.text_field :title, class: "form-control"
+    %p
+      = form.label t('images.image')
+      %br/
+      = form.file_field :image
+      = form.hidden_field :image_cache
+    %p
+      = form.submit

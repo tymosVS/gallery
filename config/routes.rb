@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :images  do
-    resources :comments
-    resources :fans
+  resources :images, only: [:index, :show] do
+    resources :comments, except: [:index, :edit, :update, :destroy, :show]
+    resources :fans, except: [:index, :edit, :update, :show]
   end
   get 'comments' => 'comments#index'
 
