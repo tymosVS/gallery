@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   def index
-    if user_signed_in?
+    if user_signed_in? 
       category_creat = Creator.where(user_id: current_user.id) 
       folow_category = Subscriber.where(user_id: current_user.id)
       
@@ -17,6 +17,8 @@ class ProfileController < ApplicationController
         image_count = category.posts_count
         @created_category << { category: category, image: image, img_count: image_count }
       end
+    else
+      redirect_to new_user_session_path
     end
   end
 

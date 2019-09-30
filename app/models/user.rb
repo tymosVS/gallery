@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :creators, dependent: :destroy
   has_many :fans, dependent: :destroy
   has_many :user_actions, dependent: :destroy
+
+  validates :password, presence: true
   def self.logins_before_captcha
     2
   end

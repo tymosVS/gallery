@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Comment, :type => :model do
   let(:creator) { create(:creator) } 
   subject { creator }
 
-  context "valid" do
+  context 'valid' do
     it 'is valid with valid attributes' do 
       expect(subject).to be_valid
     end
   end
 
-  context "not valid" do
+  context 'not valid' do
     it 'not valid without a user' do 
       subject.user_id = nil
       expect(subject).to_not be_valid
@@ -22,7 +24,7 @@ describe Comment, :type => :model do
     end
   end
 
-  context "links" do
+  context 'links' do
     it 'link with user' do 
       user = User.find(subject.user_id)
       expect(user.creators.

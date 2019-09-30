@@ -15,3 +15,15 @@ describe SubscribersController, type: :routing do
     end
   end
 end
+
+describe SubscribersController,  type: :controller do
+  context 'subscriptions #create' do
+    let(:user) { create(:user) }
+    let(:category) { create(:category) }
+    
+    it 'should create new subscriptions' do
+      sign_in user
+      expect {post :create, params: {category_id: category.id }}.to change(Subscriber, :count).by(1)
+    end
+  end
+end

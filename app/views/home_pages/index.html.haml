@@ -61,21 +61,23 @@
         %li{"data-slide-to" => "4", "data-target" => "#myCarousel1"}
         %li{"data-slide-to" => "5", "data-target" => "#myCarousel1"}
       .carousel-inner.top-category-items
-        - @top_categories.limit(5).each do |category|
-          .item
-            .popular-category
-              %h3= category.title.upcase
-              .home_images
-                - @images[category].each do |img|
-                  .home_image
-                    =image_tag(img.image.medium_thumb.url)
+        - if @top_categories
+          - @top_categories.limit(5).each do |category|
+            .item
+              .popular-category
+                %h3= category.title.upcase
+                .home_images
+                  - @images[category].each do |img|
+                    .home_image
+                      =image_tag(img.image.medium_thumb.url)
         .item.active
           .popular-category
-            %h3= @top_categories.last.title.upcase
-            .home_images
-              - @images[@top_categories.last].each do |img|
-                .home_image
-                  =image_tag(img.image.medium_thumb.url)
+            - if @top_categories
+              %h3= @top_categories.last.title.upcase
+              .home_images
+                - @images[@top_categories.last].each do |img|
+                  .home_image
+                    =image_tag(img.image.medium_thumb.url)
 
 .benefits
   .benefits__inner

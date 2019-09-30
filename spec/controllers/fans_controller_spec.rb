@@ -17,7 +17,6 @@ describe FansController, type: :routing do
 end
 
 describe FansController,  type: :controller do
-
   context 'public methods' do
     let(:image) { create :image }
     let(:fan) { create :fan, image_id: image.id }

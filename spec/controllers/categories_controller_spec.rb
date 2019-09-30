@@ -19,15 +19,6 @@ describe CategoriesController,  type: :controller do
         expect(response).to have_http_status(200)
         expect(response).to render_template :index
     end
-
-  #   let(:category) { create(:category) }
-  #   let(:post) { create(:post, category_id:category.id)}
-  #   it 'should success and render to index page' do
-  #     get :index
-  #     expect(@category_images.count).to eq(1)
-      
-  # end
-
   end
 
   context 'DELETE #destroy' do

@@ -23,7 +23,6 @@ describe CreatorsController,  type: :controller do
                             { category: 
                               { title: category.title, 
                                 description: category.description } } }.to change(Category, :count).by(1)
-      sign_out user
     end
   end
 end

@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Image, :type => :model do
   let(:image) { create(:image) } 
   subject { image }
 
-  context "valid" do
+  context 'valid' do
     it 'is valid with valid attributes' do 
       expect(subject).to be_valid
     end
   end
 
-  context "not valid" do
+  context 'not valid' do
     it 'is not valid without a title' do 
       subject.title = nil
       expect(subject).to_not be_valid
@@ -28,14 +30,14 @@ describe Image, :type => :model do
     end
   end
 
-  context "delete" do
-    it "delete categories" do
+  context 'delete' do
+    it 'delete categories' do
       id = subject.id
       subject.destroy
       expect(Post.where(id: id).count).to eq(0)
     end
 
-    it "delete comments in delete category" do
+    it 'delete comments in delete category' do
       10.times do
         create(:comment, image_id: subject.id)
       end
@@ -44,7 +46,7 @@ describe Image, :type => :model do
       expect(Comment.where(image_id: id).count).to eq(0)
     end
 
-    it "delete likes in delete category" do
+    it 'delete likes in delete category' do
       10.times do
         create(:fan, image_id: subject.id)
       end
@@ -53,7 +55,7 @@ describe Image, :type => :model do
       expect(Fan.where(image_id: id).count).to eq(0)
     end
 
-    it "delete likes in delete category when such other dependens" do
+    it 'delete likes in delete category when such other dependens' do
       10.times do
         create(:fan, image_id: subject.id)
         create(:comment, image_id: subject.id)
