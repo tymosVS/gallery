@@ -13,13 +13,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    @image = Image.find(params[:image_id])
-    @comment = @image.comments.find(params[:id])
-    @comment.destroy
-    redirect_back(fallback_location: root_path)
-  end
-
   private
     def comment_params
       params.require(:comment).permit( :body, :user_id)

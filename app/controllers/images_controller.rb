@@ -11,10 +11,6 @@ class ImagesController < ApplicationController
 
   private
 
-  def image_params
-    params.require(:image).permit(:title, :image)
-  end
-
   def set_image
     @image = Image.find(params[:id])
   end

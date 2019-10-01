@@ -34,13 +34,6 @@ class PostsController < ApplicationController
     @image = @post.image
   end
 
-  def destroy
-    @category =Category.friendly.find(params[:category_id])
-    @post = @category.posts.find(params[:id])
-    @post.destroy
-    redirect_to category_posts_path
-  end
-
   private 
 
   def image_params
