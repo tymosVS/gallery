@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require 'rails_helper'
 
 describe Fan, type: :feature do
@@ -22,6 +25,19 @@ describe Fan, type: :feature do
     scenario 'not availability like for loggouted users' do
       visit category_post_path(category.id, post.id)
       expect(page).to_not have_selector('.like')
+    end
+  end
+
+  context 'Likes dislike' do
+    let(:user) { create(:user) }
+    let(:category) {create(:category) }
+    let(:post) { create(:post, category_id: category.id)}
+
+    scenario 'destroy like' do
+      sign_in user
+      visit category_post_path(category.id, post.id)
+      click_on 'like'
+      click_on 'dislike'
     end
   end
 end

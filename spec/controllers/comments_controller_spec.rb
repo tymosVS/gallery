@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require 'rails_helper'
 
 describe CommentsController, type: :routing do
@@ -34,7 +37,6 @@ describe CommentsController,  type: :controller do
       sign_in user
       expect { post :create, params:  { comment: { body: comment.body, user_id: user.id },
                                         image_id: image.id } }.to change(Comment, :count).by(1)
-      sign_out user
     end
   end
 end

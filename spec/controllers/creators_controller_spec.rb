@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require 'rails_helper'
 
 describe CreatorsController, type: :routing do
@@ -13,7 +16,7 @@ describe CreatorsController, type: :routing do
 end
 
 describe CreatorsController,  type: :controller do
-  context 'comment #create' do 
+  context 'creator #create' do 
     let(:user) { create(:user) } 
     let(:category) { build(:category) } 
 
@@ -23,6 +26,24 @@ describe CreatorsController,  type: :controller do
                             { category: 
                               { title: category.title, 
                                 description: category.description } } }.to change(Category, :count).by(1)
+    end
+
+    it 'if wrong params should genere #new template' do
+      sign_in user
+      post :create, params:  
+                            { category: 
+                              { title: nil, 
+                                description: category.description } }
+      assert_template :new
+    end
+
+    it 'description optional param' do
+      sign_in user
+      post :create, params:  
+                            { category: 
+                              { title: category.title, 
+                                description: nil } }
+      assert_response :redirect
     end
   end
 end

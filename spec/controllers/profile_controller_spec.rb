@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require 'rails_helper'
 
 describe ProfileController, type: :routing do
@@ -23,5 +26,31 @@ describe ProfileController,  type: :controller do
       get :index
       assert_response :redirect
     end
+  end
+
+  context 'profile #index variables' do 
+    let(:user) { create(:user) }
+
+      it 'shoul contain subscribes' do
+        sign_in user
+        create(:subscriber, user_id: user.id)
+        get :index
+        expect(response).to render_template :index
+        expect(@controller.instance_variable_get(:@subscribed_category).count).to eq(1)
+        create(:subscriber, user_id: user.id)
+        get :index
+        expect(@controller.instance_variable_get(:@subscribed_category).count).to eq(2)
+    end
+
+    it 'shoul contain creations' do
+      sign_in user
+      create(:creator, user_id: user.id)
+      get :index
+      expect(response).to render_template :index
+      expect(@controller.instance_variable_get(:@created_category).count).to eq(1)
+      create(:creator, user_id: user.id)
+      get :index
+      expect(@controller.instance_variable_get(:@created_category).count).to eq(2)
+  end
   end
 end

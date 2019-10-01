@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require 'rails_helper'
 
 describe 'Gallery', type: :feature do

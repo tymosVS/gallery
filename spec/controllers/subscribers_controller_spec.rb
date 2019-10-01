@@ -1,3 +1,7 @@
+
+require "simplecov"
+SimpleCov.start
+
 require 'rails_helper'
 
 describe SubscribersController, type: :routing do
@@ -24,6 +28,16 @@ describe SubscribersController,  type: :controller do
     it 'should create new subscriptions' do
       sign_in user
       expect {post :create, params: {category_id: category.id }}.to change(Subscriber, :count).by(1)
+    end
+  end
+
+  context 'subscriptions #destroy' do
+    let(:user) { create(:user) }
+    let(:subscriber) { create(:subscriber) }
+
+    it 'should delete  subscriptions' do
+      sign_in user
+      expect {delete :destroy, params: {category_id: subscriber.category_id, id: subscriber.id}}.to change(Subscriber, :count).by(1)
     end
   end
 end

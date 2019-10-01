@@ -59,23 +59,24 @@
         %li{"data-slide-to" => "2", "data-target" => "#myCarousel1"}
         %li{"data-slide-to" => "3", "data-target" => "#myCarousel1"}
         %li{"data-slide-to" => "4", "data-target" => "#myCarousel1"}
-        %li{"data-slide-to" => "5", "data-target" => "#myCarousel1"}
       .carousel-inner.top-category-items
         - if @top_categories
-          - @top_categories.limit(5).each do |category|
-            .item
-              .popular-category
-                %h3= category.title.upcase
-                .home_images
-                  - @images[category].each do |img|
-                    .home_image
-                      =image_tag(img.image.medium_thumb.url)
+          - @top_categories.reverse_order.limit(4).each do |category|
+            - if category.images.count > 3
+              .item
+                .popular-category
+                  %h3= category.title.upcase
+                  .home_images
+                    - if @images[category]
+                      - @images[category].each do |img|
+                        .home_image
+                          =image_tag(img.image.medium_thumb.url)
         .item.active
           .popular-category
             - if @top_categories
-              %h3= @top_categories.last.title.upcase
+              %h3= @top_categories.first.title.upcase
               .home_images
-                - @images[@top_categories.last].each do |img|
+                - @images[@top_categories.first].each do |img|
                   .home_image
                     =image_tag(img.image.medium_thumb.url)
 

@@ -1,9 +1,12 @@
 # frozen_string_literal: true
+require "simplecov"
+SimpleCov.start
 
 require 'rails_helper'
 
 describe Comment, :type => :model do
-  let(:creator) { create(:creator) } 
+  let(:user) { create(:user) }
+  let(:creator) { create(:creator, user_id: user.id) } 
   subject { creator }
 
   context 'valid' do
@@ -30,6 +33,10 @@ describe Comment, :type => :model do
       expect(user.creators.
                   create(category_id: subject.category_id, 
                         user_id: subject.user_id)).to be_valid
+    end
+
+    it 'to_s should return user name' do 
+      expect(subject.to_s).to eq(user.name)
     end
   end
 end

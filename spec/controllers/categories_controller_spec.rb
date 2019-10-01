@@ -1,3 +1,6 @@
+require "simplecov"
+SimpleCov.start
+
 require 'rails_helper'
 
 describe CategoriesController, type: :routing do
@@ -13,11 +16,18 @@ describe CategoriesController, type: :routing do
 end
 
 describe CategoriesController,  type: :controller do
-  context 'GET #index' do 
+  context 'GET #index' do
+    let(:category) { create(:category) }
+
     it 'should success and render to index page' do
         get :index
         expect(response).to have_http_status(200)
         expect(response).to render_template :index
+    end
+
+    it 'assigns the category' do
+      get :index
+      expect(assigns(:categories)).to include(category)
     end
   end
 
