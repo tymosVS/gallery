@@ -1,10 +1,11 @@
 # frozen_string_literal: true
-require "simplecov"
+
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
 
-describe Category, :type => :model do
+describe Category, type: :model do
   let(:category) { create(:category) }
   subject { category }
 
@@ -51,6 +52,22 @@ describe Category, :type => :model do
       id = subject.id
       subject.destroy
       expect(Subscriber.where(category_id: id).count).to eq(0)
+    end
+  end
+
+  context 'links' do
+    it 'have many posts' do
+      5.times do
+        create(:post, category_id: category.id)
+      end
+      expect(Post.where(category_id: category.id).count).to eq(5)
+    end
+
+    it 'have many subscribers' do
+      5.times do
+        create(:subscriber, category_id: category.id)
+      end
+      expect(Subscriber.where(category_id: category.id).count).to eq(5)
     end
   end
 end

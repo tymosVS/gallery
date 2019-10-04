@@ -8,7 +8,6 @@ require 'rspec/rails'
 require 'devise'
 require 'capybara/rspec'
 
-
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 begin
@@ -32,15 +31,18 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
   config.formatter = :documentation
+  # config.formatter = :progress
+
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
-  Capybara.configure do |config|
+  Capybara.configure do |conf|
     # seconds
-    config.default_max_wait_time = 10 
-    config.default_driver = :selenium
+    conf.default_max_wait_time = 10
+    conf.default_driver = :selenium
+    # conf.default_driver = :selenium_chrome_headless
   end
 end

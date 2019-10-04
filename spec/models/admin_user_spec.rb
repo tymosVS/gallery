@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require "simplecov"
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
 
-describe User, :type => :model do
+describe User, type: :model do
   let(:admin_user) { create(:admin_user) }
   subject { admin_user }
 

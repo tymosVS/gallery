@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 
-require "simplecov"
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
@@ -9,12 +10,15 @@ describe Subscriber, type: :feature do
   context 'subscribes' do
     let(:user) { create(:user) }
     
-  #   scenario 'subscribe' do
-  #     create(:category)
-  #     sign_in user
-  #     visit categories_path
-  #     click_on 'desubscribe'
-  #   end
+    # scenario 'subscribe' do
+    #   create(:category)
+    #   sign_in user
+    #   visit categories_path
+    #   all('.glyphicon').first.click
+    #   visit categories_path
+
+    #   sleep(10)
+    # end
 
     scenario 'availability subscribe for loggined users' do
       create(:category)

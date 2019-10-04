@@ -1,31 +1,32 @@
 # frozen_string_literal: true
-require "simplecov"
+
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
 
-describe Image, :type => :model do
-  let(:image) { create(:image) } 
+describe Image, type: :model do
+  let(:image) { create(:image) }
   subject { image }
 
   context 'valid' do
-    it 'is valid with valid attributes' do 
+    it 'is valid with valid attributes' do
       expect(subject).to be_valid
     end
   end
 
   context 'not valid' do
-    it 'is not valid without a title' do 
+    it 'is not valid without a title' do
       subject.title = nil
       expect(subject).to_not be_valid
     end
 
-    it 'is not valid without a image' do 
+    it 'is not valid without a image' do
       subject.image = nil
       expect(subject).to_not be_valid
     end
 
-    it 'is not valid without a image & title' do 
+    it 'is not valid without a image & title' do
       subject.image = nil
       subject.title = nil
       expect(subject).to_not be_valid
@@ -67,6 +68,23 @@ describe Image, :type => :model do
       like_count = Fan.where(image_id: id).count
       comment_count = Comment.where(image_id: id).count
       expect(like_count + comment_count).to eq(0)
+    end
+  end
+
+  context 'links' do
+    it 'image have many comments' do
+      usr = create(:user)
+      5.times do
+        create(:comment, image_id: image.id, user_id: usr.id)
+      end
+      expect(Comment.where(image_id: image.id).count).to eq(5)
+    end
+
+    it 'image have many comments' do
+      5.times do
+        create(:fan, image_id: image.id)
+      end
+      expect(Fan.where(image_id: image.id).count).to eq(5)
     end
   end
 end

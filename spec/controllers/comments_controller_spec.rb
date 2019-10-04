@@ -1,4 +1,6 @@
-require "simplecov"
+# frozen_string_literal: true
+
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
@@ -20,7 +22,7 @@ describe CommentsController, type: :routing do
 end
 
 describe CommentsController,  type: :controller do
-  context 'GET #index' do 
+  context 'GET #index' do
     it 'should success and render index page' do
         get :index
         expect(response).to have_http_status(200)
@@ -28,10 +30,10 @@ describe CommentsController,  type: :controller do
     end
   end
 
-  context 'comment #create' do 
-    let(:user) { create(:user) } 
-    let(:image) { create(:image) } 
-    let(:comment) { build(:comment, user_id: user.id) } 
+  context 'comment #create' do
+    let(:user) { create(:user) }
+    let(:image) { create(:image) }
+    let(:comment) { build(:comment, user_id: user.id) }
 
     it 'should create new comment' do
       sign_in user

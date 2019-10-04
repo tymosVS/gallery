@@ -1,4 +1,6 @@
-require "simplecov"
+# frozen_string_literal: true
+
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
@@ -37,6 +39,9 @@ describe CategoriesController,  type: :controller do
     it 'should delete category' do
         expect { delete :destroy, params: { id: category.id } }.to change(Category, :count).by(-1)
     end
+
+    it 'should raise ArgumentError' do
+      expect { delete :destroy, { id: 100 } }.to raise_error(ArgumentError)
+    end
   end
 end
-

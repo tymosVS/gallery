@@ -1,26 +1,27 @@
 # frozen_string_literal: true
-require "simplecov"
+
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
 
-describe Fan, :type => :model do
-  let(:fan) { create(:fan) } 
+describe Fan, type: :model do
+  let(:fan) { create(:fan) }
   subject { fan }
 
   context 'valid' do
-    it 'is valid with valid attributes' do 
+    it 'is valid with valid attributes' do
       expect(subject).to be_valid
     end
   end
 
   context 'not valid' do
-    it 'not valid without a image' do 
+    it 'not valid without a image' do
       subject.image_id = nil
       expect(subject).to_not be_valid
     end
 
-    it 'not valid without a user' do 
+    it 'not valid without a user' do
       subject.user_id = nil
       expect(subject).to_not be_valid
     end
@@ -34,7 +35,7 @@ describe Fan, :type => :model do
 
     it 'fan string equal image title' do
       img = Image.find(subject.image_id)
-      expect(img.fans.create(image_id: subject.image_id, 
+      expect(img.fans.create(image_id: subject.image_id,
         user_id: subject.user_id)).to be_valid
     end
   end

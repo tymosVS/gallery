@@ -1,10 +1,11 @@
 # frozen_string_literal: true
-require "simplecov"
+
+require 'simplecov'
 SimpleCov.start
 
 require 'rails_helper'
 
-describe Post, :type => :model do
+describe Post, type: :model do
   let(:post) { create(:post) }
   subject { post }
 
