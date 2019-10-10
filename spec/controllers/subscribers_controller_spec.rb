@@ -29,7 +29,20 @@ describe SubscribersController,  type: :controller do
       sign_in user
       expect {post :create, params: {category_id: category.id }}.to change(Subscriber, :count).by(1)
     end
+
+    it 'should create only one subscriptions' do
+      sign_in user
+      expect {post :create, params: {category_id: category.id }}.to change(Subscriber, :count).by(1)
+      expect {post :create, params: {category_id: category.id }}.to change(Subscriber, :count).by(0)
+    end
+
+    it 'subscriptions not create if user log out' do
+      #must return no method eror because current_user == Nil
+      expect {post :create, params: {category_id: category.id }}.to raise_error(NoMethodError)
+    end
   end
+
+
 
   context 'subscriptions #destroy' do
     let(:user) { create(:user) }

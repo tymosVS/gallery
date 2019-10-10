@@ -18,9 +18,9 @@
     %li{:class => "nav-item#{" active" if I18n.locale == :ru}"}
       = link_to 'Рус', {locale: :ru}, class: 'nav-link'
     %li
-      = link_to t('home'),  root_path
+      = link_to t('home'),  root_path, id: 'home'
     %li
-      = link_to t('categories.title'),  categories_path, class:"down"
+      = link_to t('categories.title'),  categories_path, class:"down", id: 'categories'
       %ul.submenu
         - if @top_categories
           - @top_categories.limit(5).each do |top_categories|
@@ -35,15 +35,15 @@
         %span.glyphicon.glyphicon-user
       %ul.submenu
         - if current_user
+          %li
+            = link_to t('menu.profile'), profile_path, id: 'profile'
           %li 
-            = link_to t('menu.profile'), profile_path
-          %li 
-            = link_to t('menu.logout'), destroy_user_session_path, method: :delete
+            = link_to t('menu.logout'), destroy_user_session_path, method: :delete, id: 'logout'
         - else
           %li
-            = link_to t('menu.login'), new_user_session_path
+            = link_to t('menu.login'), new_user_session_path, id: 'login'
           %li 
-            = link_to t('menu.registration'), new_user_registration_path
+            = link_to t('menu.registration'), new_user_registration_path, id: 'registration'
 
 
   -# %nav.navbar.navbar-default{:role => "navigation"}

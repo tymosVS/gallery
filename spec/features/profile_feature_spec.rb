@@ -22,8 +22,8 @@ describe 'Profile', type: :feature do
 
   scenario 'Profile rerect to Sign in' do
     visit profile_path
-    fill_in "user[email]", with: user.email
-    fill_in "user[password]", with: user.password
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: user.password
     click_on 'sign_in'
     visit profile_path
     expect(page).to have_content(user.email)
@@ -34,8 +34,8 @@ describe 'Profile', type: :feature do
     visit categories_path
     expect(page).to have_content('Create category')
     click_on 'Create category'
-    fill_in "category[title]", with: 'catTitle'
-    fill_in "category[description]", with: 'description'
+    fill_in 'category[title]', with: 'catTitle'
+    fill_in 'category[description]', with: 'description'
     click_on 'Save Category'
     visit profile_path
     expect(page).to have_content('My categories')
@@ -45,8 +45,8 @@ describe 'Profile', type: :feature do
     sign_in user
     visit categories_path
     click_on 'Create category'
-    fill_in "category[title]", with: 'catTitle'
-    fill_in "category[description]", with: 'description'
+    fill_in 'category[title]', with: 'catTitle'
+    fill_in 'category[description]', with: 'description'
     click_on 'Save Category'
     visit profile_path
     click_on 'Destroy'

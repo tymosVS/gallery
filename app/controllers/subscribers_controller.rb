@@ -3,7 +3,9 @@ class SubscribersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    @category.subscribers.create(category_id: @category, user_id: current_user.id)
+    if !already_subscribed?
+      @category.subscribers.create(category_id: @category, user_id: current_user.id)
+    end
     redirect_back(fallback_location: root_path)
   end
 
@@ -14,6 +16,10 @@ class SubscribersController < ApplicationController
   end
 
   private
+
+  def already_subscribed?
+    Subscriber.where(user_id: current_user.id, category_id: params[:category_id]).exists?
+  end
 
   def find_components
     @category = Category.find(params[:category_id])

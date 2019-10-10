@@ -26,6 +26,7 @@ RSpec.configure do |config|
   end
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :helper
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
@@ -42,7 +43,7 @@ RSpec.configure do |config|
   Capybara.configure do |conf|
     # seconds
     conf.default_max_wait_time = 10
-    conf.default_driver = :selenium
-    # conf.default_driver = :selenium_chrome_headless
+    # conf.default_driver = :selenium
+    conf.default_driver = :selenium_chrome_headless
   end
 end

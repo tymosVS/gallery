@@ -38,4 +38,12 @@ describe Subscriber, type: :model do
       expect(subject.to_s).to eql(usr.name)
     end
   end
+
+  context 'dublikate' do
+    it 'not possible create 2 identic record' do
+      Subscriber.create(category_id: subject.category_id, user_id: subject.user_id)
+      Subscriber.create(category_id: subject.category_id, user_id: subject.user_id)
+      expect(Subscriber.count).to eql(1)
+    end
+  end
 end

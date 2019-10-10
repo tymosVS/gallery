@@ -9,7 +9,7 @@ describe Fan, type: :feature do
   
   context 'Likes' do
     let(:user) { create(:user) }
-    let(:category) {create(:category) }
+    let(:category) { create(:category) }
     let(:post) { create(:post, category_id: category.id)}
 
     scenario 'create like' do
@@ -32,7 +32,7 @@ describe Fan, type: :feature do
 
   context 'Likes dislike' do
     let(:user) { create(:user) }
-    let(:category) {create(:category) }
+    let(:category) { create(:category) }
     let(:post) { create(:post, category_id: category.id)}
 
     scenario 'destroy like' do

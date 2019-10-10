@@ -36,6 +36,17 @@ describe FansController,  type: :controller do
       sign_in user
       expect { post :create, params: { image_id: image.id  } }.to change(Fan, :count).by(1)
     end
+
+    it 'should not create like' do
+      #must return no method eror because current_user == Nil
+      expect { post :create, params: { image_id: image.id  } }.to raise_error(NoMethodError)
+    end
+
+    it 'should create only one like' do
+      sign_in user
+      expect { post :create, params: { image_id: image.id  } }.to change(Fan, :count).by(1)
+      expect { post :create, params: { image_id: image.id  } }.to change(Fan, :count).by(0)
+    end
   end
 
   context 'like if user log_out' do

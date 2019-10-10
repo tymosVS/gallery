@@ -16,7 +16,7 @@ describe Comment, type: :feature do
       sign_in user
       visit category_post_path(category.id, post.id)
       text = Faker::Lorem.sentence(word_count: 20)
-      fill_in "comment[body]", with: text
+      fill_in 'comment[body]', with: text
       click_on 'comment'
       expect(page).to have_content(text)
     end
