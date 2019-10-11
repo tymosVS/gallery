@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Admin::CategoriesController, type: :controller do
+describe Admin::CommentsController, type: :controller do
   let(:admin_user) { create(:admin_user) }
 
   it 'returns http success' do

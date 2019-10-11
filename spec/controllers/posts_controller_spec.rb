@@ -1,5 +1,4 @@
-require 'simplecov'
-SimpleCov.start
+# frozen_string_literal: true
 
 require 'rails_helper'
 

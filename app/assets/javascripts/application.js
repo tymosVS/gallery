@@ -21,5 +21,4 @@ $(document).on('turbolinks:load', function() {
     $('.topmenu').toggleClass('visible');
     $('.header_hidden').toggleClass('hiden_active');
   })
-  
 })

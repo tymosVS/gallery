@@ -76,8 +76,6 @@ gem "haml-rails", "~> 2.0"
 # dependency for haml
 gem "erubis", ">=2.7.0"
 
-gem "haml-rails", "~> 2.0"
-
 gem 'devise'
 
 gem 'friendly_id', '~> 5.2'
