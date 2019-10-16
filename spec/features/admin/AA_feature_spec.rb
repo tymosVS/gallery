@@ -79,4 +79,54 @@ describe Comment, type: :feature do
       expect(page).to_not have_content('table')
     end
   end
+
+  context 'click buttons in AA' do
+    let(:admin) { create(:admin_user) }
+
+    scenario 'user  create in AA' do
+      sign_in admin
+      visit admin_users_path
+      click_on 'New User'
+      fill_in 'user[name]', with: 'userName'
+      fill_in 'user[email]', with: 'user@user.com'
+      fill_in 'user[password]', with: '1598753'
+      click_on 'Create User'
+      expect(page).to have_content('user@user.com')
+      expect(page).to have_content('userName')
+    end
+
+    scenario 'user cancel create in AA' do
+      sign_in admin
+      visit admin_users_path
+      click_on 'New User'
+      fill_in 'user[name]', with: 'userName'
+      fill_in 'user[email]', with: 'user@user.com'
+      fill_in 'user[password]', with: '1598753'
+      click_on 'Cancel'
+      expect(page).to_not have_content('user@user.com')
+      expect(page).to_not have_content('userName')
+    end
+
+    scenario 'images info in AA' do
+      sign_in admin
+      visit admin_categories_path
+      click_on 'New Category'
+      fill_in 'category[title]', with: 'Title4'
+      fill_in 'category[description]', with: 'Some text'
+      click_on 'Create Category'
+      expect(page).to have_content('Title4')
+      expect(page).to have_content('Some text')
+    end
+
+    scenario 'images info in AA' do
+      sign_in admin
+      visit admin_categories_path
+      click_on 'New Category'
+      fill_in 'category[title]', with: 'Title4'
+      fill_in 'category[description]', with: 'Some text'
+      click_on 'Cancel'
+      expect(page).to_not have_content('Title4')
+      expect(page).to_not have_content('Some text')
+    end
+  end
 end
