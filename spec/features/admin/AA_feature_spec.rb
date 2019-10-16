@@ -128,5 +128,25 @@ describe Comment, type: :feature do
       expect(page).to_not have_content('Title4')
       expect(page).to_not have_content('Some text')
     end
+
+    scenario 'images info in AA' do
+      sign_in admin
+      visit admin_images_path
+      click_on 'New Image'
+      fill_in 'image[title]', with: 'TitleImg'
+      attach_file('image[image]', Rails.root.join('app', 'assets', 'images', 'default.jpeg'))
+      click_on 'Create Image'
+      expect(page).to have_content('TitleImg')
+    end
+
+    scenario 'images info in AA' do
+      sign_in admin
+      visit admin_images_path
+      click_on 'New Image'
+      fill_in 'image[title]', with: 'TitleImg'
+      attach_file('image[image]', Rails.root.join('app', 'assets', 'images', 'default.jpeg'))
+      click_on 'Cancel'
+      expect(page).to_not have_content('TitleImg')
+    end
   end
 end
