@@ -8,6 +8,6 @@ RSpec.describe WelcomeEmailJob, type: :job do
   let(:user) { create(:user) }
   it 'availability job methods' do
     ActiveJob::Base.queue_adapter = :test
-    WelcomeEmailJob.perform(user) 
+    WelcomeEmailJob.perform(user)
   end
 end

@@ -13,23 +13,11 @@ describe Comment, type: :feature do
       sign_in user
       visit category_posts_path(category.id)
       click_on 'Add image'
-      fill_in "image[title]", with: 'imageTitle'
+      fill_in 'image[title]', with: 'imageTitle'
       find('form input[type="file"]').set(Rails.root.join('spec/fixtures/images/default.jpg'))
       click_on 'Save Image'
       expect(page).to have_content('imageTitle'.capitalize)
     end
-
-    # scenario 'Create post in category' do
-    #   sign_in user
-    #   visit '/'
-    #   visit category_posts_path(category.id)
-    #   click_on 'Add image'
-    #   fill_in "image[title]", with: 'imageTitle'
-    #   # find('form input[type="file"]').set(Rails.root.join('spec/fixtures/images/default.jpg'))
-    #   page.attach_file('image[image]', Rails.root + 'spec/fixtures/images/default.jpg')
-    #   click_on 'Save Image'
-    #   expect(page).to have_content('imageTitle'.capitalize)
-    # end
   end
 
   context 'check content' do

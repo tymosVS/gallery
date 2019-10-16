@@ -6,8 +6,8 @@ describe Comment, type: :feature do
   
   context 'Comments' do
     let(:user) { create(:user) }
-    let(:category) {create(:category) }
-    let(:post) { create(:post, category_id: category.id)}
+    let(:category) { create(:category) }
+    let(:post) { create(:post, category_id: category.id) }
 
     scenario 'create comment' do
       sign_in user

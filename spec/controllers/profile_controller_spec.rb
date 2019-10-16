@@ -50,6 +50,6 @@ describe ProfileController,  type: :controller do
       create(:creator, user_id: user.id)
       get :index
       expect(@controller.instance_variable_get(:@created_category).count).to eq(2)
-  end
+    end
   end
 end

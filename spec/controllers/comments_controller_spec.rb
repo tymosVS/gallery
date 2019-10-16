@@ -31,7 +31,6 @@ describe CommentsController,  type: :controller do
     let(:user) { create(:user) }
     let(:image) { create(:image) }
     let(:comment) { build(:comment, user_id: user.id) }
-
     it 'should create new comment' do
       sign_in user
       expect { post :create, params:  { comment: { body: comment.body, user_id: user.id },

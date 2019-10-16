@@ -13,14 +13,13 @@ describe Comment, type: :feature do
       comment = create(:comment)
       visit admin_user_comments_path
       expect(page).to have_content(comment.body)
-      # sleep(100)
       expect(page).to have_content(comment.user.name)
-      select comment.user.name, :from => 'q[user_id_eq]'
+      select comment.user.name, from: 'q[user_id_eq]'
       click_on 'Filter'
       expect(page).to have_content(comment.body)
       user = create(:user)
       visit admin_user_comments_path
-      select user.name, :from => 'q[user_id_eq]'
+      select user.name, from: 'q[user_id_eq]'
       click_on 'Filter'
       expect(page).to_not have_content(comment.body)
     end
@@ -39,14 +38,14 @@ describe Comment, type: :feature do
       fan = create(:fan)
       category = create(:category, title: 'qweewq')
       visit admin_images_path
-      select post.category.title, :from => 'q[containing_category_in]'
+      select post.category.title, from: 'q[containing_category_in]'
       click_on 'Filter'
       expect(page).to have_content(post.image.title)
-      select category.title, :from => 'q[containing_category_in]'
+      select category.title, from: 'q[containing_category_in]'
       click_on 'Filter'
       expect(page).to_not have_content(post.image.title)
-      select fan.user.name, :from => 'q[fans_id_eq]'
-      select 'Any', :from => 'q[containing_category_in]'
+      select fan.user.name, from: 'q[fans_id_eq]'
+      select 'Any', from: 'q[containing_category_in]'
       click_on 'Filter'
       expect(page).to have_content(fan.image.title)
     end
@@ -65,18 +64,17 @@ describe Comment, type: :feature do
       category = create(:category, title: 'qweewq')
 
       visit admin_posts_path
-    
 
       expect(page).to have_content(post.category.title)
       expect(page).to have_content(post.image.title)
 
-      select post.category.title, :from => 'q[category_id_eq]'
+      select post.category.title, from: 'q[category_id_eq]'
       click_on 'Filter'
 
       expect(page).to have_content(post.category.title)
       expect(page).to have_content(post.image.title)
 
-      select category.title, :from => 'q[category_id_eq]'
+      select category.title, from: 'q[category_id_eq]'
       click_on 'Filter'
       expect(page).to_not have_content('table')
     end

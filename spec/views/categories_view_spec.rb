@@ -6,7 +6,6 @@ SimpleCov.start
 require 'rails_helper'
 
 describe 'categories/index', type: :view do
-  
   it 'categories' do
     category = create(:category)
     @categories = Category.all.page params[:page]
@@ -15,7 +14,7 @@ describe 'categories/index', type: :view do
     @category_owners = {}
     @category_owners[category] = false
 
-    render :template => 'categories/index'
+    render template: 'categories/index'
 
     expect(rendered).to match 'h1'
     expect(rendered).to match 'container'

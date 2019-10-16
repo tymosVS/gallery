@@ -25,9 +25,9 @@ describe ImagesController,  type: :controller do
   end
 
   context 'GET #show' do 
-    let(:image) {create(:image)}
+    let(:image) { create(:image) }
     it 'should success and render to show page' do
-        get :show, params: {id: image.id}
+        get :show, params: { id: image.id }
         expect(response).to have_http_status(200)
         expect(response).to render_template :show
     end

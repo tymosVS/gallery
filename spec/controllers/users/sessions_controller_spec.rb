@@ -1,6 +1,3 @@
-require "simplecov"
-SimpleCov.start
-
 require 'rails_helper'
 
 describe Users::SessionsController, type: :routing do
@@ -19,9 +16,9 @@ describe Users::SessionsController, type: :routing do
   end
 end
 
-describe Users::SessionsController,  type: :controller do
-  let(:user) { create(:user)}
-  it "signs user in and out" do    
+describe Users::SessionsController, type: :controller do
+  let(:user) { create(:user) }
+  it 'signs user in and out' do
     sign_in user
     # get authenticated_root_path
     expect(controller.current_user).to eq(user)

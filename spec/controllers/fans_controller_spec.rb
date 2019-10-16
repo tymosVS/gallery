@@ -35,7 +35,7 @@ describe FansController,  type: :controller do
     end
 
     it 'should not create like' do
-      #must return no method eror because current_user == Nil
+      # must return no method eror because current_user == Nil
       expect { post :create, params: { image_id: image.id  } }.to raise_error(NoMethodError)
     end
 

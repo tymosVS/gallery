@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe Subscriber, type: :feature do
-
   context 'subscribes' do
     let(:user) { create(:user) }
 
