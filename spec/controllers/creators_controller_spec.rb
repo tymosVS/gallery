@@ -18,7 +18,6 @@ describe CreatorsController,  type: :controller do
   context 'creator #create' do
     let(:user) { create(:user) }
     let(:category) { build(:category) }
-
     it 'should create new category' do
       sign_in user
       expect { post :create, params:

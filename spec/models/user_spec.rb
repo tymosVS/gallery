@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-SimpleCov.start
-
 require 'rails_helper'
 
 describe User, type: :model do
