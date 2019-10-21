@@ -12,13 +12,12 @@ class Subscriber < ApplicationRecord
   def to_s
     user.name
   end
-  
+
   private
 
   def send_subscribed_email
     unless Rails.env.test?
       Resque.enqueue(SubscribedEmailJob, user, category)
     end
-    # UserMailer.subscribed_email(user, category).deliver 
   end
 end

@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 describe Comment, type: :model do
-  let(:comment) { create(:comment) }
-  subject { comment }
+  subject { create(:comment) }
 
   context 'valid' do
     it 'is valid with valid attributes' do
@@ -32,10 +31,11 @@ describe Comment, type: :model do
   context 'links' do
     it 'link with user' do
       user = User.find(subject.user_id)
-      expect(user.comments.
-                  create(image_id: subject.image_id,
-                        user_id: subject.user_id,
-                        body: Faker::Lorem.sentence(word_count: 15))).to be_valid
+      expect(user.comments.create(
+                                  image_id: subject.image_id,
+                                  user_id: subject.user_id,
+                                  body: Faker::Lorem.sentence(word_count: 15)
+                                  )).to be_valid
     end
 
     it 'link with category' do

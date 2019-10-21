@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 describe Category, type: :model do
-  let(:category) { create(:category) }
-  subject { category }
+  subject { create(:category) }
 
   context 'valid' do
     it 'is valid with valid attributes' do
@@ -13,7 +12,7 @@ describe Category, type: :model do
 
     it 'is valid without a description' do
       subject.description = nil
-      expect(category).to be_valid
+      expect(subject).to be_valid
     end
   end
 
@@ -21,12 +20,12 @@ describe Category, type: :model do
     it 'is not valid without a title && description' do
       subject.title = nil
       subject.description = nil
-      expect(category).to_not be_valid
+      expect(subject).to_not be_valid
     end
 
     it 'is not valid without a title' do
       subject.title = nil
-      expect(category).to_not be_valid
+      expect(subject).to_not be_valid
     end
   end
 
@@ -55,16 +54,16 @@ describe Category, type: :model do
   context 'links' do
     it 'have many posts' do
       5.times do
-        create(:post, category_id: category.id)
+        create(:post, category_id: subject.id)
       end
-      expect(Post.where(category_id: category.id).count).to eq(5)
+      expect(Post.where(category_id: subject.id).count).to eq(5)
     end
 
     it 'have many subscribers' do
       5.times do
-        create(:subscriber, category_id: category.id)
+        create(:subscriber, category_id: subject.id)
       end
-      expect(Subscriber.where(category_id: category.id).count).to eq(5)
+      expect(Subscriber.where(category_id: subject.id).count).to eq(5)
     end
   end
 end

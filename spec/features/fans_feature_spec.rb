@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe Fan, type: :feature do
-  
+
   context 'Likes' do
     let(:user) { create(:user) }
     let(:category) { create(:category) }

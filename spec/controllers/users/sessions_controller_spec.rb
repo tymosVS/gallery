@@ -22,7 +22,6 @@ describe Users::SessionsController, type: :controller do
     sign_in user
     # get authenticated_root_path
     expect(controller.current_user).to eq(user)
-    
     sign_out user
     # get authenticated_root_path
     expect(controller.current_user).to be_nil

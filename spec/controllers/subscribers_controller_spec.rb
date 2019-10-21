@@ -48,7 +48,8 @@ describe SubscribersController, type: :controller do
 
     it 'should delete  subscriptions' do
       sign_in user
-      expect { delete :destroy, params: { category_id: subscriber.category_id, id: subscriber.id } }.to change(Subscriber, :count).by(1)
+      expect { delete :destroy, params: { category_id: subscriber.category_id,
+                                        id: subscriber.id } }.to change(Subscriber, :count).by(1)
     end
   end
 end

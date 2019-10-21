@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe Comment, type: :feature do
-  
+
   context 'create post' do
     let(:user) { create(:user) }
     let(:category) { create(:category) }

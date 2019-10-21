@@ -4,8 +4,7 @@ require 'rails_helper'
 
 describe Comment, type: :model do
   let(:user) { create(:user) }
-  let(:creator) { create(:creator, user_id: user.id) }
-  subject { creator }
+  subject { create(:creator, user_id: user.id) }
 
   context 'valid' do
     it 'is valid with valid attributes' do

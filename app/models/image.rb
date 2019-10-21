@@ -7,7 +7,7 @@ class Image < ApplicationRecord
   has_many :fans, dependent: :destroy
   
   ransacker :containing_category,
-            formatter: ->(v) {ids = Post.where(category_id: v).pluck(:image_id);
+            formatter: ->(v) { ids = Post.where(category_id: v).pluck(:image_id);
                               ids.present? ? ids : nil
                               } do |image|
     image.table[:id]
