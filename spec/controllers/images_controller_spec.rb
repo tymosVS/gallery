@@ -14,9 +14,9 @@ describe ImagesController, type: :routing do
   end
 end
 
-describe ImagesController,  type: :controller do
+describe ImagesController, type: :controller do
 
-  context 'GET #index' do 
+  context 'GET #index' do
     it 'should success and render to index page' do
       get :index
       expect(response).to have_http_status(200)
@@ -24,7 +24,7 @@ describe ImagesController,  type: :controller do
     end
   end
 
-  context 'GET #show' do 
+  context 'GET #show' do
     let(:image) { create(:image) }
     it 'should success and render to show page' do
       get :show, params: { id: image.id }

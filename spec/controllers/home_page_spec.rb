@@ -19,7 +19,7 @@ describe HomePagesController,  type: :controller do
     end
   end
 
-  context '#index conteins' do 
+  context '#index conteins' do
     let(:category) { create(:category) }
     let(:user) { create(:user) }
     let (:post) { create(:post, category_id: category.id) }
