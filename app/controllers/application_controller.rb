@@ -32,9 +32,9 @@ class ApplicationController < ActionController::Base
   end
 
   def tracking
-    UserAction.new( :user_id=>current_user.id, 
-      :action=>'navigation', 
-      :action_path=>request.original_url).save if user_signed_in?
+    UserAction.new( user_id: current_user.id, 
+      action: 'navigation', 
+      action_path: request.original_url).save if user_signed_in?
   end
 
   def configure_permitted_parameters

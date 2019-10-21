@@ -16,8 +16,8 @@ class CategoriesController < ApplicationController
       @categories.each do |category|
         @pre_sub[category] = category.subscribers.find { |fan| fan.user_id == current_user.id} if user_signed_in?
         @category_images[category] = category.images.first if category.images.size > 0
-        if Creator.exists?(:category_id=>category.id) && user_signed_in?
-          creator = Creator.where(:category_id=>category.id).first
+        if Creator.exists?(category_id: category.id) && user_signed_in?
+          creator = Creator.where(category_id: category.id).first
           @category_owners[category] = creator.user_id == current_user.id
         else
           @category_owners[category] = false

@@ -2,7 +2,7 @@ ActiveAdmin.register ImageParser do
   permit_params :site_path, :id, :image_url
 
   batch_action :import do |selection|
-    current_category = Category.where(title: "Non_categorizated").first
+    current_category = Category.where(title: 'Non_categorizated').first
     unless current_category
       current_category = Category.new(title: 'Non_categorizated', 
                                       description: 'Images no category') 
@@ -14,7 +14,7 @@ ActiveAdmin.register ImageParser do
       filename = Pathname.new(normalized.to_s).basename
       img = Image.new(title: filename, remote_image_url: image_parser.image_url)
       img.save
-      current_category.posts.create(:category=>current_category, :image=>img)
+      current_category.posts.create(category: current_category, image: img)
       image_parser.destroy
     end
     redirect_to admin_image_parsers_path 
@@ -31,7 +31,7 @@ ActiveAdmin.register ImageParser do
 
     def create
       flash[:notice] = 'Team created successfully'
-      url = params["image_parser"]["site_path"]
+      url = params['image_parser']['site_path']
       base = URI.parse(url.to_s)
       html = open(url)
       doc = Nokogiri::HTML(html)

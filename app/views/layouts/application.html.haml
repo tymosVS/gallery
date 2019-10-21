@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Gallery
     = csrf_meta_tags
     = csp_meta_tag
@@ -13,14 +13,14 @@
     %span
   %nav
   %ul.topmenu
-    %li{:class => "nav-item#{" active" if I18n.locale == :en}"}
+    %li{ class: "nav-item#{" active" if I18n.locale == :en}" }
       = link_to 'En', {locale: :en}, class: 'nav-link'
-    %li{:class => "nav-item#{" active" if I18n.locale == :ru}"}
+    %li{ class: "nav-item#{" active" if I18n.locale == :ru}" }
       = link_to 'Рус', {locale: :ru}, class: 'nav-link'
     %li
       = link_to t('home'),  root_path, id: 'home'
     %li
-      = link_to t('categories.title'),  categories_path, class:"down", id: 'categories'
+      = link_to t('categories.title'),  categories_path, class: 'down', id: 'categories'
       %ul.submenu
         - if @top_categories
           - @top_categories.limit(5).each do |top_categories|
@@ -31,7 +31,7 @@
     %li
       = link_to t('comments.title'), comments_path
     %li
-      %a{href: "", class:"down"} 
+      %a{ href: '', class: 'down' } 
         %span.glyphicon.glyphicon-user
       %ul.submenu
         - if current_user
@@ -46,7 +46,7 @@
             = link_to t('menu.registration'), new_user_registration_path, id: 'registration'
 
   - flash.each do |key, value|
-    %div{:class => "alert alert-#{key} alert-dismissable"}
+    %div{ class: "alert alert-#{key} alert-dismissable" }
       = value
   / this is code we will cut out
   -# .container

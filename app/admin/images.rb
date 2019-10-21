@@ -6,7 +6,7 @@ ActiveAdmin.register Image do
     column :id
     column :title
     column :image do |image|
-      link_to(image_tag(image.image.small_thumb.url, alt: "Some image", title: image.title), 
+      link_to(image_tag(image.image.small_thumb.url, alt: 'Some image', title: image.title), 
       admin_image_path(image)) unless image[:image].nil?
     end
     column :created_at
