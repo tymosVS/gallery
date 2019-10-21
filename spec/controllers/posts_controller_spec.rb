@@ -22,13 +22,13 @@ describe PostsController, type: :routing do
   end
 end
 
-describe PostsController,  type: :controller do
+describe PostsController, type: :controller do
   context 'posts #index' do 
-    let(:category) {create(:category)}
+    let(:category) { create(:category) }
     it 'should success and render to index page' do
-        get :index, params: { category_id: category.id }
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :index
+      get :index, params: { category_id: category.id }
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :index
     end
   end
 
@@ -37,9 +37,9 @@ describe PostsController,  type: :controller do
     let(:post) { create(:post, category_id: category.id) }
 
     it 'should success and render to show page' do
-        get :show, params: { category_id: category.id, id: post.id }
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :show
+      get :show, params: { category_id: category.id, id: post.id }
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :show
     end
   end
 
@@ -48,9 +48,9 @@ describe PostsController,  type: :controller do
     let(:post) { create(:post, category_id: category.id) }
 
     it 'should success and render to show page' do
-        get :show, params: { category_id: category.id, id: post.id }
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :show
+      get :show, params: { category_id: category.id, id: post.id }
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :show
     end
   end
 

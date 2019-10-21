@@ -14,14 +14,14 @@ describe CategoriesController, type: :routing do
   end
 end
 
-describe CategoriesController,  type: :controller do
+describe CategoriesController, type: :controller do
   context 'GET #index' do
     let(:category) { create(:category) }
 
     it 'should success and render to index page' do
-        get :index
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :index
+      get :index
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :index
     end
 
     it 'assigns the category' do
@@ -34,7 +34,7 @@ describe CategoriesController,  type: :controller do
     let!(:category) { create :category }
 
     it 'should delete category' do
-        expect { delete :destroy, params: { id: category.id } }.to change(Category, :count).by(-1)
+      expect { delete :destroy, params: { id: category.id } }.to change(Category, :count).by(-1)
     end
 
     it 'should raise ArgumentError' do

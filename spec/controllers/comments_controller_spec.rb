@@ -18,12 +18,12 @@ describe CommentsController, type: :routing do
   end
 end
 
-describe CommentsController,  type: :controller do
+describe CommentsController, type: :controller do
   context 'GET #index' do
     it 'should success and render index page' do
-        get :index
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :index
+      get :index
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :index
     end
   end
 
