@@ -44,7 +44,7 @@ describe PostsController,  type: :controller do
   end
 
   context 'posts #show' do
-    let(:category) {create(:category)}
+    let(:category) { create(:category) }
     let(:post) { create(:post, category_id: category.id) }
 
     it 'should success and render to show page' do
@@ -59,8 +59,6 @@ describe PostsController,  type: :controller do
     let(:image) { create(:image) }
 
     it 'should create new post' do
-      # sign_in user
-      
       expect { post :create, params:  { image: { image: image.image, title: image.title },
                                         category_id: category.id } }.to change(Image, :count).by(1)
     end

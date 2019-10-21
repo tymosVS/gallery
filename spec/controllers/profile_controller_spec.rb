@@ -11,7 +11,7 @@ describe ProfileController, type: :routing do
 end
 
 describe ProfileController,  type: :controller do
-  context 'profile #index' do 
+  context 'profile #index' do
     let(:user) { create(:user) }
 
     it 'should success and render to index page' do
