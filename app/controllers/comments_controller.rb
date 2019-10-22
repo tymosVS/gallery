@@ -19,8 +19,6 @@ class CommentsController < ApplicationController
     end
 
     def trak_action
-      UserAction.new(user_id: current_user.id, 
-        action: 'comments', 
-        action_path: request.original_url).save
+      UserAction.new(user_id: current_user.id, action: 'comments', action_path: request.original_url).save
     end
 end

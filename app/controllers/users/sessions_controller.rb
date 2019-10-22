@@ -19,9 +19,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     user_id = current_user.id
     super
-    UserAction.new(user_id: user_id,
-      action: 'user sign out',
-      action_path: 'nil').save
+    UserAction.new(user_id: user_id, action: 'user sign out', action_path: 'nil').save
   end
 
   private

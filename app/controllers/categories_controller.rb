@@ -6,8 +6,7 @@ class CategoriesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @categories = Category.where.not(title: "Non_categorizated", 
-                                    description: 'Images no category').order(:title).page params[:page]
+    @categories = Category.where.not(title: 'Non_categorizated').order(:title).page params[:page]
     @category_images = {}
 
     @category_owners = {}

@@ -24,15 +24,14 @@ class ApplicationController < ActionController::Base
                         'categories.slug,'\
                         'categories.posts_count + sum(images.comments_count) '\
                         '+sum(images.fans_count) as total').
-                        group('categories.id').where("categories.posts_count > 0").
+                        group('categories.id').where('categories.posts_count > 0').
                         where.not(title: "Non_categorizated", 
-                        description: 'Images no category').
-                        order('total DESC').limit(6)
+                        description: 'Images no category').order('total DESC').limit(6)
     end
   end
 
   def tracking
-    UserAction.new( user_id: current_user.id, 
+    UserAction.new(user_id: current_user.id, 
       action: 'navigation', 
       action_path: request.original_url).save if user_signed_in?
   end

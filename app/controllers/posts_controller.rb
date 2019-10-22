@@ -17,9 +17,9 @@ class PostsController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @posts = @category.posts.order("created_at DESC").page(params[:page])
+    @posts = @category.posts.order('created_at DESC').page(params[:page])
     @images = Image.order(:title).page params[:page]
-    @images = {}  
+    @images = {}
     @states = {}
     @posts.each do |post|
       if post

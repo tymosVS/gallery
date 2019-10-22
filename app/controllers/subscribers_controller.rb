@@ -11,7 +11,7 @@ class SubscribersController < ApplicationController
 
   def destroy
     @subscriber = Subscriber.where(category_id: @category, user_id: current_user.id)
-    @subscriber.destroy_all()
+    @subscriber.destroy_all
     redirect_back(fallback_location: root_path)
   end
 
