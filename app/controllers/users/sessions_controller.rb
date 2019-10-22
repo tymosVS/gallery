@@ -48,9 +48,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     resource.update cached_failed_attempts: 0, failed_attempts: 0
-    UserAction.new(user_id: current_user.id,
-      action: 'user sign in',
-      action_path: 'nil').save
+    UserAction.new(user_id: current_user.id, action: 'user sign in', action_path: 'nil').save
     stored_location_for(@user) || categories_path
   end
 end

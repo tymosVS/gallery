@@ -3,5 +3,5 @@
     %h2= link_to image.title.capitalize, image_path(image)
     = link_to image_path(image) do
       .image
-        = image_tag(image.image.medium_thumb.url, 
+        = image_tag(image.image.medium_thumb.url,
         alt: 'Image', class: 'img-fluid img-thumbnail ')

@@ -22,8 +22,8 @@ class FansController < ApplicationController
 
   def trackind(type_action) 
     action_path = request.original_url[0...request.original_url.index('/fans')]
-    UserAction.new(user_id: current_user.id, 
-      action: type_action, 
+    UserAction.new(user_id: current_user.id,
+      action: type_action,
       action_path: action_path).save
   end
 

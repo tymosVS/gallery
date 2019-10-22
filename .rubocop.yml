@@ -4,6 +4,9 @@ Rails:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/ClassAndModuleChildren: 
+  EnforcedStyle: compact
+
 Metrics/LineLength:
   Max: 120
 

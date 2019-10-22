@@ -2,11 +2,11 @@ ActiveAdmin.register Image do
   permit_params :id, :image, :title
 
   index do
-    selectable_column 
+    selectable_column
     column :id
     column :title
     column :image do |image|
-      link_to(image_tag(image.image.small_thumb.url, alt: 'Some image', title: image.title), 
+      link_to(image_tag(image.image.small_thumb.url, alt: 'Some image', title: image.title),
       admin_image_path(image)) unless image[:image].nil?
     end
     column :created_at
@@ -25,8 +25,8 @@ ActiveAdmin.register Image do
 
   filter :fans
   filter :created_at
-  filter :containing_category_in, 
-    as: :select, 
+  filter :containing_category_in,
+    as: :select,
     label: 'Category',
     collection: Category.all
 

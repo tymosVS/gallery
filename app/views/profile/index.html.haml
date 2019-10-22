@@ -16,7 +16,7 @@
             = current_user.name.capitalize
           %p
             = link_to t('users.edit'), edit_user_registration_path
-      - if @created_category.size > 0
+      - if !@created_category.empty?
         .profile-owned-category
           %h2= t('users.created_category')
           .profile-creations
@@ -35,7 +35,7 @@
                   = link_to t('delete').capitalize, category_path(created[:category]),
                     method: :delete,
                     data: { confirm: t('sure') }
-      - if @subscribed_category.size > 0
+      - if !@subscribed_category.empty?
         .profile-subscribed-category
           %h2= t('users.subscribed_category')
           .profile-subscribes
@@ -44,5 +44,5 @@
                 %span
                   = subscr[:category].title.capitalize
                 = link_to image_tag("default.jpeg", alt: 'Image'), category_posts_path(subscr[:category].id) if !subscr[:image]
-                = link_to image_tag(subscr[:image].small_thumb.url, alt: 'Image'), 
+                = link_to image_tag(subscr[:image].small_thumb.url, alt: 'Image'),
                 category_posts_path(subscr[:category].id) if subscr[:image]

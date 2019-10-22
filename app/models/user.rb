@@ -25,17 +25,18 @@ class User < ApplicationRecord
                   email: access_token.extra.raw_info.email,
                   confirmed_at: Time.now,
                   avatar: access_token.extra.raw_info.avatar,
-                  password: Devise.friendly_token[0, 20])
+                  password: Devise.friendly_token[0, 20]
+                )
     end
   end
-  devise :database_authenticatable,
-        :registerable,
-        :recoverable,
-        :rememberable,
-        :trackable,
-        :validatable,
-        :omniauthable,
-        :confirmable
+  devise  :database_authenticatable,
+          :registerable,
+          :recoverable,
+          :rememberable,
+          :trackable,
+          :validatable,
+          :omniauthable,
+          :confirmable
 
   private
 

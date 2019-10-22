@@ -1,7 +1,7 @@
 ActiveAdmin.register UserAction,as: 'UserActions' do
   filter :action
   filter :user,
-    as: :select, 
+    as: :select,
     label: 'User email',
     collection: User.all.pluck(:email)
 

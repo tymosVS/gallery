@@ -25,19 +25,19 @@ class ApplicationController < ActionController::Base
                         'categories.posts_count + sum(images.comments_count) '\
                         '+sum(images.fans_count) as total').
                         group('categories.id').where('categories.posts_count > 0').
-                        where.not(title: "Non_categorizated", 
+                        where.not(title: "Non_categorizated",
                         description: 'Images no category').order('total DESC').limit(6)
     end
   end
 
   def tracking
-    UserAction.new(user_id: current_user.id, 
-      action: 'navigation', 
+    UserAction.new(user_id: current_user.id,
+      action: 'navigation',
       action_path: request.original_url).save if user_signed_in?
   end
 
   def configure_permitted_parameters
-    added_attrs = [:name, :avatar]
+    added_attrs = %i[name avatar]
     devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
     devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
   end

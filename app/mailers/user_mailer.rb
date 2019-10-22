@@ -20,7 +20,7 @@ class UserMailer < ApplicationMailer
     @category.subscribers.each do |cat|
       @users_mail << User.find(cat.user_id).email
     end
-    if @users_mail.size > 0
+    if !@users_mail.empty?
       mail(to: @users_mail, subject: 'New image in subscribed category')     
     end
   end
