@@ -33,6 +33,11 @@ describe Comment, type: :model do
   end
 
   context 'links' do
+
+    %i[image user].each do |association|
+      it { is_expected.to belong_to(association) }
+    end
+
     it 'link with user' do
       user = User.find(subject.user_id)
       comment = user.comments.create(

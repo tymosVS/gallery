@@ -29,6 +29,11 @@ describe Subscriber, type: :model do
   end
 
   context 'links' do
+
+    %i[user category].each do |association|
+      it { is_expected.to belong_to(association) }
+    end
+
     it 'check link to with categories' do
       category = Category.find(subject.category_id)
       expect(category.subscribers.create(user_id: create(:user).id, category_id: subject.category_id)).to be_valid

@@ -29,6 +29,11 @@ describe Comment, type: :model do
   end
 
   context 'links' do
+
+    %i[category user].each do |association|
+      it { is_expected.to belong_to(association) }
+    end
+
     it 'link with user' do
       user = User.find(subject.user_id)
       creator = user.creators.create(category_id: subject.category_id, user_id: subject.user_id)

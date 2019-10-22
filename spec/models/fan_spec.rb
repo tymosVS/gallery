@@ -28,6 +28,10 @@ describe Fan, type: :model do
   end
 
   context 'links' do
+    %i[image user].each do |association|
+      it { is_expected.to belong_to(association) }
+    end
+
     it 'fan string equal user name' do
       usr = User.find(subject.user_id)
       expect(subject.to_s).to eql(usr.name)

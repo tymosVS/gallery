@@ -73,19 +73,16 @@ describe Image, type: :model do
   end
 
   context 'links' do
-    it 'image have many comments' do
-      usr = create(:user)
-      5.times do
-        create(:comment, image_id: image.id, user_id: usr.id)
+    context 'has_one' do
+      %i[post].each do |association|
+        it { is_expected.to have_one(association) }
       end
-      expect(Comment.where(image_id: image.id).count).to eq(5)
     end
 
-    it 'image have many comments' do
-      5.times do
-        create(:fan, image_id: image.id)
+    context 'has_many' do
+      %i[comments fans].each do |association|
+        it { is_expected.to have_many(association) }
       end
-      expect(Fan.where(image_id: image.id).count).to eq(5)
     end
   end
 end

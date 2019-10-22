@@ -35,4 +35,10 @@ describe Subscriber, type: :model do
       expect(UserAction.where(user_id: id).count).to eq(0)
     end
   end
+
+  context 'links' do
+    %i[user].each do |association|
+      it { is_expected.to belong_to(association) }
+    end
+  end
 end

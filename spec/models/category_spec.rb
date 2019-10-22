@@ -56,18 +56,12 @@ describe Category, type: :model do
   end
 
   context 'links' do
-    it 'have many posts' do
-      5.times do
-        create(:post, category_id: subject.id)
-      end
-      expect(Post.where(category_id: subject.id).count).to eq(5)
+    %i[creator].each do |association|
+      it { is_expected.to have_one(association) }
     end
 
-    it 'have many subscribers' do
-      5.times do
-        create(:subscriber, category_id: subject.id)
-      end
-      expect(Subscriber.where(category_id: subject.id).count).to eq(5)
+    %i[posts subscribers].each do |association|
+      it { is_expected.to have_many(association) }
     end
   end
 end
