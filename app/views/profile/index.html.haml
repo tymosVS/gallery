@@ -5,7 +5,7 @@
       .user-information
         .avatar
           - if current_user.avatar?
-            = image_tag(current_user.avatar.small_thumb.url, alt: 'Avatar') 
+            = image_tag(current_user.avatar.small_thumb.url, alt: 'Avatar')
           - else
             = image_tag("def_ava.png", alt: 'Avatar')
         .user-date

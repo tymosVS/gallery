@@ -16,12 +16,12 @@ class ProfileController < ApplicationController
     @created_category = []
     folow_category.each do |category|
       category = Category.find(category.category_id)
-      image =  category.images.first.image if !category.images.empty?
+      image =  category.images.first.image unless category.images.empty?
       @subscribed_category << { category: category, image: image }
     end
     category_creat.each do |category|
       category = Category.find(category.category_id)
-      image =  category.images.first.image if !category.images.empty?
+      image =  category.images.first.image unless category.images.empty?
       image_count = category.posts_count
       @created_category << { category: category, image: image, img_count: image_count }
     end

@@ -18,6 +18,6 @@ class Post < ApplicationRecord
   private
 
   def new_image_in_subscribes_email
-      Resque.enqueue(NewImageSubscribedEmailJob, category) unless Rails.env.test?
+    Resque.enqueue(NewImageSubscribedEmailJob, category) unless Rails.env.test?
   end
 end

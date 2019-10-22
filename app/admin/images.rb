@@ -14,7 +14,6 @@ ActiveAdmin.register Image do
   end
 
   index as: :grid, default: true do |image|
-    
     div do
       link_to image_tag(image.image.small_thumb.url), admin_image_path(image)
     end

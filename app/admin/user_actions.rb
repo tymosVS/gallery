@@ -1,4 +1,4 @@
-ActiveAdmin.register UserAction,as: 'UserActions' do
+ActiveAdmin.register UserAction, as: 'UserActions' do
   filter :action
   filter :user,
     as: :select,

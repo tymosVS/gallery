@@ -54,7 +54,7 @@ ActiveAdmin.register ImageParser do
       selectable_column
       column :id
       column :image_url do |image|
-        img(src:image.image_url)
+        img(src: image.image_url)
       end
       column :site_path
       actions

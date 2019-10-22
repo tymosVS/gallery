@@ -3,9 +3,7 @@ class SubscribersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    if !already_subscribed?
-      @category.subscribers.create(category_id: @category, user_id: current_user.id)
-    end
+    @category.subscribers.create(category_id: @category, user_id: current_user.id) unless already_subscribed?
     redirect_back(fallback_location: root_path)
   end
 

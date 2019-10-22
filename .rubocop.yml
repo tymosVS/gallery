@@ -4,7 +4,7 @@ Rails:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/ClassAndModuleChildren: 
+Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 
 Metrics/LineLength:
@@ -20,5 +20,5 @@ AllCops:
   Exclude:
     - config/initializers/secret_token.rb
     - spec/rails_helper.rb
-    - db/
+    - 'db/**/*'
     - lib/

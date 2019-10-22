@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def new
     @post = Post.new
   end
@@ -22,7 +21,7 @@ class PostsController < ApplicationController
     @images = {}
     @states = {}
     @posts.each do |post|
-        @images[post] = post.image if post
+      @images[post] = post.image if post
     end
   end
 

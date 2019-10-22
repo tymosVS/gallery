@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   before_action :top_category
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :tracking, only: [:index, :show] 
+  before_action :tracking, only: %i[index show]
   before_action :set_locale
 
   def default_url_options
@@ -18,22 +18,22 @@ class ApplicationController < ActionController::Base
   end
 
   def top_category
-    if Category.count > 0
-      @top_categories = Category.left_outer_joins(:images).select('categories.id, '\
-                        'categories.title,'\
-                        'categories.slug,'\
-                        'categories.posts_count + sum(images.comments_count) '\
-                        '+sum(images.fans_count) as total').
-                        group('categories.id').where('categories.posts_count > 0').
-                        where.not(title: "Non_categorizated",
-                        description: 'Images no category').order('total DESC').limit(6)
-    end
+    return unless Category.count.positive?
+
+    @top_categories = Category.left_outer_joins(:images).select('categories.id, '\
+                      'categories.title,'\
+                      'categories.slug,'\
+                      'categories.posts_count + sum(images.comments_count) '\
+                      '+sum(images.fans_count) '\
+                      'as total').group('categories.id').where('categories.posts_count > 0').
+                      where.not(title: 'Non_categorizated',
+                      description: 'Images no category').order('total DESC').limit(6)
   end
 
   def tracking
-    UserAction.new(user_id: current_user.id,
-      action: 'navigation',
-      action_path: request.original_url).save if user_signed_in?
+    return unless user_signed_in?
+
+    UserAction.new(user_id: current_user.id, action: 'navigation', action_path: request.original_url).save
   end
 
   def configure_permitted_parameters

@@ -16,6 +16,6 @@ class Subscriber < ApplicationRecord
   private
 
   def send_subscribed_email
-      Resque.enqueue(SubscribedEmailJob, user, category) unless Rails.env.test?
+    Resque.enqueue(SubscribedEmailJob, user, category) unless Rails.env.test?
   end
 end

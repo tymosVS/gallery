@@ -4,7 +4,7 @@ class FansController < ApplicationController
   respond_to :html, :js
 
   def create
-    if !already_faned?
+    unless already_faned?
       trackind('likes')
       @image.fans.create(user_id: current_user.id)
     end
@@ -13,18 +13,16 @@ class FansController < ApplicationController
 
   def destroy
     trackind('unlikes')
-    @fan = @image.fans.where( user_id: current_user.id, image_id: params[:image_id])
+    @fan = @image.fans.where(user_id: current_user.id, image_id: params[:image_id])
     @fan.destroy_all
     redirect_back(fallback_location: root_path)
   end
 
   private
 
-  def trackind(type_action) 
+  def trackind(type_action)
     action_path = request.original_url[0...request.original_url.index('/fans')]
-    UserAction.new(user_id: current_user.id,
-      action: type_action,
-      action_path: action_path).save
+    UserAction.new(user_id: current_user.id, action: type_action, action_path: action_path).save
   end
 
   def already_faned?

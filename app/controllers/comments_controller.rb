@@ -6,11 +6,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    if user_signed_in?
-      @image = Image.find(params[:image_id])
-      @comment = @image.comments.create(comment_params)
-      redirect_back(fallback_location: root_path)
-    end
+    return unless user_signed_in?
+
+    @image = Image.find(params[:image_id])
+    @comment = @image.comments.create(comment_params)
+    redirect_back(fallback_location: root_path)
   end
 
   private

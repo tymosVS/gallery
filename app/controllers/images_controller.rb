@@ -1,13 +1,12 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show]
+  before_action :set_image, only: :show
 
   def index
     # @images = Image.order('created_at DESC')
     @images = Image.order(:title).page params[:page]
   end
 
-  def show
-  end
+  def show; end
 
   private
 

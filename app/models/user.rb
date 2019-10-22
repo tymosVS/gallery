@@ -41,9 +41,7 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    unless Rails.env.test?
-      user = self
-      Resque.enqueue(WelcomeEmailJob, user)
-    end
+    user = self
+    Resque.enqueue(WelcomeEmailJob, user) unless Rails.env.test?
   end
 end

@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-  
   permit_params :id, :name, :email, :confirmed_at, :avatar, :password
 
   form title: 'Create user' do |f|
