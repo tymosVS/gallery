@@ -15,7 +15,6 @@ describe ImagesController, type: :routing do
 end
 
 describe ImagesController, type: :controller do
-
   context 'GET #index' do
     it 'should success and render to index page' do
       get :index

@@ -10,19 +10,19 @@ describe HomePagesController, type: :routing do
   end
 end
 
-describe HomePagesController,  type: :controller do
-  context 'GET #index' do 
+describe HomePagesController, type: :controller do
+  context 'GET #index' do
     it 'should success and render to index page' do
-        get :index
-        expect(response).to have_http_status(200)
-        expect(response).to render_template :index
+      get :index
+      expect(response).to have_http_status(200)
+      expect(response).to render_template :index
     end
   end
 
   context '#index conteins' do
     let(:category) { create(:category) }
     let(:user) { create(:user) }
-    let (:post) { create(:post, category_id: category.id) }
+    let(:post) { create(:post, category_id: category.id) }
     it 'must have images from top category if exist likes and comments' do
       sign_in user
       create(:post, category_id: category.id)

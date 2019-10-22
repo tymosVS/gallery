@@ -27,9 +27,8 @@ describe Comment, type: :model do
   context 'links' do
     it 'link with user' do
       user = User.find(subject.user_id)
-      expect(user.creators.
-                  create(category_id: subject.category_id,
-                        user_id: subject.user_id)).to be_valid
+      creator = user.creators.create(category_id: subject.category_id, user_id: subject.user_id)
+      expect(creator).to be_valid
     end
 
     it 'to_s should return user name' do

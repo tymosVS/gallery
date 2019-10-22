@@ -32,8 +32,8 @@ describe Post, type: :model do
 
     it 'check link to with categories' do
       category = Category.find(subject.category_id)
-      expect(category.posts.create(image_id: subject.image_id,
-                                  category_id: subject.category_id)).to be_valid
+      post = category.posts.create(image_id: subject.image_id, category_id: subject.category_id)
+      expect(post).to be_valid
     end
   end
 
@@ -61,9 +61,7 @@ describe Post, type: :model do
 
     it 'delete likes when delete post' do
       id = subject.image_id
-      10.times do
-        create(:comment, image_id: id)
-      end
+      10.times { create(:comment, image_id: id) }
       subject.destroy
       expect(Comment.where(image_id: id).count).to eq(0)
     end

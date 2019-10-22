@@ -38,7 +38,9 @@ describe CategoriesController, type: :controller do
     end
 
     it 'should raise ArgumentError' do
-      expect { delete :destroy, { id: 100 } }.to raise_error(ArgumentError)
+      expect do
+        delete :destroy, id: 100
+      end.to raise_error(ArgumentError)
     end
   end
 end

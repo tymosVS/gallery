@@ -18,15 +18,15 @@ describe FansController, type: :routing do
   end
 end
 
-describe FansController,  type: :controller do
+describe FansController, type: :controller do
   context 'public methods' do
     let(:image) { create :image }
     let(:fan) { create :fan, image_id: image.id }
-    let(:user) { create :user}
+    let(:user) { create :user }
 
     it 'should delete like' do
       sign_in user
-      expect { delete :destroy, params: { image_id: image.id , id: fan.id } }.to change(Fan, :count).by(1)
+      expect { delete :destroy, params: { image_id: image.id, id: fan.id } }.to change(Fan, :count).by(1)
     end
 
     it 'should create like' do
@@ -49,14 +49,14 @@ describe FansController,  type: :controller do
   context 'like if user log_out' do
     let(:image) { create :image }
     let(:fan) { create :fan, image_id: image.id }
-    let(:user) { create :user}
+    let(:user) { create :user }
 
     it 'do not remove like' do
-      expect { delete :destroy, params: { image_id: image.id , id: fan.id } }.to raise_error(NoMethodError)
+      expect { delete :destroy, params: { image_id: image.id, id: fan.id } }.to raise_error(NoMethodError)
     end
 
     it 'do not create like' do
-      expect { post :create, params: { image_id: image.id  } }.to raise_error(NoMethodError)
+      expect { post :create, params: { image_id: image.id } }.to raise_error(NoMethodError)
     end
   end
 end

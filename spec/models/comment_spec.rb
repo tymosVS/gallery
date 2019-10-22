@@ -31,20 +31,22 @@ describe Comment, type: :model do
   context 'links' do
     it 'link with user' do
       user = User.find(subject.user_id)
-      expect(user.comments.create(
-                                  image_id: subject.image_id,
-                                  user_id: subject.user_id,
-                                  body: Faker::Lorem.sentence(word_count: 15)
-                                  )).to be_valid
+      comment = user.comments.create(
+        image_id: subject.image_id,
+        user_id: subject.user_id,
+        body: Faker::Lorem.sentence(word_count: 15)
+      )
+      expect(comment).to be_valid
     end
 
     it 'link with category' do
       image = Image.find(subject.image_id)
-      expect(image.comments.create(
-                                  image_id: subject.image_id,
-                                  user_id: subject.user_id,
-                                  body: Faker::Lorem.sentence(word_count: 15)
-                                  )).to be_valid
+      img = image.comments.create(
+        image_id: subject.image_id,
+        user_id: subject.user_id,
+        body: Faker::Lorem.sentence(word_count: 15)
+      )
+      expect(img).to be_valid
     end
   end
 end

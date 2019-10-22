@@ -33,8 +33,9 @@ describe CommentsController, type: :controller do
     let(:comment) { build(:comment, user_id: user.id) }
     it 'should create new comment' do
       sign_in user
-      expect { post :create, params:  { comment: { body: comment.body, user_id: user.id },
-                                        image_id: image.id } }.to change(Comment, :count).by(1)
+      expect do
+        post :create, params: { comment: { body: comment.body, user_id: user.id }, image_id: image.id }
+      end.to change(Comment, :count).by(1)
     end
   end
 end

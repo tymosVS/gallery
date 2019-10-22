@@ -3,8 +3,7 @@
 require 'rails_helper'
 
 describe Fan, type: :model do
-  let(:fan) { create(:fan) }
-  subject { fan }
+  subject { create(:fan) }
 
   context 'valid' do
     it 'is valid with valid attributes' do
@@ -32,8 +31,8 @@ describe Fan, type: :model do
 
     it 'fan string equal image title' do
       img = Image.find(subject.image_id)
-      expect(img.fans.create(image_id: subject.image_id,
-        user_id: subject.user_id)).to be_valid
+      fan = img.fans.create(image_id: subject.image_id, user_id: subject.user_id)
+      expect(fan).to be_valid
     end
   end
 end

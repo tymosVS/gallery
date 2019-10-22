@@ -20,27 +20,20 @@ describe CreatorsController, type: :controller do
     let(:category) { build(:category) }
     it 'should create new category' do
       sign_in user
-      expect { post :create, params:
-                            { category:
-                              { title: category.title,
-                                description: category.description } } }.to change(Category, :count).by(1)
+      expect do
+        post :create, params: { category: { title: category.title, description: category.description } }
+      end.to change(Category, :count).by(1)
     end
 
     it 'if wrong params should genere #new template' do
       sign_in user
-      post :create, params:
-                            { category:
-                              { title: nil,
-                                description: category.description } }
+      post :create, params: { category: { title: nil, description: category.description } }
       assert_template :new
     end
 
     it 'description optional param' do
       sign_in user
-      post :create, params:
-                            { category:
-                              { title: category.title,
-                                description: nil } }
+      post :create, params: { category: { title: category.title, description: nil } }
       assert_response :redirect
     end
   end
@@ -50,10 +43,9 @@ describe CreatorsController, type: :controller do
     let(:category) { build(:category) }
 
     it 'rese eror in create if user_sign_out' do
-      expect { post :create, params:
-                            { category:
-                              { title: category.title,
-                                description: category.description } } }.to raise_error(NoMethodError)
+      expect do
+        post :create, params: { category: { title: category.title, description: category.description } }
+      end.to raise_error(NoMethodError)
     end
   end
 end

@@ -23,7 +23,7 @@ describe PostsController, type: :routing do
 end
 
 describe PostsController, type: :controller do
-  context 'posts #index' do 
+  context 'posts #index' do
     let(:category) { create(:category) }
     it 'should success and render to index page' do
       get :index, params: { category_id: category.id }
@@ -59,21 +59,21 @@ describe PostsController, type: :controller do
     let(:image) { create(:image) }
 
     it 'should create new post' do
-      expect { post :create, params:  { image: { image: image.image, title: image.title },
-                                        category_id: category.id } }.to change(Image, :count).by(1)
+      expect do
+        post :create, params: { image: { image: image.image, title: image.title }, category_id: category.id }
+      end.to change(Image, :count).by(1)
     end
 
     it 'should render template#new if wrong image path' do
       # sign_in user
-      post :create, params:  { image: { image: nil, title: image.title },
-                                        category_id: category.id }
+      post :create, params: { image: { image: nil, title: image.title }, category_id: category.id }
       assert_template :new
     end
 
     it 'should render template#new if wrong image title' do
       # sign_in user
-      post :create, params:  { image: { image: image.image, title: nil },
-                                        category_id: category.id }
+      img = { image: { image: image.image, title: nil }, category_id: category.id }
+      post :create, params: img
       assert_template :new
     end
   end

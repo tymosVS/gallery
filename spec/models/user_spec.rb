@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe User, type: :model do
+RSpec.describe User, type: :model do
   let(:user) { create(:user) }
   subject { user }
 
@@ -36,46 +36,34 @@ describe User, type: :model do
 
   context 'not valid' do
     it 'not possible create few user with equals params' do
-      10.times do
-        User.create(email: 'qwe@mail.com', name: 'Vas', password: '123321')
-      end
+      10.times { User.create(email: 'qwe@mail.com', name: 'Vas', password: '123321') }
       expect(User.count).to eq(1)
     end
   end
 
   context 'links' do
     it 'user have many comments' do
-      5.times do
-        create(:comment, user_id: user.id)
-      end
+      5.times { create(:comment, user_id: user.id) }
       expect(Comment.where(user_id: user.id).count).to eq(5)
     end
 
     it 'user have many user_actions' do
-      5.times do
-        create(:user_action, user_id: user.id)
-      end
+      5.times { create(:user_action, user_id: user.id) }
       expect(UserAction.where(user_id: user.id).count).to eq(5)
     end
 
     it 'user have many likes' do
-      5.times do
-        create(:fan, user_id: user.id)
-      end
+      5.times { create(:fan, user_id: user.id) }
       expect(Fan.where(user_id: user.id).count).to eq(5)
     end
 
     it 'user have many creators' do
-      5.times do
-        create(:creator, user_id: user.id)
-      end
+      5.times { create(:creator, user_id: user.id) }
       expect(Creator.where(user_id: user.id).count).to eq(5)
     end
 
     it 'user have many subscribes' do
-      5.times do
-        create(:subscriber, user_id: user.id)
-      end
+      5.times { create(:subscriber, user_id: user.id) }
       expect(Subscriber.where(user_id: user.id).count).to eq(5)
     end
   end

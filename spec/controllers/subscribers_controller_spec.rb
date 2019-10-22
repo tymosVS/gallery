@@ -40,16 +40,15 @@ describe SubscribersController, type: :controller do
     end
   end
 
-
-
   context 'subscriptions #destroy' do
     let(:user) { create(:user) }
     let(:subscriber) { create(:subscriber) }
 
     it 'should delete  subscriptions' do
       sign_in user
-      expect { delete :destroy, params: { category_id: subscriber.category_id,
-                                        id: subscriber.id } }.to change(Subscriber, :count).by(1)
+      expect do
+        delete :destroy, params: { category_id: subscriber.category_id, id: subscriber.id }
+      end.to change(Subscriber, :count).by(1)
     end
   end
 end
