@@ -10,6 +10,10 @@ describe Category, type: :model do
       expect(subject).to be_valid
     end
 
+    %i[id created_at updated_at title description slug posts_count].each do |field|
+      it { is_expected.to have_db_column(field) }
+    end
+
     it 'is valid without a description' do
       subject.description = nil
       expect(subject).to be_valid

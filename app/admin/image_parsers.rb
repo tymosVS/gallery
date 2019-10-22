@@ -4,8 +4,8 @@ ActiveAdmin.register ImageParser do
   batch_action :import do |selection|
     current_category = Category.where(title: 'Non_categorizated').first
     unless current_category
-      current_category = Category.new(title: 'Non_categorizated', 
-                                      description: 'Images no category') 
+      current_category = Category.new(title: 'Non_categorizated',
+                                      description: 'Images no category')
       current_category.save
     end
 
@@ -17,7 +17,7 @@ ActiveAdmin.register ImageParser do
       current_category.posts.create(category: current_category, image: img)
       image_parser.destroy
     end
-    redirect_to admin_image_parsers_path 
+    redirect_to admin_image_parsers_path
   end
 
   form title: 'Create ImageParser' do |f|
@@ -51,7 +51,7 @@ ActiveAdmin.register ImageParser do
   end
 
     index do
-      selectable_column 
+      selectable_column
       column :id
       column :image_url do |image|
         img(src:image.image_url)

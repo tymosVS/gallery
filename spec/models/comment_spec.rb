@@ -5,6 +5,10 @@ require 'rails_helper'
 describe Comment, type: :model do
   subject { create(:comment) }
 
+  %i[id created_at updated_at body image_id user_id].each do |field|
+    it { is_expected.to have_db_column(field) }
+  end
+
   context 'valid' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

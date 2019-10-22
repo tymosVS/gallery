@@ -6,6 +6,10 @@ describe Image, type: :model do
   let(:image) { create(:image) }
   subject { image }
 
+  %i[id created_at updated_at title image comments_count fans_count].each do |field|
+    it { is_expected.to have_db_column(field) }
+  end
+
   context 'valid' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

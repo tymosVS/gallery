@@ -24,6 +24,6 @@ class SubscribersController < ApplicationController
   def find_components
     @category = Category.find(params[:category_id])
     @user = User.find(current_user.id)
-    @pre_sub = @category.subscribers.find { |fan| fan.user_id == current_user.id}
+    @pre_sub = @category.subscribers.find { |fan| fan.user_id == current_user.id }
   end
 end

@@ -35,5 +35,4 @@ class FansController < ApplicationController
   def find_image
     @image = Image.find(params[:image_id])
   end
-
 end

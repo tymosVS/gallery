@@ -6,6 +6,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'devise'
+require 'shoulda/matchers'
 require 'capybara/rspec'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
@@ -44,5 +45,12 @@ RSpec.configure do |config|
     conf.default_max_wait_time = 10
     # conf.default_driver = :selenium
     conf.default_driver = :selenium_chrome_headless
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end

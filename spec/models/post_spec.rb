@@ -6,6 +6,10 @@ describe Post, type: :model do
   let(:post) { create(:post) }
   subject { post }
 
+  %i[id created_at updated_at image_id category_id].each do |field|
+    it { is_expected.to have_db_column(field) }
+  end
+
   context 'valid' do
     it 'valid with valid attributes' do
       expect(subject).to be_valid

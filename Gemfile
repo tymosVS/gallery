@@ -62,6 +62,7 @@ group :test do
   gem 'database_cleaner', '~> 1.7'
   gem 'rails-controller-testing'
   gem 'simplecov'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -122,4 +123,3 @@ gem 'capistrano-passenger', '>= 0.1.1'
 gem 'capistrano-rails'
 gem 'capistrano-rvm'
 gem 'capistrano-figaro-yml', '~> 1.0.2'
-

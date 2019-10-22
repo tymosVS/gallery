@@ -22,9 +22,7 @@ class PostsController < ApplicationController
     @images = {}
     @states = {}
     @posts.each do |post|
-      if post
-        @images[post] = post.image
-      end
+        @images[post] = post.image if post
     end
   end
 
@@ -34,7 +32,7 @@ class PostsController < ApplicationController
     @image = @post.image
   end
 
-  private 
+  private
 
   def image_params
     params.require(:image).permit(:title, :image)

@@ -6,6 +6,10 @@ describe Subscriber, type: :model do
   let(:user_action) { create(:user_action) }
   subject { user_action }
 
+  %i[id created_at updated_at user_id action action_path].each do |field|
+    it { is_expected.to have_db_column(field) }
+  end
+
   context 'valid' do
     it 'valid with valid attributes' do
       expect(subject).to be_valid

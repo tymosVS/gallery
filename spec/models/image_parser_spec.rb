@@ -2,9 +2,13 @@
 
 require 'rails_helper'
 
-describe Fan, type: :model do
+describe ImageParser, type: :model do
   let(:image_parser) { create(:image_parser) }
   subject { image_parser }
+
+  %i[id created_at updated_at site_path image_url].each do |field|
+    it { is_expected.to have_db_column(field) }
+  end
 
   context 'valid' do
     it 'is valid with valid attributes' do

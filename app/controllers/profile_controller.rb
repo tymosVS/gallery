@@ -13,17 +13,17 @@ class ProfileController < ApplicationController
 
   def get_vales(category_creat, folow_category)
     @subscribed_category = []
-      @created_category = []
-      folow_category.each do |category|
-        category = Category.find(category.category_id)
-        image =  category.images.first.image if category.images.size > 0
-        @subscribed_category << { category: category, image: image }
-      end
-      category_creat.each do |category|
-        category = Category.find(category.category_id)
-        image =  category.images.first.image if category.images.size > 0
-        image_count = category.posts_count
-        @created_category << { category: category, image: image, img_count: image_count }
-      end
+    @created_category = []
+    folow_category.each do |category|
+      category = Category.find(category.category_id)
+      image =  category.images.first.image if category.images.size > 0
+      @subscribed_category << { category: category, image: image }
+    end
+    category_creat.each do |category|
+      category = Category.find(category.category_id)
+      image =  category.images.first.image if category.images.size > 0
+      image_count = category.posts_count
+      @created_category << { category: category, image: image, img_count: image_count }
+    end
   end
 end
