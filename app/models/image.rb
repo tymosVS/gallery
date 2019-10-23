@@ -19,7 +19,8 @@ class Image < ApplicationRecord
     "#{Rails.root}/public/uploads"
   end
 
+  validates_numericality_of :comments_count, greater_than_or_equal_to: 0
+  validates_numericality_of :fans_count, greater_than_or_equal_to: 0
   validates :title, presence: true, length: { minimum: 2 }
-  validates :image, presence: true,
-            file_size: { less_than_or_equal_to: 50.megabytes }
+  validates :image, presence: true, file_size: { less_than_or_equal_to: 50.megabytes }
 end

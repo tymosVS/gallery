@@ -13,6 +13,10 @@ describe Users::SessionsController, type: :routing do
     it 'routes to #delete' do
       expect(delete: '/users/sign_out').to route_to('users/sessions#destroy')
     end
+
+    it { should route(:get, '/users/sign_in').to(action: :new) }
+    it { should route(:post, '/users/sign_in').to(action: :create) }
+    it { should route(:delete, '/users/sign_out').to(action: :destroy) }
   end
 end
 

@@ -15,6 +15,10 @@ describe CommentsController, type: :routing do
     it 'routes to #new' do
       expect(get: '/images/1/comments/new').to route_to('comments#new', image_id: '1')
     end
+
+    it { should route(:get, '/comments').to(action: :index) }
+    it { should route(:post, '/images/1/comments').to(action: :create, image_id: 1) }
+    it { should route(:get, '/images/1/comments/new').to(action: :new, image_id: 1) }
   end
 end
 

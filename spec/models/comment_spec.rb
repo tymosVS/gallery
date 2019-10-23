@@ -9,6 +9,14 @@ describe Comment, type: :model do
     it { is_expected.to have_db_column(field) }
   end
 
+  context 'validation' do
+    %i[body].each do |field|
+      it { is_expected.to allow_value('trtr').for(field) }
+      it { is_expected.to_not allow_value('').for(field) }
+      it { is_expected.to allow_value('3').for(field) }
+    end
+  end
+
   context 'valid' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

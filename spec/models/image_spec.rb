@@ -10,6 +10,19 @@ describe Image, type: :model do
     it { is_expected.to have_db_column(field) }
   end
 
+  context 'validation' do
+    %i[title image].each do |field|
+      it { is_expected.to_not allow_value('').for(field) }
+      it { is_expected.to_not allow_value('e').for(field) }
+    end
+
+    %i[fans_count comments_count].each do |field|
+      it { is_expected.to allow_value(1).for(field) }
+      it { is_expected.to allow_value(0).for(field) }
+      it { is_expected.to_not allow_value(-1).for(field) }
+    end
+  end
+  
   context 'valid' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

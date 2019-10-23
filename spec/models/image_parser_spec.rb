@@ -10,6 +10,12 @@ describe ImageParser, type: :model do
     it { is_expected.to have_db_column(field) }
   end
 
+  context 'validation' do
+    %i[image_url].each do |field|
+      it { is_expected.to allow_value('dsf').for(field) }
+      it { is_expected.to_not allow_value('').for(field) }
+    end
+  end
   context 'valid' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

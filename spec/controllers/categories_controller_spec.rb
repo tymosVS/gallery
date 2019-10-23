@@ -11,6 +11,9 @@ describe CategoriesController, type: :routing do
     it 'routes to #delete' do
       expect(delete: '/categories/1').to route_to('categories#destroy', id: '1')
     end
+
+    it { should route(:get, '/categories').to(action: :index) }
+    it { should route(:delete, '/categories/1').to(action: :destroy, id: 1) }
   end
 end
 

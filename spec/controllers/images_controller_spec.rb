@@ -11,6 +11,9 @@ describe ImagesController, type: :routing do
     it 'routes to #show' do
       expect(get: '/images/1').to route_to('images#show', id: '1')
     end
+
+    it { should route(:get, '/images').to(action: :index) }
+    it { should route(:get, '/images/1').to(action: :show, id: 1) }
   end
 end
 

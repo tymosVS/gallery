@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
     user = User.find_by_email(sign_in_params['email'])
     super && return unless user
     adjust_failed_attempts user
-    super && return if (user.failed_attempts < User.logins_before_captcha)
+    super && return if user.failed_attempts < User.logins_before_captcha
     super && return if user.locked_at || verify_recaptcha
     decrement_failed_attempts(user) if recaptcha_present?(params) && !verify_recaptcha
     self.resource = resource_class.new(sign_in_params)

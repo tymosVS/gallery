@@ -11,6 +11,9 @@ describe CreatorsController, type: :routing do
     it 'routes to #create' do
       expect(post: '/creators').to route_to('creators#create')
     end
+
+    it { should route(:post, '/creators').to(action: :create) }
+    it { should route(:get, '/creators/new').to(action: :new) }
   end
 end
 

@@ -7,6 +7,8 @@ describe HomePagesController, type: :routing do
     it 'routes to #index' do
       expect(get: '/').to route_to('home_pages#index')
     end
+
+    it { should route(:get, '/').to(action: :index) }
   end
 end
 

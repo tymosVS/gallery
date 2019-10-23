@@ -28,5 +28,4 @@ ActiveAdmin.register Image do
     as: :select,
     label: 'Category',
     collection: Category.all
-
 end

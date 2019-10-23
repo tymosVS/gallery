@@ -5,6 +5,20 @@ require 'rails_helper'
 describe Category, type: :model do
   subject { create(:category) }
 
+  context 'validation' do
+    %i[title].each do |field|
+      it { is_expected.to allow_value('email@mail.cx').for(field) }
+      it { is_expected.to_not allow_value('').for(field) }
+      it { is_expected.to_not allow_value('3').for(field) }
+    end
+
+    %i[posts_count].each do |field|
+      it { is_expected.to allow_value(1).for(field) }
+      it { is_expected.to allow_value(0).for(field) }
+      it { is_expected.to_not allow_value(-1).for(field) }
+    end
+  end
+
   context 'valid' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid

@@ -19,6 +19,11 @@ describe PostsController, type: :routing do
     it 'routes to #show' do
       expect(get: '/categories/1/1').to route_to('posts#show', category_id: '1', id: '1')
     end
+
+    it { should route(:get, '/categories/1').to(action: :index,category_id: 1) }
+    it { should route(:post, '/categories/1').to(action: :create, category_id: 1) }
+    it { should route(:get, '/categories/1/new').to(action: :new, category_id: 1) }
+    it { should route(:get, '/categories/1/1').to(action: :show, category_id: 1, id: 1) }
   end
 end
 

@@ -15,6 +15,10 @@ describe FansController, type: :routing do
     it 'routes to #destroy' do
       expect(delete: '/images/1/fans/1').to route_to('fans#destroy', image_id: '1', id: '1')
     end
+
+    it { should route(:post, '/images/1/fans').to(action: :create, image_id: 1) }
+    it { should route(:get, '/images/1/fans/new').to(action: :new, image_id: 1) }
+    it { should route(:delete, '/images/1/fans/1').to(action: :destroy, image_id: 1, id: 1) }
   end
 end
 

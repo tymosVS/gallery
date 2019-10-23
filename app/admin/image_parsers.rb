@@ -28,7 +28,6 @@ ActiveAdmin.register ImageParser do
   end
 
   controller do
-
     def create
       flash[:notice] = 'Team created successfully'
       url = params['image_parser']['site_path']

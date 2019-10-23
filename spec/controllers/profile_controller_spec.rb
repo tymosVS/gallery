@@ -7,6 +7,8 @@ describe ProfileController, type: :routing do
     it 'routes to #index' do
       expect(get: '/profile').to route_to('profile#index')
     end
+
+    it { should route(:get, '/profile').to(action: :index) }
   end
 end
 

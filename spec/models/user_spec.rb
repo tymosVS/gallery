@@ -16,6 +16,12 @@ RSpec.describe User, type: :model do
   end
 
   context 'valid' do
+    %i[email password].each do |field|
+      it { is_expected.to allow_value(Faker::Internet.email).for(field) }
+      it { is_expected.to_not allow_value(0).for(field) }
+      it { is_expected.to_not allow_value('adasd').for(field) }
+    end
+
     it 'valid with valid attributes' do
       expect(subject).to be_valid
     end

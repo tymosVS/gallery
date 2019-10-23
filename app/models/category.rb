@@ -19,5 +19,6 @@ class Category < ApplicationRecord
   has_many :subscribers, dependent: :destroy
   has_one :creator, dependent: :destroy
 
+  validates_numericality_of :posts_count, greater_than_or_equal_to: 0
   validates :title, presence: true, length: { minimum: 2 }
 end
