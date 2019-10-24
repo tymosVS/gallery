@@ -6,8 +6,8 @@ describe User, type: :model do
   subject { create(:admin_user) }
 
   %i[
-    id created_at updated_at email encrypted_password reset_password_token 
-    reset_password_sent_at remember_created_at 
+    id created_at updated_at email encrypted_password reset_password_token
+    reset_password_sent_at remember_created_at
   ].each do |field|
     it { is_expected.to have_db_column(field) }
   end

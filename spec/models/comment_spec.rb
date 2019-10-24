@@ -41,7 +41,6 @@ describe Comment, type: :model do
   end
 
   context 'links' do
-
     %i[image user].each do |association|
       it { is_expected.to belong_to(association) }
     end

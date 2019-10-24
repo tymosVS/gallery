@@ -4,11 +4,23 @@ require 'rails_helper'
 
 describe HomePagesController, type: :routing do
   describe 'routing' do
-    it 'routes to #index' do
-      expect(get: '/').to route_to('home_pages#index')
+    context 'have' do
+      it 'routes to #index' do
+        expect(get: '/').to route_to('home_pages#index')
+      end
+
+      it { should route(:get, '/').to(action: :index) }
     end
 
-    it { should route(:get, '/').to(action: :index) }
+    context 'not have' do
+      it { should_not route(:delete, '/home_pages/1').to(action: :destroy, id: 1) }
+      it { should_not route(:get, '/home_pages/new').to(action: :new) }
+      it { should_not route(:post, '/home_pages/').to(action: :create) }
+      it { should_not route(:get, '/home_pages/1').to(action: :show, id: 1) }
+      it { should_not route(:patch, '/home_pages/1').to(action: :update, id: 1) }
+      it { should_not route(:put, '/home_pages/1').to(action: :update, id: 1) }
+      it { should_not route(:get, '/home_pages/1/edit').to(action: :edit, id: 1) }
+    end
   end
 end
 

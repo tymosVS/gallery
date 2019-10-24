@@ -41,6 +41,12 @@ describe CreatorsController, type: :controller do
     end
   end
 
+  context 'actions' do
+    %i[find_user].each do |action|
+      it { should use_before_action(action) }
+    end
+  end
+
   context 'creator #create for log_outed user' do
     let(:user) { create(:user) }
     let(:category) { build(:category) }

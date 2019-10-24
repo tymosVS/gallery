@@ -29,7 +29,6 @@ describe Subscriber, type: :model do
   end
 
   context 'links' do
-
     %i[user category].each do |association|
       it { is_expected.to belong_to(association) }
     end

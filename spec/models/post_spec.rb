@@ -29,7 +29,6 @@ describe Post, type: :model do
   end
 
   context 'links' do
-
     %i[image category].each do |association|
       it { is_expected.to belong_to(association) }
     end

@@ -4,21 +4,31 @@ require 'rails_helper'
 
 describe SubscribersController, type: :routing do
   describe 'routing' do
-    it 'routes to #create' do
-      expect(post: '/categories/1/subscribers').to route_to('subscribers#create', category_id: '1')
+    context 'have' do
+      it 'routes to #create' do
+        expect(post: '/categories/1/subscribers').to route_to('subscribers#create', category_id: '1')
+      end
+
+      it 'routes to #new' do
+        expect(get: '/categories/1/subscribers/new').to route_to('subscribers#new', category_id: '1')
+      end
+
+      it 'routes to #destroy' do
+        expect(delete: '/categories/1/subscribers/1').to route_to('subscribers#destroy', category_id: '1', id: '1')
+      end
+
+      it { should route(:post, '/categories/1/subscribers').to(action: :create, category_id: 1) }
+      it { should route(:get, '/categories/1/subscribers/new').to(action: :new, category_id: 1) }
+      it { should route(:delete, '/categories/1/subscribers/1').to(action: :destroy, category_id: 1, id: 1) }
     end
 
-    it 'routes to #new' do
-      expect(get: '/categories/1/subscribers/new').to route_to('subscribers#new', category_id: '1')
+    context 'not have' do
+      it { should_not route(:get, '/categories/1/subscribers').to(action: :index, category_id: 1) }
+      it { should_not route(:get, '/categories/1/subscribers/1').to(action: :show, category_id: 1, id: 1) }
+      it { should_not route(:patch, '/categories/1/subscribers/1').to(action: :update, category_id: 1, id: 1) }
+      it { should_not route(:put, '/categories/1/subscribers/1').to(action: :update, category_id: 1, id: 1) }
+      it { should_not route(:get, '/categories/1/subscribers/1/edit').to(action: :edit, category_id: 1, id: 1) }
     end
-
-    it 'routes to #destroy' do
-      expect(delete: '/categories/1/subscribers/1').to route_to('subscribers#destroy', category_id: '1', id: '1')
-    end
-
-    it { should route(:post, '/categories/1/subscribers').to(action: :create, category_id: 1) }
-    it { should route(:get, '/categories/1/subscribers/new').to(action: :new, category_id: 1) }
-    it { should route(:delete, '/categories/1/subscribers/1').to(action: :destroy, category_id: 1, id: 1) }
   end
 end
 
@@ -41,6 +51,12 @@ describe SubscribersController, type: :controller do
     it 'subscriptions not create if user log out' do
       # must return no method eror because current_user == Nil
       expect { post :create, params: { category_id: category.id } }.to raise_error(NoMethodError)
+    end
+  end
+
+  context 'actions' do
+    %i[find_components].each do |action|
+      it { should use_before_action(action) }
     end
   end
 

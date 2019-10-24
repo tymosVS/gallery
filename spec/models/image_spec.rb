@@ -22,7 +22,7 @@ describe Image, type: :model do
       it { is_expected.to_not allow_value(-1).for(field) }
     end
   end
-  
+
   context 'valid' do
     it 'is valid with valid attributes' do
       expect(subject).to be_valid
