@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe Comment, type: :model do
@@ -29,7 +32,6 @@ describe Comment, type: :model do
   end
 
   context 'links' do
-
     %i[category user].each do |association|
       it { is_expected.to belong_to(association) }
     end

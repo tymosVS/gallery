@@ -2,21 +2,11 @@ require 'rails_helper'
 
 describe Users::SessionsController, type: :routing do
   describe 'routing' do
-    it 'routes to #new' do
-      expect(get: '/users/sign_in').to route_to('users/sessions#new')
+    context 'have' do
+      it { expect(get: '/users/sign_in').to route_to('users/sessions#new') }
+      it { expect(post: '/users/sign_in').to route_to('users/sessions#create') }
+      it { expect(delete: '/users/sign_out').to route_to('users/sessions#destroy') }
     end
-
-    it 'routes to #create' do
-      expect(post: '/users/sign_in').to route_to('users/sessions#create')
-    end
-
-    it 'routes to #delete' do
-      expect(delete: '/users/sign_out').to route_to('users/sessions#destroy')
-    end
-
-    it { should route(:get, '/users/sign_in').to(action: :new) }
-    it { should route(:post, '/users/sign_in').to(action: :create) }
-    it { should route(:delete, '/users/sign_out').to(action: :destroy) }
   end
 end
 

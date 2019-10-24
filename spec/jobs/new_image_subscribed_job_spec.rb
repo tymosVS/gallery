@@ -5,11 +5,11 @@ SimpleCov.start
 
 require 'rails_helper'
 
-RSpec.describe WelcomeEmailJob, type: :job do
+RSpec.describe NewImageSubscribedEmailJob, type: :job do
   include ActiveJob::TestHelper
-  let(:user) { create(:user) }
+  let(:category) { create(:category) }
   it 'availability job methods' do
     ActiveJob::Base.queue_adapter = :test
-    WelcomeEmailJob.perform(user)
+    NewImageSubscribedEmailJob.perform(category)
   end
 end

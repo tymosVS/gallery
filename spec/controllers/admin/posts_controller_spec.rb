@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe Admin::PostsController, type: :controller do

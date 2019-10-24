@@ -1,29 +1,24 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe ImagesController, type: :routing do
   describe 'routing' do
     context 'have' do
-      it 'routes to #index' do
-        expect(get: '/images').to route_to('images#index')
-      end
-
-      it 'routes to #show' do
-        expect(get: '/images/1').to route_to('images#show', id: '1')
-      end
-
-      it { should route(:get, '/images').to(action: :index) }
-      it { should route(:get, '/images/1').to(action: :show, id: 1) }
+      it { expect(get: '/images').to route_to('images#index') }
+      it { expect(get: '/images/1').to route_to('images#show', id: '1') }
     end
 
     context 'not have' do
-      it { should_not route(:delete, '/images/1').to(action: :destroy, id: 1) }
-      it { should_not route(:get, '/images/new').to(action: :new) }
-      it { should_not route(:post, '/images').to(action: :create) }
-      it { should_not route(:patch, '/images/1').to(action: :update, id: 1) }
-      it { should_not route(:put, '/images/1').to(action: :update, id: 1) }
-      it { should_not route(:get, '/images/1/edit').to(action: :edit, id: 1) }
+      it { expect(delete: '/images/1').to_not route_to(action: :destroy, id: 1) }
+      it { expect(get: '/images/new').to_not route_to(action: :new) }
+      it { expect(post: '/images').to_not route_to(action: :create) }
+      it { expect(patch: '/images/1').to_not route_to(action: :update, id: 1) }
+      it { expect(put: '/images/1').to_not route_to(action: :update, id: 1) }
+      it { expect(get: '/images/1/edit').to_not route_to(action: :edit, id: 1) }
     end
   end
 end
@@ -39,7 +34,7 @@ describe ImagesController, type: :controller do
 
   context 'actions' do
     %i[set_image].each do |action|
-      it { should use_before_action(action) }
+      it { expect use_before_action(action) }
     end
   end
 

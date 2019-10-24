@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe Category, type: :model do
@@ -67,6 +70,11 @@ describe Category, type: :model do
       subject.destroy
       expect(Subscriber.where(category_id: id).count).to eq(0)
     end
+  end
+
+  context 'to_s' do
+    it { expect(subject.to_s).to eq(subject.title) }
+    it { expect(subject.to_s.class).to be String }
   end
 
   context 'links' do

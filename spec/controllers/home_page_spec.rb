@@ -1,25 +1,24 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe HomePagesController, type: :routing do
   describe 'routing' do
     context 'have' do
-      it 'routes to #index' do
-        expect(get: '/').to route_to('home_pages#index')
-      end
-
-      it { should route(:get, '/').to(action: :index) }
+      it { expect(get: '/').to route_to('home_pages#index') }
     end
 
     context 'not have' do
-      it { should_not route(:delete, '/home_pages/1').to(action: :destroy, id: 1) }
-      it { should_not route(:get, '/home_pages/new').to(action: :new) }
-      it { should_not route(:post, '/home_pages/').to(action: :create) }
-      it { should_not route(:get, '/home_pages/1').to(action: :show, id: 1) }
-      it { should_not route(:patch, '/home_pages/1').to(action: :update, id: 1) }
-      it { should_not route(:put, '/home_pages/1').to(action: :update, id: 1) }
-      it { should_not route(:get, '/home_pages/1/edit').to(action: :edit, id: 1) }
+      it { expect(delete: '/home_pages/1').to_not route_to(action: :destroy, id: 1) }
+      it { expect(get: '/home_pages/new').to_not route_to(action: :new) }
+      it { expect(post: '/home_pages/').to_not route_to(action: :create) }
+      it { expect(get: '/home_pages/1').to_not route_to(action: :show, id: 1) }
+      it { expect(patch: '/home_pages/1').to_not route_to(action: :update, id: 1) }
+      it { expect(put: '/home_pages/1').to_not route_to(action: :update, id: 1) }
+      it { expect(get: '/home_pages/1/edit').to_not route_to(action: :edit, id: 1) }
     end
   end
 end

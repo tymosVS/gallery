@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe AdminUser, type: :feature do
@@ -20,6 +23,24 @@ describe AdminUser, type: :feature do
       visit admin_admin_users_path
       click_on 'Delete'
       page.driver.browser.switch_to.alert.accept
+    end
+  end
+
+  context 'click buttons in AA' do
+    scenario 'AA create image' do
+      visit admin_admin_users_path
+      click_on 'New Admin'
+      fill_in 'admin_user[email]', with: 'foo@bar.com'
+      fill_in 'admin_user[password]', with: 'qwerty'
+      fill_in 'admin_user[password_confirmation]', with: 'qwerty'
+      click_on 'Create Admin user'
+      expect(page).to have_content('foo@bar.com')
+      click_on 'Edit Admin User'
+      fill_in 'admin_user[email]', with: 'baz@bar.com'
+      fill_in 'admin_user[password]', with: 'ytrewq'
+      fill_in 'admin_user[password_confirmation]', with: 'ytrewq'
+      click_on 'Update Admin user'
+      expect(page).to have_content('baz@bar.com')
     end
   end
 end

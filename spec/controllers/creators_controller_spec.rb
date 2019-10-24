@@ -1,19 +1,25 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe CreatorsController, type: :routing do
   describe 'routing' do
-    it 'routes to #new' do
-      expect(get: '/creators/new').to route_to('creators#new')
+    context 'have' do
+      it { expect(get: '/creators/new').to route_to('creators#new') }
+      it { expect(post: '/creators').to route_to('creators#create') }
     end
 
-    it 'routes to #create' do
-      expect(post: '/creators').to route_to('creators#create')
+    context 'not have' do
+      it { expect(get: '/creators').to_not route_to(action: :index) }
+      it { expect(delete: '/home_pages/1').to_not route_to(action: :destroy, id: 1) }
+      it { expect(get: '/home_pages/1').to_not route_to(action: :show, id: 1) }
+      it { expect(patch: '/home_pages/1').to_not route_to(action: :update, id: 1) }
+      it { expect(put: '/home_pages/1').to_not route_to(action: :update, id: 1) }
+      it { expect(get: '/home_pages/1/edit').to_not route_to(action: :edit, id: 1) }
     end
-
-    it { should route(:post, '/creators').to(action: :create) }
-    it { should route(:get, '/creators/new').to(action: :new) }
   end
 end
 
@@ -43,7 +49,7 @@ describe CreatorsController, type: :controller do
 
   context 'actions' do
     %i[find_user].each do |action|
-      it { should use_before_action(action) }
+      it { expect use_before_action(action) }
     end
   end
 

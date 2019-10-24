@@ -1,29 +1,24 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe CategoriesController, type: :routing do
   describe 'routing' do
     context 'have' do
-      it 'routes to #index' do
-        expect(get: '/categories').to route_to('categories#index')
-      end
-
-      it 'routes to #delete' do
-        expect(delete: '/categories/1').to route_to('categories#destroy', id: '1')
-      end
-
-      it { should route(:get, '/categories').to(action: :index) }
-      it { should route(:delete, '/categories/1').to(action: :destroy, id: 1) }
+      it { expect(get: '/categories').to route_to('categories#index') }
+      it { expect(delete: '/categories/1').to route_to('categories#destroy', id: '1') }
     end
 
     context 'not have' do
-      it { should_not route(:get, '/categories/new').to(action: :new) }
-      it { should_not route(:post, '/categories').to(action: :create) }
-      it { should_not route(:get, '/categories/1').to(action: :show, id: 1) }
-      it { should_not route(:patch, '/categories/1').to(action: :update, id: 1) }
-      it { should_not route(:put, '/categories/1').to(action: :update, id: 1) }
-      it { should_not route(:get, '/categories/1/edit').to(action: :edit, id: 1) }
+      it { expect(get: '/categories/new').to_not route_to(action: :new) }
+      it { expect(post: '/categories').to_not route_to(action: :create) }
+      it { expect(get: '/categories/1').to_not route_to(action: :show, id: 1) }
+      it { expect(patch: '/categories/1').to_not route_to(action: :update, id: 1) }
+      it { expect(put: '/categories/1').to_not route_to(action: :update, id: 1) }
+      it { expect(get: '/categories/1/edit').to_not route_to(action: :edit, id: 1) }
     end
   end
 end

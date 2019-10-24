@@ -15,10 +15,6 @@ class Image < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  def cache_dir
-    "#{Rails.root}/public/uploads"
-  end
-
   validates_numericality_of :comments_count, greater_than_or_equal_to: 0
   validates_numericality_of :fans_count, greater_than_or_equal_to: 0
   validates :title, presence: true, length: { minimum: 2 }

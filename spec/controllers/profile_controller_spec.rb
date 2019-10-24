@@ -1,25 +1,24 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe ProfileController, type: :routing do
   describe 'routing' do
     context 'have' do
-      it 'routes to #index' do
-        expect(get: '/profile').to route_to('profile#index')
-      end
-
-      it { should route(:get, '/profile').to(action: :index) }
+      it { expect(get: '/profile').to route_to('profile#index') }
     end
 
     context 'not have' do
-      it { should_not route(:delete, '/profile/1').to(action: :destroy, id: 1) }
-      it { should_not route(:get, '/profile/new').to(action: :new) }
-      it { should_not route(:post, '/profile/').to(action: :create) }
-      it { should_not route(:get, '/profile/1').to(action: :show, id: 1) }
-      it { should_not route(:patch, '/profile/1').to(action: :update, id: 1) }
-      it { should_not route(:put, '/profile/1').to(action: :update, id: 1) }
-      it { should_not route(:get, '/profile/1/edit').to(action: :edit, id: 1) }
+      it { expect(delete: '/profile/1').to_not route_to(action: :destroy, id: 1) }
+      it { expect(get: '/profile/new').to_not route_to(action: :new) }
+      it { expect(post: '/profile/').to_not route_to(action: :create) }
+      it { expect(get: '/profile/1').to_not route_to(action: :show, id: 1) }
+      it { expect(patch: '/profile/1').to_not route_to(action: :update, id: 1) }
+      it { expect(put: '/profile/1').to_not route_to(action: :update, id: 1) }
+      it { expect(get: '/profile/1/edit').to_not route_to(action: :edit, id: 1) }
     end
   end
 end

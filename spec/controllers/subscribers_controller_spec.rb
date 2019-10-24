@@ -1,33 +1,27 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+
 require 'rails_helper'
 
 describe SubscribersController, type: :routing do
   describe 'routing' do
     context 'have' do
-      it 'routes to #create' do
-        expect(post: '/categories/1/subscribers').to route_to('subscribers#create', category_id: '1')
-      end
-
-      it 'routes to #new' do
-        expect(get: '/categories/1/subscribers/new').to route_to('subscribers#new', category_id: '1')
-      end
+      it { expect(post: '/categories/1/subscribers').to route_to('subscribers#create', category_id: '1') }
+      it { expect(get: '/categories/1/subscribers/new').to route_to('subscribers#new', category_id: '1') }
 
       it 'routes to #destroy' do
         expect(delete: '/categories/1/subscribers/1').to route_to('subscribers#destroy', category_id: '1', id: '1')
       end
-
-      it { should route(:post, '/categories/1/subscribers').to(action: :create, category_id: 1) }
-      it { should route(:get, '/categories/1/subscribers/new').to(action: :new, category_id: 1) }
-      it { should route(:delete, '/categories/1/subscribers/1').to(action: :destroy, category_id: 1, id: 1) }
     end
 
     context 'not have' do
-      it { should_not route(:get, '/categories/1/subscribers').to(action: :index, category_id: 1) }
-      it { should_not route(:get, '/categories/1/subscribers/1').to(action: :show, category_id: 1, id: 1) }
-      it { should_not route(:patch, '/categories/1/subscribers/1').to(action: :update, category_id: 1, id: 1) }
-      it { should_not route(:put, '/categories/1/subscribers/1').to(action: :update, category_id: 1, id: 1) }
-      it { should_not route(:get, '/categories/1/subscribers/1/edit').to(action: :edit, category_id: 1, id: 1) }
+      it { expect(get: '/categories/1/subscribers').to_not route_to(action: :index, category_id: 1) }
+      it { expect(get: '/categories/1/subscribers/1').to_not route_to(action: :show, category_id: 1, id: 1) }
+      it { expect(patch: '/categories/1/subscribers/1').to_not route_to(action: :update, category_id: 1, id: 1) }
+      it { expect(put: '/categories/1/subscribers/1').to_not route_to(action: :update, category_id: 1, id: 1) }
+      it { expect(get: '/categories/1/subscribers/1/edit').to_not route_to(action: :edit, category_id: 1, id: 1) }
     end
   end
 end
