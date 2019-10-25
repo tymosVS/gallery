@@ -43,7 +43,6 @@ describe SubscribersController, type: :controller do
     end
 
     it 'subscriptions not create if user log out' do
-      # must return no method eror because current_user == Nil
       expect { post :create, params: { category_id: category.id } }.to raise_error(NoMethodError)
     end
   end

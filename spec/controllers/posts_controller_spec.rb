@@ -66,13 +66,11 @@ describe PostsController, type: :controller do
     end
 
     it 'should render template#new if wrong image path' do
-      # sign_in user
       post :create, params: { image: { image: nil, title: image.title }, category_id: category.id }
       assert_template :new
     end
 
     it 'should render template#new if wrong image title' do
-      # sign_in user
       img = { image: { image: image.image, title: nil }, category_id: category.id }
       post :create, params: img
       assert_template :new

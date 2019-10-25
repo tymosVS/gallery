@@ -18,7 +18,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include FactoryBot::Syntax::Methods
@@ -28,14 +27,9 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::ControllerHelpers, type: :helper
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
   config.use_transactional_fixtures = true
   config.formatter = :documentation
-  # config.formatter = :progress
 
-  # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
@@ -43,8 +37,7 @@ RSpec.configure do |config|
 
   Capybara.configure do |conf|
     conf.default_max_wait_time = 10
-    # conf.default_driver = :selenium
-    conf.default_driver = :selenium_chrome_headless
+    conf.default_driver = :selenium
   end
 end
 
