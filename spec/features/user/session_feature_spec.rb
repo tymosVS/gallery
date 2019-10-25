@@ -10,12 +10,12 @@ describe 'Profile', type: :feature do
     scenario 'check move to FB' do
       visit new_user_session_path
       click_on 'Sign in with Facebook'
-      expect(page).to have_content('Log Into Facebook')
+      expect(page).to have_content('Login')
     end
   end
 
   context 'sign in' do
-    let(:user) { create(:user)}
+    let(:user) { create(:user) }
     scenario 'simple sig_in' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
