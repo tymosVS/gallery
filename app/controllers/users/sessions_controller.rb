@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
     user = User.find_by_email(sign_in_params['email'])
     super && return unless user
     adjust_failed_attempts user
-    super && return if user.failed_attempts < User.logins_before_captcha
+    super && return if (user.failed_attempts < User.logins_before_captcha)
     super && return if user.locked_at || verify_recaptcha
     decrement_failed_attempts(user) if recaptcha_present?(params) && !verify_recaptcha
     self.resource = resource_class.new(sign_in_params)
@@ -19,7 +19,9 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     user_id = current_user.id
     super
-    UserAction.new(user_id: user_id, action: 'user sign out', action_path: 'nil').save
+    UserAction.new(user_id: user_id,
+      action: 'user sign out',
+      action_path: 'nil').save
   end
 
   private
@@ -48,7 +50,9 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
     resource.update cached_failed_attempts: 0, failed_attempts: 0
-    UserAction.new(user_id: current_user.id, action: 'user sign in', action_path: 'nil').save
+    UserAction.new(user_id: current_user.id,
+      action: 'user sign in',
+      action_path: 'nil').save
     stored_location_for(@user) || categories_path
   end
 end

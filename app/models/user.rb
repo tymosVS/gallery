@@ -10,8 +10,6 @@ class User < ApplicationRecord
   has_many :creators, dependent: :destroy
   has_many :fans, dependent: :destroy
   has_many :user_actions, dependent: :destroy
-
-  validates :password, presence: true
   def self.logins_before_captcha
     2
   end
@@ -20,28 +18,27 @@ class User < ApplicationRecord
     if user = User.where(email: access_token.extra.raw_info.email).first
       user
     else
-      User.create!(
-                  name: access_token.extra.raw_info.name,
-                  email: access_token.extra.raw_info.email,
-                  confirmed_at: Time.now,
-                  avatar: access_token.extra.raw_info.avatar,
-                  password: Devise.friendly_token[0, 20]
-                )
+      User.create!(name: access_token.extra.raw_info.name,
+                    email: access_token.extra.raw_info.email,
+                    confirmed_at: Time.now,
+                    avatar: access_token.extra.raw_info.avatar,
+                    password: Devise.friendly_token[0, 20])
     end
   end
-  devise  :database_authenticatable,
-          :registerable,
-          :recoverable,
-          :rememberable,
-          :trackable,
-          :validatable,
-          :omniauthable,
-          :confirmable
+  devise :database_authenticatable,
+        :registerable,
+        :recoverable,
+        :rememberable,
+        :trackable,
+        :validatable,
+        :omniauthable,
+        :confirmable
 
   private
 
   def send_welcome_email
     user = self
-    Resque.enqueue(WelcomeEmailJob, user) unless Rails.env.test?
+    Resque.enqueue(WelcomeEmailJob, user)
+    # UserMailer.welcome_email(self).deliver
   end
 end
