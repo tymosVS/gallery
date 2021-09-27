@@ -102,7 +102,7 @@ gem "recaptcha", require: "recaptcha/rails"
 
 gem 'resque', '~> 2.0'
 
-gem 'nokogiri', '~> 1.10', '>= 1.10.3'
+gem 'nokogiri', '~> 1.12'
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
