@@ -301,7 +301,8 @@ GEM
       ast (~> 2.4.0)
     pg (1.1.4)
     public_suffix (3.1.1)
-    puma (3.12.2)
+    puma (4.3.12)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
@@ -521,7 +522,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   pg (>= 0.18, < 2.0)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   rails-controller-testing
   rails-i18n (~> 5.1)
